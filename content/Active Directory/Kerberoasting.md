@@ -1,4 +1,4 @@
-Kerberoast authentication happens when a user wants to interact with a server that is hosting a service. E.g MySQL, HTTP, FTP.... etc
+**Kerberoasting** is an attack method used in Active Directory environments where an attacker targets service accounts. It works by requesting and then cracking the service account’s Kerberos ticket (TGS—Ticket Granting Service). E.g MySQL, HTTP, FTP.... etc
 
 ![[Pasted image 20240726224839.png]]
 
