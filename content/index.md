@@ -2,4 +2,6 @@
 title: GazNET Systems
 ---
 
-This needs to be filled out
+Please standby....
+
+![[Pasted image 20240726215315.png]]
