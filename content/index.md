@@ -1,6 +1,5 @@
 ---
-title: Welcome to Quartz
+title: GazNET Systems
 ---
 
-This is a blank Quartz installation.
-See the [documentation](https://quartz.jzhao.xyz) for how to get started.
+This needs to be filled out
