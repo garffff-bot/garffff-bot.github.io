@@ -1,8 +1,13 @@
+### kerbrute:
+https://github.com/ropnop/kerbrute
 Slow and noisy:
 
 ```bash
 ./kerbrute_linux_amd64 userenum --dc dc01.manager.htb -d manager.htb /opt/kerberos_enum_userlists/A-Z.Surnames.txt
 ```
+
+### Ldapnomnom:
+https://github.com/lkarlslund/ldapnomnom
 
 Quick and not noisy:
 
