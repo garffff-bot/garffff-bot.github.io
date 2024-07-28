@@ -3,7 +3,7 @@ https://github.com/ropnop/kerbrute
 Slow and noisy:
 
 ```bash
-./kerbrute_linux_amd64 userenum --dc dc01.manager.htb -d manager.htb /opt/kerberos_enum_userlists/A-Z.Surnames.txt
+./kerbrute_linux_amd64 userenum --dc x.x.x.x -d domain.local /opt/kerberos_enum_userlists/A-Z.Surnames.txt
 ```
 
 ### Ldapnomnom:
