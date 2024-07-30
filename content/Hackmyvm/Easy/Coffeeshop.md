@@ -234,7 +234,7 @@ tuna@coffee-shop:~$ cat /home/shopadmin/execute.sh
 /bin/bash /tmp/*.sh
 ```
 
-This is simply telling us that anything inside of the `/tmp` directory that has the `.sh` extension is being executed.
+This is simply telling us that anything inside of the `/tmp` directory that has the `.sh` extension will be executed.
 
 I will created an msfvenom payload:
 
