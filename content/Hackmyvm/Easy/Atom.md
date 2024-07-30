@@ -294,7 +294,7 @@ deshawn
 mayeul
 ```
 
-Going back to Metasploit's `ipmi_dumphashes`, and using the `OUTPUT_HASHCAT_FILE` function to output any hashes found:
+Going back to Metasploit's `ipmi_dumphashes`, and updating the `USER_FILE` with the new user file, and updating the `OUTPUT_HASHCAT_FILE` function to output any hashes found to a text file:
 
 ```bash
 msf6 auxiliary(scanner/ipmi/ipmi_dumphashes) > set USER_FILE users.txt
