@@ -7,7 +7,7 @@ ffuf -u http://x.x.x.x/FUZZ -w /opt/SecLists/Discovery/Web-Content/big.txt {-e .
 ### Feroxbuster
 
 ```bash
-feroxbuster -u http://midnight.coffee -w /opt/SecLists/Discovery/Web-Content/big.txt -x .php,.txt,.htm,.html
+feroxbuster -u http://x.x.x.x -w /opt/SecLists/Discovery/Web-Content/big.txt -x .php,.txt,.htm,.html
 ```
 
 ### Dirsearch
