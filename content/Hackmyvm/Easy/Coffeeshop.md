@@ -42,7 +42,7 @@ garffff@garffff:~/hackmyvm/coffeeshop$ echo '192.168.0.175 midnight.coffee' | su
 ### Directory Bruteforcing
 
 ```bash
-garffff@garffff:~/hackmyvm/coffeeshop$ fuf -u http://midnight.coffee/FUZZ -w /opt/SecLists/Discovery/Web-Content/big.txt 
+garffff@garffff:~/hackmyvm/coffeeshop$ ffuf -u http://midnight.coffee/FUZZ -w /opt/SecLists/Discovery/Web-Content/big.txt 
 
         /'___\  /'___\           /'___\       
        /\ \__/ /\ \__/  __  __  /\ \__/       
