@@ -33,7 +33,7 @@ Nmap done: 1 IP address (1 host up) scanned in 9.72 seconds
 
 ![[Pasted image 20240730174501.png]]
 
-Adding `midnight.cofee` to the host file
+Adding `midnight.coffee` to the host file
 
 ```bash
 garffff@garffff:~/hackmyvm/coffeeshop$ echo '192.168.0.175 midnight.coffee' | sudo tee -a /etc/hosts
@@ -71,7 +71,7 @@ shop                    [Status: 301, Size: 317, Words: 20, Lines: 10, Duration:
 :: Progress: [20476/20476] :: Job [1/1] :: 42 req/sec :: Duration: [0:00:05] :: Errors: 0 ::
 ```
 
-Visiting the /shop directory, we come across a login page:
+Visiting the `/shop` directory, we come across a login page:
 
 ![[Pasted image 20240730175834.png]]
 
