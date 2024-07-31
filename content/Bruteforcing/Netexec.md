@@ -3,6 +3,7 @@ Supports the following protocols:
 
 ```bash
 netexec smb x.x.x.x -u user.txt -p pass.txt
+netexec smb x.x.x.x -u user.txt -p pass.txt --no-brute
 ```
 
 
