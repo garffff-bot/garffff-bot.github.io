@@ -2,7 +2,7 @@
 | ---------- | ---------- | ----- | ------------- | ------------------------------------------------------ |
 | Coffeeshop | Easy       | Linux | 192.168.0.202 | https://hackmyvm.eu/machines/machine.php?vm=CoffeeShop |
 
-### Arp Scan 
+### ARP Scan 
 
 ```bash
 garffff@garffff:~/hackmyvm/coffeeshop$ sudo arp-scan -l | grep 97  
