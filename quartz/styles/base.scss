@@ -161,17 +161,21 @@ a {
       flex-direction: column;
     }
 
-    & .sidebar {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      top: 0;
-      width: $sidePanelWidth;
-      margin-top: $topSpacing;
-      box-sizing: border-box;
-      padding: 0 4rem;
-      position: fixed;
+  & .sidebar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    top: 0;
+    width: $sidePanelWidth;
+    margin-top: $topSpacing;
+    box-sizing: border-box;
+    padding: 0 4rem;
+    position: fixed;  // keeps the sidebar fixed on screen
+    bottom: 0;  // stick to the bottom of the viewport
+    top: auto;  // removes the top position
+    height: auto;  // adjusts height if necessary
+    justify-content: flex-end;  // aligns content to the bottom
       @media all and (max-width: $fullPageWidth) {
         position: initial;
         flex-direction: row;
