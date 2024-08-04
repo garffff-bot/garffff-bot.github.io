@@ -40,7 +40,7 @@ Viewing `robots.txt`:
 ![[Pasted image 20240802183929.png]]
 Looks like we have some clues, I will view these individually:
 
-`hi.html`:
+`/hi.html`:
 
 ![[Pasted image 20240802184024.png]]
 
@@ -48,7 +48,7 @@ Looks like we have some clues, I will view these individually:
 
 ![[Pasted image 20240802184100.png]]
 
-Viewing the source of the page: 
+Viewing the source: 
 
 ![[Pasted image 20240802184126.png]]
 
