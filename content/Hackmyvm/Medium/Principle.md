@@ -60,7 +60,7 @@ We see the HTML commets:
 
 Viewing `/hackme`  gave me nothing.
 
-Investigating the investigate directory:
+Investigating the `investigate` directory:
 
 ```bash
 garffff@garffff:~/hackmyvm/principle$ feroxbuster -u http://192.168.0.146/investigate/ -w /opt/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt -x ,.txt,.html,.php,.docx,.pdf
