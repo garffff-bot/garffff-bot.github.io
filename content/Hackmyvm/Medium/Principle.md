@@ -698,7 +698,7 @@ K|tW4bw7$zNh'PwSh/jN
 
 ```
 
-## Privilege Escalation to Root: 
+### Privilege Escalation to Root: 
 
 Using `sudo -l` we can see we can using the script `/usr/bin/python3 /opt/reviewer.py` as root
 
