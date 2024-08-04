@@ -139,7 +139,7 @@ Going to this new domain takes us to another page:
 ![[Pasted image 20240804132431.png]]
 
 Not able to find much on this page, further enumeration was conducted:
-### Subdomain enumeration:
+### Subdomain Enumeration:
 
 ```bash
 garffff@garffff:~/hackmyvm/principle$ /opt/ffuf/ffuf -u http://t4l0s.hmv -w /opt/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -H "Host: FUZZ.t4l0s.hmv" -fs 615
@@ -410,7 +410,7 @@ Found `/etc/selinux/Afrodita.key`
   #)There are more creds/passwds files in the previous parent folde
 ```
 
-Linpeas also found this. SSH is running on port `3445`, but it is not being allowed through the firewall. This may come in handy later:
+`Linpeas.sh` also found this. SSH is running on port `3445`, but it is not being allowed through the firewall. This may come in handy later:
 
 ```bash
 ╔══════════╣ Analyzing SSH Files (limit 70)
@@ -751,9 +751,9 @@ def enviar_mensaje_usuarios_conectados():
 enviar_mensaje_usuarios_conectados()
 ```
 
-Using linpeas we find this:
+Using `linpeas.sh` we find this:
 
-```
+```bash
 ╔══════════╣ Interesting GROUP writable files (not in Home) (max 500)
 ╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#writable-files
   Group sml:
@@ -780,7 +780,7 @@ The `subprocess.py` is  being execute by the script as `import subprocess` is be
 
 We can simply verify this:
 
-```
+```bash
 $ id 
 id 
 uid=1001(elohim) gid=1001(elohim) groups=1001(elohim),1002(sml)
