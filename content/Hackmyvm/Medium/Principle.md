@@ -229,7 +229,7 @@ Using the upload function, I uploaded a jpg file, to see what is going on:
 
 ![[Pasted image 20240802185312.png]]
 
-Not retentive, but I found a Reflective Cross-Site Scripting (XSS) Vulnerability - No use:
+Not relevant, but I found a Reflective Cross-Site Scripting (XSS) Vulnerability - No use:
 
 ![[Pasted image 20240802185415.png]]
 
@@ -350,7 +350,7 @@ There is a simple command that allows us to obtain a shell as that user:
 
 ![[Pasted image 20240802190613.png]]
 
-Using that command we have a shell as the Talos user, but we are not in the correct user group:
+Using the command in the screenshot above, we can get a shell as the Talos user, but we are not in the correct user group:
 
 ```bash
 www-data@principle:~/html$ find . -exec /bin/bash -p \; -quit
@@ -507,7 +507,7 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
-Copying the key failed due to permission issues:
+Copying the key failed due to permission issues. The elohim user probably doesn't have access to my current working directory:
 
 ```bash
 talos@principle:~$ sudo -u elohim cp /home/talos/.ssh/id_rsa.pub /home/gehenna/.ssh/authorized_keys
@@ -700,7 +700,7 @@ K|tW4bw7$zNh'PwSh/jN
 
 ### Privilege Escalation to Root: 
 
-Using `sudo -l` we can see we can using the script `/usr/bin/python3 /opt/reviewer.py` as root
+Using `sudo -l` we can see we can use the script `/usr/bin/python3 /opt/reviewer.py` as root
 
 ```bash
 $ sudo -l
@@ -760,7 +760,7 @@ Using `linpeas.sh` we find this:
 /usr/lib/python3.11/subprocess.py
 ```
 
-And also this:
+Members of our group have writable permissions to this file.
 
 The script `/opt/reviewer.py` is being executed every 5 minutes:
 
