@@ -452,32 +452,21 @@ Hashcat would ignore the new line character `\n`, and would calculate the the MD
 
 I created a python script to crack the hash that uses the new line character:
 
-```bash
+```python
 import hashlib
-
-  
 
 target_hash = "85c73111b30f9ede8504bb4a4b682f48"
 
-  
-
 with open("/opt/rockyou.txt", "r", encoding='utf-8', errors='ignore') as file:
-
-for line in file:
-
-word = line.strip()
-
-hash_password = hashlib.md5((word + "\n").encode('utf-8')).hexdigest()
-
-if hash_password == target_hash:
-
-print(f"Password is: {word}")
-
-break
-
-else:
-
-print("Password not found")
+	
+	for line in file:
+		word = line.strip()
+		hash_password = hashlib.md5((word + "\n").encode('utf-8')).hexdigest()
+			if hash_password == target_hash:
+				print(f"Password is: {word}")
+				break
+			else:
+			print("Password not found")
 ```
 
 Running the script we get a match:
@@ -487,6 +476,7 @@ garffff@garffff:~/hackmyvm/wmessage$ python3 crack.py
 Message5687
 ```
 
+Now I can `su` into root with the password found:
 
 ```bash
 messagemaster@MSG:/var/www$ su root
