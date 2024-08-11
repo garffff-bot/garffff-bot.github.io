@@ -67,7 +67,6 @@ Issuing the command: `!mpstat;whoami`:
 Refreshing the page we can see our current user::
 
 ![[Pasted image 20240810212453.png]]
-
 ### Reverse Shell
 
 Using msfvenom, I created a netcat payload:
@@ -129,7 +128,7 @@ total 16K
 4.0K drwxr-xr-x  3 messagemaster messagemaster 4.0K Nov 22  2022 messagemaster
 ```
 
-issue the `sudo -l` command, we see that we can run the `pidstat` command as the `messagemaster` user:
+Using the `sudo -l` command, I can see that I can run the `pidstat` command as the `messagemaster` user:
 
 ```bash
 www-data@MSG:/$ sudo -l
