@@ -1,6 +1,6 @@
 ### Installation
 
-Install the python Collector
+Install the python collector
 
 ```bash
 pip3 install bloodhound
