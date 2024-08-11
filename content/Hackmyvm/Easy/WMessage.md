@@ -60,7 +60,7 @@ We get the following output:
 
 ![[Pasted image 20240810212358.png]]
 
-Issueing the `!mpstat;whoami`: 
+Issuing the command: `!mpstat;whoami`: 
 
 ![[Pasted image 20240810212428.png]]
 
@@ -141,7 +141,6 @@ Matching Defaults entries for www-data on MSG:
 User www-data may run the following commands on MSG:
     (messagemaster) NOPASSWD: /bin/pidstat
 ```
-
 
 GTFObins has a method on how to use this command: https://gtfobins.github.io/gtfobins/pidstat/:
 
@@ -233,7 +232,6 @@ messagemaster@MSG:~$ cat User.txt
 cat User.txt
 ea86091a17126fe48a83c1b8d13d60ab
 ```
-
 ### Privilege Escalation - Root:
 
 Looking at `sudo -l` again, we see that we can using the `md5sum` command as root:
@@ -320,7 +318,6 @@ permitted by applicable law.
 Last login: Tue Nov 22 12:58:24 2022 from 192.168.1.17
 messagemaster@MSG:~$
 ```
-
 ### Privilege Escalation - Root:
 
 Issuing the `sudo -l` command again, we see that we can use the `/bin/md5su` as root:
