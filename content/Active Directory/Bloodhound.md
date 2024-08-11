@@ -57,7 +57,7 @@ BloodHound-linux-x64/BloodHound
 
 I have an alias set up for this. On my system I have to use the `--disable-gpu-sandbox` flag:
 
-```
+```bash
 alias bloodhound="~/Downloads/BloodHound-linux-x64/BloodHound-linux-x64/BloodHound --disable-gpu-sandbox"
 ```
 
