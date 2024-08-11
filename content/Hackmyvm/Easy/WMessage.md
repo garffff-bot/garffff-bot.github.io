@@ -319,7 +319,7 @@ messagemaster@MSG:~$
 ```
 ### Privilege Escalation - Root:
 
-Issuing the `sudo -l` command again, we see that we can use the `/bin/md5su` as root:
+Issuing the `sudo -l` command again, I can see that I can use the `/bin/md5su` as root:
 
 ```bash
 messagemaster@MSG:/var/www$ sudo -l
@@ -331,7 +331,7 @@ User messagemaster may run the following commands on MSG:
 
 ```
 
-Looking inside the `/var/www` directory, we see a file called `ROOTPASS`:
+Looking inside the `/var/www` directory, I see a file called `ROOTPASS`:
 
 ```bash
 messagemaster@MSG:/var/www$ ls -lash
@@ -342,7 +342,7 @@ total 16K
 4.0K -rw-r-----  1 root     root       12 Nov 21  2022 ROOTPASS
 ```
 
-Using the `/bin/md5sum` with `sudo` we get the MD5 hash of the file:
+Using the `/bin/md5sum` with `sudo` I can get the MD5 hash of the file:
 
 ```bash
 messagemaster@MSG:/var/www$ sudo /bin/md5sum /var/www/ROOTPASS
@@ -429,9 +429,9 @@ Candidates.#1....: 089793 -> $HEX[042a0337c2a156616d6f732103]
 Hardware.Mon.#1..: Temp: 62c Fan: 28% Util: 34% Core:1923MHz Mem:5005MHz Bus:16
 ```
 
-So there is an issue here. Hashcat does not recognise what the hash is.  This is because of the new line character used `\n`. 
+So there is an issue here. Hashcat does know what the hash is, but it is unable to crack it.  This is because of the new line character used `\n` used within the MD5 hash. 
 
-Looking at the `od -c` on command on `rockyou.txt`, we see in the output new line character`\n`:
+Looking at the output of the  `od -c` command on `rockyou.txt`, we see in the output new line characters`(\n`):
 
 ```bash
 garffff@garffff:~/python/hashlib$ od -c /opt/rockyou.txt | more
@@ -443,7 +443,7 @@ garffff@garffff:~/python/hashlib$ od -c /opt/rockyou.txt | more
 0000120   3  \n   n   i   c   o   l   e  \n   d   a   n   i   e   l  \n
 ```
 
-Hashcat would ignore the new line character `\n`, and would calculate the the MD5 hash without it, which makes sense. In our case, we want to calculate the MD5 hash with the `\n`.
+Hashcat would ignore the new line character `\n`, and calculates the the MD5 hash without it, which makes sense. In our case, we want to calculate the MD5 hash with the `\n`.
 
 I created a python script to crack the hash that uses the new line character:
 
@@ -467,8 +467,8 @@ with open("/opt/rockyou.txt", "r", encoding='utf-8', errors='ignore') as file:
 Running the script we get a match:
 
 ```bash
-garffff@garffff:~/hackmyvm/wmessage$ python3 crack.py 
-Message5687
+garffff@garffff:~/hackmyvm/wmessage$ python3 md5.py 
+Password is: Message5687
 ```
 
 Now I can `su` into root with the password found:
