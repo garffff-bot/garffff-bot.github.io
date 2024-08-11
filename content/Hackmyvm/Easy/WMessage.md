@@ -34,7 +34,7 @@ Nmap done: 1 IP address (1 host up) scanned in 8.09 seconds
 
 ### Viewing Port 80
 
-Viewing port 80 we see a login for and an option is register:
+Viewing port 80 we see a login form and an option is register:
 
 ![[Pasted image 20240810205704.png]]
 
@@ -232,7 +232,6 @@ total 28K
 messagemaster@MSG:~$ cat User.txt
 cat User.txt
 ea86091a17126fe48a83c1b8d13d60ab
-
 ```
 
 ### Privilege Escalation - Root:
