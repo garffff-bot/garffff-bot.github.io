@@ -51,7 +51,7 @@ I found a site in the `/foodservice`, but I couldn't find any information. Messi
 
 ![[Pasted image 20240811195638.png]]
 
-Moving onto the SMB, null access is allowed to view the shares, but could not access:
+Moving onto the SMB service, null access is allowed to view the shares, but could not access:
 
 ```bash
 garffff@garffff:~/hackmyvm/ephemeral2$ nxc smb 192.168.0.188 -u "" -p "" --shares
@@ -66,7 +66,7 @@ SMB         192.168.0.188   445    EPHEMERAL        IPC$                        
 SMB         192.168.0.188   445    EPHEMERAL        Officejet_Pro_8600_CDECA1_ 
 ```
 
-Using Enum4linux, I found the user `randy`:
+Using `Enum4linux`, I found the user `randy`:
 
 ```bash
 garffff@garffff:~/hackmyvm/ephemeral2$ python3 /opt/enum4linux-ng/enum4linux-ng.py -A 192.168.0.188
