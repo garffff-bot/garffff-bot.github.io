@@ -511,11 +511,9 @@ h1 = hashlib.md5()
 h2 = hashlib.md5()
 
 h1.update(b"Message5687")
-
 h2.update(b"Message5687\n")
 
 print(h1.hexdigest())
-
 print(h2.hexdigest())
 
 garffff@garffff:~/python/hashlib$ python3 create_hash.py 
