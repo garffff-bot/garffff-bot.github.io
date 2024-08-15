@@ -11,7 +11,7 @@ User goes to a share that does not exist:
 
 NTLMv2 password is captured:
 
-![[Pasted image 20240810231015.png]]
+![[Pasted image 20240815221223.png]]
 
 To crack
 
