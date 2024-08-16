@@ -9,6 +9,8 @@ pip3 install bloodhound
 And install the GUI and Neo4j: https://github.com/BloodHoundAD/BloodHound
 ### Usage
 
+#### Linux
+
 ```bash
 bloodhound-python -u user -p password -d domain.local -ns x.x.x.x -c all
 ```
@@ -46,6 +48,12 @@ You may also need to set your systems time to the same time as the DC, if you ge
 
 ```bash
 sudo ntpdate x.x.x.x
+```
+
+#### Windows
+
+```bash
+.\SharpHound1.1.0.exe -c all -d domain.local
 ```
 
 Once you have collected the data, run Neo4j and the Bloodhound GUI:
