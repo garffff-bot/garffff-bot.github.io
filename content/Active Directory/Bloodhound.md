@@ -36,7 +36,7 @@ sudo python3 /opt/dnschef/dnschef.py --fakeip x.x.x.x
 (13:39:49) [*] Cooking all A replies to point to 192.168.56.126
 ```
 
-Then run Bloodhound pointing to your loopback address. You may also need to add the `-dc` flag and add the name of the DC:
+Then run Bloodhound pointing to your loopback address. You may also need to add the `-dc` or `-gc` flag and add the name of the DC:
 
 ```bash
 bloodhound-python -u user -p password -d domain.local -ns 127.0.0.1 -c all -dc dc_name
