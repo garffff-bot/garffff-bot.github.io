@@ -50,6 +50,17 @@ BSSID              PWR  Beacons    #Data, #/s  CH   MB   ENC CIPHER  AUTH ESSID
 Once target is found, scan only that device and save the output
 
 ```bash
+root@WiFiChallengeLab:~/wpa# airodump-ng wlan0mon --band abg -c 6 --bssid F0:9F:C2:71:22:12 -w wpa_handshake
+ CH  6 ][ Elapsed: 18 s ][ 2024-09-03 13:33 
+
+ BSSID              PWR RXQ  Beacons    #Data, #/s  CH   MB   ENC CIPHER  AUTH ESSID
+
+ F0:9F:C2:71:22:12  -28   0      227       98    2   6   54        CCMP   PSK  wifi-mobile                                                                                                                                                   
+
+ BSSID              STATION            PWR   Rate    Lost    Frames  Notes  Probes
+
+ F0:9F:C2:71:22:12  28:6C:07:6F:F9:44  -29   54 -54      0        4                                                                                                                                                                           
+ F0:9F:C2:71:22:12  28:6C:07:6F:F9:43  -29   54 - 9      0       90
 ```
 
 
