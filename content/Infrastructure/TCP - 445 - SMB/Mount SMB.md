@@ -7,7 +7,7 @@ sudo mount -t cifs //server_ip/share /mount/point -o guest
 ```
 
 ```bash
-`sudo mount -t cifs //server_ip/share /mount/point -o username=user,password=pass
+sudo mount -t cifs //server_ip/share /mount/point -o username=user,password=pass
 ```
 
 ```bash

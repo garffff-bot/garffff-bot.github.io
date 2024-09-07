@@ -16,7 +16,7 @@ agent.exe -connect <host_ip>:8080 -ignore-cert
 agent_linux -connect <host_ip>:8080 -ignore-cert
 ```
 
-Then Back on Linux within Ligolo-ng:
+Then Back on the Linux host within Ligolo-ng:
 
 ```bash
 session [select session]
