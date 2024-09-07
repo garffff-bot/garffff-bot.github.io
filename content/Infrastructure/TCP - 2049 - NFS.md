@@ -15,12 +15,29 @@
 | `no_subtree_check` | This option disables the checking of subdirectory trees.                                                                                    |
 | `root_squash`      | Assigns all permissions to files of root UID/GID 0 to the UID/GID of anonymous, which prevents `root` from accessing files on an NFS mount. |
 
+Scanning
+
 ````bash
 sudo nmap x.x.x.x -p111,2049 -sV -sC
 sudo nmap --script nfs* x.x.x.x -sV -p111,2049
+````
+
+Viewing Who can access the NFS device:
+
+```bash
 showmount -e x.x.x.x
+```
+
+Mount NFS share::
+
+```bash
 mkdir target-NFS
 sudo mount -t nfs x.x.x.x:/ ./target-NFS/ -o nolock
+```
+
+Or:
+
+```bash
 sudo mount -t nfs [-o vers=2] <ip>:<remote_folder> <local_folder> -o nolock
 cd target-NFS
 tree .
