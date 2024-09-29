@@ -1,5 +1,5 @@
 ## PowerShell
-### Copying Using Base64 From Linux
+### Copying Using Base64 From from Linux to Windows
 
 Verify the MD5 hash of the target file:
 
@@ -33,7 +33,7 @@ Algorithm       Hash                                                            
 MD5             01C0A257EDD3C2E95C25D80A4C18C5CC                                 
 ```
 
-Encoding file on Windows system to copy to Linux:
+### Copying Using Base64 From from Windows to Linux
 
 ```bash
 PS C:\users\public\downloads> [Convert]::ToBase64String((Get-Content -path "C:\users\public\hello.py" -Encoding byte))
