@@ -133,7 +133,7 @@ c:\Users\Public\Downloads>copy \\192.168.0.51\share\hello.py
 
 Using a username and password:
 
-```
+```bash
 c:\Users\Public\Downloads> net use x: \\192.168.220.133\share /user:garffff password
 c:\Users\Public\Downloads> copy x:\hello.py
 ```
