@@ -1,7 +1,7 @@
 
 ### Linux Host
 ```bash
-sudo ip tuntap add user gareth mode tun ligolo 
+sudo ip tuntap add user garffff mode tun ligolo 
 sudo ip link set ligolo up
 sudo ./proxy -laddr 0.0.0.0:8080 -selfcert
 ```
