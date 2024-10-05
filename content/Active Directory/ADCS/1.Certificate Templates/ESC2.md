@@ -1,14 +1,14 @@
 ESC2 in ADCS involves exploiting certificate templates that either specify the Any Purpose Extended Key Usage (EKU) or do not specify any EKU, allowing certificates to be used for various purposes, including client and server authentication and code signing. If these templates also permit specifying a `subjectAltName` (SAN) in the certificate signing request, attackers can request certificates on behalf of any user, similar to ESC1. Even without SAN specification, such certificates can be used to request new certificates. Additionally, a subordinate CA certificate with no EKUs can sign new certificates with arbitrary EKUs, posing significant security risks, although these won't work for domain authentication unless trusted by the NTAuthCertificates object.
 
-Prerequisite:
-
+The following prerequisites must apply:
 - The Enterprise CA must provide enrollment rights to low-privileged users.
 -  Manager approval should be turned off.
 - No authorized signatures should be necessary.
 - The security descriptor of the certificate template must be excessively permissive, allowing low-privileged users to enroll for certificates.
 - The certificate template should define Any Purpose Extended Key Usage or have no Extended Key Usage specified.
 
-![[Pasted image 20241005173442.png]]
+![[Pasted image 20241005175132.png]]
+
 
 ### Certificate Request
 
