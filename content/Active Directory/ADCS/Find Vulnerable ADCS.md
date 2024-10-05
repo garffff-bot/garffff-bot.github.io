@@ -47,7 +47,6 @@ Certipy v4.8.2 - by Oliver Lyak (ly4k)
 ```
 
 **It is important to note that the ADCS IP address may differ from the domain controller**
-
-***GOAD:***
+### GOAD
 DC: 192.168.56.12 (MEEREEN)
 ADCS: 192.168.56.23 (BRAAVOS)
