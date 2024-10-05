@@ -45,3 +45,8 @@ Certipy v4.8.2 - by Oliver Lyak (ly4k)
 [*] Saved text output to '20241005173858_Certipy.txt'
 [*] Saved JSON output to '20241005173858_Certipy.json'
 ```
+
+**It is important to note that the ADCS IP address may differ from the domain contoller**
+***GOAD:***
+DC: 192.168.56.12 (MEEREEN)
+ADCS: 192.168.56.23 (BRAAVOS)

