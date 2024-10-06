@@ -1,4 +1,4 @@
-ESC4 exploits certificate templates in Active Directory Certificate Services (ADCS) that grant Full Control permissions, allowing attackers to modify the templates to include fields like subjectAltName (SAN). This enables the attacker to request a certificate for any user, including privileged accounts, by specifying an arbitrary SAN. Combining ESC4 with ESC1, the attacker can use the obtained certificate to impersonate high-privilege users, leading to significant security risks and potential domain compromise.
+ESC4 exploits certificate templates in Active Directory Certificate Services (ADCS) that grant Full Control permissions, allowing attackers to modify the templates to include fields like subjectAltName (SAN). This enables the attacker to request a certificate for any user, including privileged accounts, by specifying an arbitrary SAN. Combining ESC4 with ESC1, the attacker can use the obtained certificate to impersonate high-privilege users.
 
 ![[Pasted image 20241006155102.png]]
 
