@@ -129,6 +129,8 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2024-10-30 17:04:
 Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2024-10-30 17:04:01
 ```
 
+Credentials found:
+
 ```bash
 kevin:iloveyou
 ```
