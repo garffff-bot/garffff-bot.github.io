@@ -37,7 +37,7 @@ Nmap done: 1 IP address (1 host up) scanned in 7.41 seconds
 
 ![[Pasted image 20241030163545.png]]
 
-Directory bruteforce, we see a file called vote.txt:
+Directory bruteforce, we see a file called `vote.txt`:
 
 ```bash
 gareth@gareth:~/hackmyvm/darkside$ feroxbuster -u http://192.168.0.181 -w /opt/SecLists/Discovery/Web-Content/big.txt 
