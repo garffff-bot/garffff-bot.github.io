@@ -1,6 +1,6 @@
 | Name     | Difficulty | OS    | Target IP     | Link                                                 |
 | -------- | ---------- | ----- | ------------- | ---------------------------------------------------- |
-| Darkside | Easy       | Linux | 192.168.0.202 | https://hackmyvm.eu/machines/machine.php?vm=Darkside |
+| Darkside | Easy       | Linux | 192.168.0.181 | https://hackmyvm.eu/machines/machine.php?vm=Darkside |
 
 ### ARP Scan
 
