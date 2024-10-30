@@ -8,7 +8,7 @@ garffff@garffff:~/hackmyvm/principle$ sudo arp-scan -l | grep 5a
 192.168.0.210	08:00:27:d1:20:5a	PCS Systemtechnik GmbH
 ```
 
-### Nmap Scan Results
+###  Nmap TCP Scan
 
 ```bash
 garffff@garffff:~/hackmyvm/principle$ sudo nmap -p- -sV -sC 192.168.0.210 -oA nmap/principle.tcp
