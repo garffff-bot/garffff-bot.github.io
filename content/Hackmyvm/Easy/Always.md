@@ -72,7 +72,7 @@ Nmap done: 1 IP address (1 host up) scanned in 161.01 seconds
 
 Looking at port 80, not much going on here:
 
-![[Pasted image 20241031114642.png]]
+![[Pasted image 20241031120721.png]]
 
 Doing a directory bruteforce, we see a hidden directory called Admin:
 
