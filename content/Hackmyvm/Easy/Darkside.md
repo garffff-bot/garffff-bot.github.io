@@ -33,6 +33,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 Nmap done: 1 IP address (1 host up) scanned in 7.41 seconds
 ```
 
+Visiting port 80, there is a login page:
 
 ![[Pasted image 20241030163545.png]]
 
@@ -161,7 +162,7 @@ Navigating to the `hwvhysntovtanj.password` page, we see a set of credentials:
 
 ![[Pasted image 20241030171322.png]]
 
-These can be used to log into the box via SSH, and we can grab the firs flag:
+These can be used to log into the box via SSH, and we can grab the firstflag:
 
 ```bash
 garffff@garffff:~/hackmyvm/darkside$ ssh kevin@192.168.0.181
