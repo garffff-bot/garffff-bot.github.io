@@ -283,7 +283,7 @@ $2b$05$gPKe1EUBPZidX/j3qTDapeznU4CMfkpMd0sQhgehhhoG/pwc4OnVu:Cassius!123
 
 SSH Credentials:
 
-```
+```bash
 ssh cassius@192.168.0.112:Cassius!123
 ```
 
@@ -311,8 +311,6 @@ user.txt
 cassius@boxing:~$ cat user.txt 
 a2b3946358a96bb7a92f61a759a1d972
 ```
-
-
 
 Priv Esc:
 
