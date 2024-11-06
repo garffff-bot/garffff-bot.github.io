@@ -11,7 +11,7 @@ test';WAITFOR DELAY '0:0:5)'-- -  (MSSQL)
 
 ### Boolean
 
-Determine character length of database:
+Determine character length of database name:
 
 ```bash
 1' and length(database())=1#
