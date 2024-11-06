@@ -1,3 +1,16 @@
+## Non-Staged Payloads
+
+e.g. `windows/shell_reverse_tcp`
+- Contains all the code needed to connect to attackers machine
+- Works with NC & Multihandler
+
+## Staged Payloads
+
+e.g. `windows/shell/reverse_tcp`
+- Contains minimum amount of code to perform a call back
+- Does not take up as much memory
+- May evade anti-virus
+- Works with Multihandler only
 
 # Windows
 ## PowerShell
