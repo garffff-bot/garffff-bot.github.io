@@ -8,7 +8,6 @@ owneredit.py -action write -owner 'judith.mader' -target 'judith.mader' 'certifi
 
 
 https://notes.shashwatshah.me/windows/active-directory/writeowner
-!!!!!!!!!!!!!!!!!!!!!
 
 Now have ownership over group:
 
