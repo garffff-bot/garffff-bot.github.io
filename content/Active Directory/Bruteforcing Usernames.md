@@ -9,7 +9,7 @@ Slow and noisy:
 ### Ldapnomnom:
 https://github.com/lkarlslund/ldapnomnom
 
-Quick and not noisy:
+Quick and quiet:
 
 ```bash
 ldapnomnom -input users.txt -server x.x.x.x
