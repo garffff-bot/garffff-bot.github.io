@@ -43,7 +43,8 @@ Impacket v0.11.0 - Copyright 2023 Fortra
 [*] Impersonating Administrator
 [*] 	Requesting S4U2self
 [*] 	Requesting S4U2Proxy
-[*] Saving ticket in Administrator.ccache```
+[*] Saving ticket in Administrator.ccache
+```
 
 Load the ticket:
 
