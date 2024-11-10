@@ -1,6 +1,6 @@
 **Resource-Based Constrained Delegation (RBCD)** is a delegation method in Active Directory environments where control over delegation is assigned to the resource. It works by allowing a resource (like a server) to specify which accounts can impersonate users to access that resource using their Kerberos tickets (TGS—Ticket Granting Service).
 
-If a user has GenericAll/GenericWrite over a host, RBCD is possible
+If a user has GenericAll/GenericWrite over a host, RBCD is possible.
 
 ![[Pasted image 20241109135409.png]]
 

