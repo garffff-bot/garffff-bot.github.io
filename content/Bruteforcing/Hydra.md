@@ -5,7 +5,7 @@ Add `-F` to stop Hydra on the first match
 hydra -L users.txt -P pass.txt x.x.x.x ssh -V
 ```
 
-Using a file username and password file, separated by a `:`
+Using a username and password file, separated by a `:`
 
 ```bash
 hydra -C pass.txt x.x.x.x ssh -V

