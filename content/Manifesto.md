@@ -73,5 +73,4 @@ for.
 but you can't stop us all... after all, we're all alike.
 
                                +++The Mentor+++
-                           
 ```
