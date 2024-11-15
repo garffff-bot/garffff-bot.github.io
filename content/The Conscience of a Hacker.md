@@ -1,5 +1,7 @@
+
+
 ```bash
-							==Phrack Inc.==
+==Phrack Inc.==
 
                     Volume One, Issue 7, Phile 3 of 10
 
@@ -72,5 +74,6 @@ for.
         I am a hacker, and this is my manifesto.  You may stop this individual,
 but you can't stop us all... after all, we're all alike.
 
-                               +++The Mentor+++  
+                               +++The Mentor+++
+                           
 ```
