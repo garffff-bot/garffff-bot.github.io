@@ -15,7 +15,7 @@ ssh -N -L 0.0.0.0:3389:10.1.1.10:3389 [user]@[target]
 #### Connect to a port on target device
 
 ```bash
-sudo ssh -N -L 0.0.0.0:[local_port_]:127.0.0.1:[target_port] [user]@[target]
+sudo ssh -N -L 0.0.0.0:[local_port]:127.0.0.1:[target_port] [user]@[target]
 ```
 
 Example:

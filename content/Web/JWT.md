@@ -38,7 +38,6 @@ garffff@garffff:~$ curl -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUz
 }
 ```
 
-
 We can remove the signature part of the token, and it is still found to be valid:
 
 ```bash

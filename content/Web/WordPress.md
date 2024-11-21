@@ -1,4 +1,4 @@
-### Scan for vulnerabilities and User
+### Scan for Vulnerabilities and Users
 
 ```bash
 wpscan --url http://192.168.0.79 --enumerate u,ap,at,cb,dbe --plugins-detection aggressive
