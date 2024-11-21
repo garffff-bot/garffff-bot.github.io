@@ -10,7 +10,7 @@ export const sharedPageComponents: SharedLayout = {
     links: {
       GitHub: "https://github.com/jackyzha0/quartz",
       "Discord Community": "https://discord.gg/cRFFHYye7t",
-      "Can't see on mobile devices?": "Use_a_PC!",
+      "Can't see on mobile devices?": "Use_a_PC",
     },
   }),
 }
