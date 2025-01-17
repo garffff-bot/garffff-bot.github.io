@@ -50,6 +50,7 @@ const config: QuartzConfig = {
           textHighlight: "#b3aa0288",
         },
       },
+      defaultMode: "dark",
     },
   },
   plugins: {
