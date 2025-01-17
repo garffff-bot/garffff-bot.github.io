@@ -9,7 +9,7 @@ export const sharedPageComponents: SharedLayout = {
   footer: Component.Footer({
     links: {
       // GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/UzQuaZfa",
+      // "Discord Community": "https://discord.gg/UzQuaZfa",
       // "Can't see on mobile devices?": "Use a PC!",
     },
   }),
@@ -27,7 +27,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
-    // Component.Darkmode(),
+    Component.Darkmode(),
     Component.DesktopOnly(Component.Explorer()),
   ],
   right: [

