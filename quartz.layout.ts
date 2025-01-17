@@ -27,7 +27,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
-    // Include Darkmode component with initial state 'dark'
+    // Include Darkmode component with initial state 'dark' 
     Component.Darkmode({ initialState: 'dark' }), 
     Component.DesktopOnly(Component.Explorer()),
   ],
@@ -44,7 +44,7 @@ export const defaultListPageLayout: PageLayout = {
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
-    // Include Darkmode component with initial state 'dark'
+    // Include Darkmode component with initial state 'dark' 
     Component.Darkmode({ initialState: 'dark' }), 
     Component.DesktopOnly(Component.Explorer()),
   ],
