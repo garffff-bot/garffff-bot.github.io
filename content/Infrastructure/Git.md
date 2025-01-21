@@ -10,8 +10,6 @@ View changes:
 git log
 ```
 
-
-
 View commit:
 
 ```bash
