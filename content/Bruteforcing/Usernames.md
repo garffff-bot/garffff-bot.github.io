@@ -2,21 +2,21 @@ Use username-anarchy to create a list of usernames from known names
 #### Single Username:
 
 ```bash
-garffff@garffff:~$ username-anarchy Jane Smith > jane_smith_usernames.txt
-garffff@garffff:~$ cat jane_smith_usernames.txt 
-jane
-janesmith
-jane.smith
-janesmit
-janes
+garffff@garffff:~$ username-anarchy John Smith > john_smith_usernames.txt
+garffff@garffff:~$ cat john_smith_usernames.txt
+john
+johnsmith
+john.smith
+johnsmit
+johns
 j.smith
 jsmith
-sjane
-s.jane
+sjohn
+s.john
 smithj
 smith
 smith.j
-smith.jane
+smith.john
 js
 ```
 #### List of Usernames:
