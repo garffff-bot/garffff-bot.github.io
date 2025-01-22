@@ -1,7 +1,5 @@
 The **SAM (Security Account Manager) database** in Windows is a system file that stores user account information and security credentials for the local computer. It contains usernames, hashed passwords, and group memberships for accounts managed on the local machine. The SAM database is critical for the authentication process and is used by the Local Security Authority (LSA) to verify user credentials during login.
 
-
-
 | Registry Hive   | Description                                                                                                                                                |
 | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `hklm\sam`      | Contains the hashes associated with local account passwords. We will need the hashes so we can crack them and get the user account passwords in cleartext. |

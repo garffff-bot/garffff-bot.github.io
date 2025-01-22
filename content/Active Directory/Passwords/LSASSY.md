@@ -12,7 +12,7 @@ pypykatz lsa minidump lsass.DMP
 
 #### Dump LSASSY (CLI)
 
-First find lsass.exe in using either cmd or a PowerShell prompt. We need to take note of the PID
+Fnd lsass.exe in using either cmd or a PowerShell prompt. We need to take note of the PID
 
 CMD:
 
