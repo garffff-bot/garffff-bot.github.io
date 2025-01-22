@@ -51,7 +51,7 @@ Rubeus.exe  asktgt /domain:<DOMAIN> /user:<USER> /aes256:<AES256_HMAC> /nowrap
 
 ### Pass the Ticket
 
-With the Kerberos tickets collected, we can now perform Pass the Ticket, and moe laterally within the enviroment.
+With the Kerberos tickets collected, we can now perform Pass the Ticket, and moe laterally within the environment.
 
 
 
