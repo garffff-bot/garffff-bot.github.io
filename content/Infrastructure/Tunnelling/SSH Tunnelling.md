@@ -18,7 +18,7 @@ ssh -N -L 3389:10.1.1.10:3389 [user]@[target]
 sudo ssh -N -L [local_port]:127.0.0.1:[target_port] [user]@[target]
 ```
 
-Dynamic Port Forwarding:
+### Dynamic Port Forwarding:
 
 ```bash
 sudo ssh -N -D 127.0.0.1:1080 [user]@[target]
