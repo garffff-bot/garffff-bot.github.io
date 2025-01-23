@@ -1,6 +1,6 @@
-### From Attacking Device
+### Local Port Forwarding
 
-#### Connect to a port on another device
+This setup creates a new port on your local machine (`[local_port]`), which forwards traffic to a specific destination on the remote machine (`[target_ip]:[target_port]`). If a service is accessible remotely on a particular IP and port, local port forwarding allows you to access it through your machine's port.
 
 ```bash
 ssh -N -L [local_port]:[target_ip]:[target_port] [user]@[target]
@@ -24,7 +24,7 @@ sudo ssh -N -L [local_port]:127.0.0.1:[target_port] [user]@[target]
 sudo ssh -N -D 127.0.0.1:1080 [user]@[target]
 ```
 
-### From Victim
+### Remote Port Forwarding
 
 This setup creates a new port on the attacker's machine `[target]`, which forwards traffic originating from the victim's machine (`127.0.0.1`). If a service (e.g., MySQL on port `3306`) is only accessible locally on the victim (`127.0.0.1:3306`), SSH remote port forwarding can be used to expose it to the attacker's machine.
 
