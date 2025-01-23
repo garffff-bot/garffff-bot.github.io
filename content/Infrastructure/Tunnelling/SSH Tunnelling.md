@@ -27,13 +27,13 @@ sudo ssh -N -D 127.0.0.1:1080 [user]@[target]
 
 ### From Victim
 
-This will open a new port on the attacking device from the target. If 3306 is open on the target but we don't have access to if we can forward this port over the ssh tunnel.
+This setup creates a new port on the attacker's machine `[target]`, which forwards traffic originating from the victim's machine (`127.0.0.1`). If a service (e.g., MySQL on port `3306`) is only accessible locally on the victim (`127.0.0.1:3306`), SSH remote port forwarding can be used to expose it to the attacker's machine.
 
 ```bash
 ssh -N -R [local_port]:127.0.0.1:[target_port] [user]@[target]
 ```
 
-or
+or, to restrict access to a specific IP on the attacker's machine:
 
 ```bash
 ssh -N -R [attacker_ip]:[local_port]:127.0.0.1:[target_port] [user]@[target]
