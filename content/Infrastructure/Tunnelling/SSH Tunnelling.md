@@ -12,7 +12,6 @@ Opens 3389 locally. Connected to 3389 locally will forward traffic to 10.1.1.10 
 
 ```bash
 ssh -N -L 3389:10.1.1.10:3389 [user]@[target]
-
 ```
 
 ```bash
