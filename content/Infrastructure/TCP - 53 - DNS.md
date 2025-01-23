@@ -11,7 +11,7 @@
 
 **Zone Transfer**
 
-Performs a DNS zone transfer for the specified domain from the primary DNS server, allowing the requester to obtain a copy of the entire DNS zone data for analysis or synchronization purpose
+Performs a DNS zone transfer for the specified domain from the primary DNS server, allowing the requester to obtain a copy of the entire DNS zone data for analysis or synchronisation purpose
 
 ```bash
 dig axfr domain.com @primary_dns_server
