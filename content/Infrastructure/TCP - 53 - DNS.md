@@ -63,7 +63,9 @@ dig example.com CNAME
 ```
  
 **PTR (Pointer):**
+
  Replace `192.168.1.1` with the actual IP address.
+ 
 ```bash
 dig -x 192.168.1.1
 ```
@@ -76,6 +78,7 @@ dig example.com TXT
 ```
 
 **HINFO (Host Information):**
+
 ```bash
 dig example.com HINFO
 ```
@@ -100,15 +103,9 @@ dig _service._protocol.example.com SRV
 ```bash
 dnsenum --enum inlanefreight.com -f /opt/SecLists/Discovery/DNS/subdomains-top1million-110000.txt
 
-```shell-session
+```
+
+```bash
 subfinder -d inlanefreight.com -v
-
-
-
-
 ```
-
-
-```
-
 

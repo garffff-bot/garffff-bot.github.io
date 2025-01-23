@@ -20,6 +20,6 @@ hydra -l kevin -P /opt/rockyou.txt x.x.x.x {-s xxxx} http{s}-post-form "/index.p
 ### Basic HTTP Authentication:
 
 ```bash
-hydra -l kevin -P /opt/rockyou.txt x.x.x.x {-s xxxx} x.x.x.x http{s}-get / 
+hydra -l kevin -P /opt/rockyou.txt -s <port> <target> http[s]-get /
 ```
 
