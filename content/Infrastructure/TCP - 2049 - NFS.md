@@ -15,7 +15,7 @@
 | `no_subtree_check` | This option disables the checking of subdirectory trees.                                                                                    |
 | `root_squash`      | Assigns all permissions to files of root UID/GID 0 to the UID/GID of anonymous, which prevents `root` from accessing files on an NFS mount. |
 
-Scanning
+### Scanning
 
 ````bash
 sudo nmap x.x.x.x -p111,2049 -sV -sC

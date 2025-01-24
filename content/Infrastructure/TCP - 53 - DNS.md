@@ -9,7 +9,7 @@
 - **HINFO (Host Information):** Describes the type of CPU and operating system used by a host.
 - **SRV (Service):** Specifies the location of services in the domain.
 
-**Zone Transfer**
+### Zone Transfer
 
 Performs a DNS zone transfer for the specified domain from the primary DNS server, allowing the requester to obtain a copy of the entire DNS zone data for analysis or synchronisation purpose
 
@@ -17,7 +17,7 @@ Performs a DNS zone transfer for the specified domain from the primary DNS serve
 dig axfr domain.com @primary_dns_server
 ```
 
-**Queries and Responses:**
+### Queries and Responses
 
 Command: `nslookup` or `dig`
 
@@ -29,40 +29,43 @@ or
 dig example.com
 ```
 
-**SOA (Start of Authority):**
+### SOA (Start of Authority)
 
  ```bash
  dig example.com SOA
 ```
 
-**NS (Name Server):**
+### NS (Name Server)
+
 ```bash
 dig example.com NS
 ```
 
-**MX (Mail Exchange):**
+### MX (Mail Exchange)
+
 ```bash
 dig example.com MX
 ```
 
-**A (Address):**
+### A (Address)
+
 ```bash
 dig example.com A
 ```
 
-**AAAA (IPv6 Address):**
+### AAAA (IPv6 Address)
 
 ```bash
 dig example.com AAAA
 ```
  
-**CNAME (Canonical Name):**
+### CNAME (Canonical Name)
 
 ```bash
 dig example.com CNAME
 ```
  
-**PTR (Pointer):**
+### PTR (Pointer)
 
  Replace `192.168.1.1` with the actual IP address.
  
@@ -70,27 +73,29 @@ dig example.com CNAME
 dig -x 192.168.1.1
 ```
   
-**TXT (including use in DMARC policies):**
+### TXT (including use in DMARC policies)
+
 DMARC (Domain-based Message Authentication, Reporting, and Conformance) records can be retrieved similarly
   
 ```bash
 dig example.com TXT
 ```
 
-**HINFO (Host Information):**
+### HINFO (Host Information)
 
 ```bash
 dig example.com HINFO
 ```
+ 
+### Any
 
- **ANY**
 This will query all available DNS records
 
 ```bash
 dig example.com ANY
 ```
  
- **SRV (Service):**
+ ### **SRV (Service):*
  
  Replace `_service._protocol.example.com` with the actual SRV record
  
@@ -98,7 +103,7 @@ dig example.com ANY
 dig _service._protocol.example.com SRV
 ```
 
-**Subdomain Enumeration:
+### Subdomain Enumeration
 
 ```bash
 dnsenum --enum inlanefreight.com -f /opt/SecLists/Discovery/DNS/subdomains-top1million-110000.txt

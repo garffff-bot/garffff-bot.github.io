@@ -22,8 +22,9 @@ smbclient //<ip>/<share_name> -U '<domain>\<username>%<password>'
 smbclient //<ip>/<share_name> -U '<domain>\<username>' --pw-nt-hash <NTLMv2_hash>
 ```
 
+### RPC
 
-RPC:
+Anonymous Login:
 
 ```
 rpcclient -U'%' 10.10.110.17

