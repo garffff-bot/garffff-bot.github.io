@@ -16,3 +16,6 @@ https://tryhackme.com/p/garffff
 
 https://hackmyvm.eu/profile/?user=garffff
 
+### Twitter
+
+https://x.com/garffff_bot

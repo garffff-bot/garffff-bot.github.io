@@ -109,3 +109,6 @@ dnsenum --enum inlanefreight.com -f /opt/SecLists/Discovery/DNS/subdomains-top1m
 subfinder -d inlanefreight.com -v
 ```
 
+```bash
+python3 subbrute.py inlanefreight.htb -s ./names.txt -r ./resolvers.txt
+```

