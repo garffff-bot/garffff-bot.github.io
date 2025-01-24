@@ -12,14 +12,14 @@ sqlcmd -S SRVMSSQL -U julio -P 'MyPassword!' -y 30 -Y 30
 
 Linux:
 
-```
+```bash
 mssqlclient.py -p 1433 julio@10.129.203.7
 mssqlclient.py -p 1433 julio@10.129.203.7 -windows-auth 
 sqsh -S 10.129.203.7 -U julio -P 'MyPassword!' -h
 sqsh -S 10.129.203.7 -U .\\julio -P 'MyPassword!' -h - (Windows Auth)
 ```
 
-### sqlsh
+### Sqlsh
 
 Use `-m vert/ascii` to format the tables
 
