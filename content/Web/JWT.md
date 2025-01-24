@@ -108,7 +108,7 @@ garffff@garffff:~$ curl -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJOb2
 }
 ```
 
-#### Weak Symmetric Secrets
+### Weak Symmetric Secrets
 
 If a symmetric signing algorithm is used, the security of the JWT relies on the strength and entropy of the secret used. If a weak secret is used, it may be possible to perform offline cracking to recover the secret. Once the secret value is known, you can again alter the claims in your JWT and recalculate a valid signature using the secret.
 

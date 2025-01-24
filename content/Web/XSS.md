@@ -1,7 +1,7 @@
 
-| Stored (Persistent)                                                | Reflective (None-Persistent)                            | DOM-Based                                                |
-| ------------------------------------------------------------------ | ------------------------------------------------------- | -------------------------------------------------------- |
-| User input is stored on the server, and is executed when retrieved | User input is process server side without being stored  | User input is processed client side without being stored |
+| Stored (Persistent)                                                | Reflective (None-Persistent)                           | DOM-Based                                                |
+| ------------------------------------------------------------------ | ------------------------------------------------------ | -------------------------------------------------------- |
+| User input is stored on the server, and is executed when retrieved | User input is process server side without being stored | User input is processed client side without being stored |
 ### Payloads - Classics
 
 ```bash
@@ -50,7 +50,7 @@ sudo php -S 0.0.0.0:80
 ```
 
 Creds should be save in `creds.txt`
-#### DOM-Based
+### DOM-Based
 
 The `#` signed is a client side parameter processed by the web browser
 
@@ -64,7 +64,7 @@ Does appear in the development tools:
 
 ![[Pasted image 20241119154106.png]]
 
-Other Examples:
+### Other Examples
 
 ```bash
 <script>

@@ -1,4 +1,3 @@
-
 Able to read logs via LFI:
 
 ```bash

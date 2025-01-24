@@ -1,5 +1,5 @@
 Add `-F` to stop Hydra on the first match
-## SSH
+### SSH
 
 ```bash
 hydra -L users.txt -P pass.txt x.x.x.x ssh -V
