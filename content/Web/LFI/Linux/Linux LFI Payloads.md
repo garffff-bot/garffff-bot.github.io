@@ -1,3 +1,9 @@
+Seems like a good wordlist:
+
+```bash
+/Seclists/Fuzzing/LFI/LFI-Jhaddix.txt
+```
+
 ```bash
 ../
 ..\

