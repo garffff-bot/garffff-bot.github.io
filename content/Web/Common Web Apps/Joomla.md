@@ -45,7 +45,7 @@ droopescan scan joomla --url http://dev.inlanefreight.local/
 
 ### Attack
 
-Bruteforcing:
+Brute Forcing:
 
 - Admin Portal: `http://dev.inlanefreight.local/administrator/index.php`
 

