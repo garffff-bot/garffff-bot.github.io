@@ -47,9 +47,9 @@ droopescan scan joomla --url http://dev.inlanefreight.local/
 
 Bruteforcing:
 
-Admin Portal: `http://dev.inlanefreight.local/administrator/index.php`
+- Admin Portal: `http://dev.inlanefreight.local/administrator/index.php`
 
-Default username `admin`
+- Default username `admin`
 
 Download bruteforcing tool:
 
