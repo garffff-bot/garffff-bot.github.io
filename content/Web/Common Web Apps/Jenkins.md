@@ -1,4 +1,3 @@
-
 ### Enumeration
 
 - Default creds `admin:admin`

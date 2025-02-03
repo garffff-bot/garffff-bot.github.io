@@ -107,7 +107,6 @@ USER john
 | VRFY        | Verifies the existence of a specific email address. Returns the full address if valid, otherwise indicates non-existence.      |
 | EXPN        | Expands a mailing list or group. Returns the members of the mailing list if available, or an error if the list does not exist. |
 | **RCPT TO** | Specifies the recipient(s) of an email in the SMTP transaction. Used to define individual or multiple recipients.              |
-
 ### Automatite Process
 
 ```bash

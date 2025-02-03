@@ -1,4 +1,4 @@
-Seems like a good wordlist:
+Seems like a good word list:
 
 ```bash
 /Seclists/Fuzzing/LFI/LFI-Jhaddix.txt
