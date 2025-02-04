@@ -19,7 +19,6 @@ judith.mader# set_genericall management judith.mader
 judith.mader# add_user_to_group judith.mader management
 [INFO] Adding user "Judith Mader" to group "Management" result: OK
 ```
-
 ### Summary
 
 ```bash

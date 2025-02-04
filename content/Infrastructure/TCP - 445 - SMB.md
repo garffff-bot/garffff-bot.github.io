@@ -21,7 +21,6 @@ enum4linux-ng.py <IP> -A -C
 smbclient //<ip>/<share_name> -U '<domain>\<username>%<password>'
 smbclient //<ip>/<share_name> -U '<domain>\<username>' --pw-nt-hash <NTLMv2_hash>
 ```
-
 ### RPC
 
 Anonymous Login:
@@ -30,14 +29,13 @@ Anonymous Login:
 rpcclient -U'%' 10.10.110.17
 enumdomusers
 ```
-
 ### Mount
 
 Linux:
 
 ```bash
 sudo apt install cifs-utils
-sudo mkdir //mount/point
+sudo mkdir /mount/point
 sudo mount -t cifs //<ip>/<share_name> /mount/point
 ```
 
@@ -53,7 +51,7 @@ sudo mount -t cifs -o username=<username>,password=<password>,domain=. //<ip>/<s
 sudo mount -t cifs //server_ip/<share_name> /mount/point -o credentials=/home/username/.smbcredentials
 ```
 
-.smbcredentials file:
+`.smbcredentials` file:
 
 ```bash
 nano /home/username/.smbcredentials

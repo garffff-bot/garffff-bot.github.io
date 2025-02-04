@@ -1,6 +1,4 @@
-
 **LLMNR/NetBIOS lookups** are used by Windows when DNS fails to resolve a hostname. Because these requests are broadcast over the local network, a malicious host can intercept and respond to them. By running **Responder**, an attacker can capture Net-NTLMv2 password hashes through a Man-in-the-Middle (MitM) attack on the challenge/response messages that are part of the NTLM authentication protocol.
-
 ### SMB
 
 ```bash

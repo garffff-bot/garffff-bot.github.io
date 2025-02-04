@@ -21,7 +21,6 @@ sudo umount /mnt/vhd
 sudo umount /mnt/bitlocker
 sudo qemu-nbd --disconnect /dev/nbd0
 ```
-
 ### Without Dislocker:
 
 ```bash
@@ -30,7 +29,6 @@ sudo qemu-nbd --format=vpc --connect=/dev/nbd0 /path/to/file.vhd
 sudo fdisk -l /dev/nbd0
 sudo mount /dev/nbd0p1 /mnt/vhd`
 ```
-
 ### Unmount
 
 ```bash

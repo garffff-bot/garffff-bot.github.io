@@ -1,4 +1,3 @@
-
 ### View Databases
 
 ```bash

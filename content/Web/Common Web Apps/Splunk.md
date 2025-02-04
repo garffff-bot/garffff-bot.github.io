@@ -1,4 +1,3 @@
-
 ### Enumberation
 
 The Splunk Enterprise trial converts to a free version after 60 days, which doesn’t require authentication.

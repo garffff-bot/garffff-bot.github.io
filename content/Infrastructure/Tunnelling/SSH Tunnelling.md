@@ -32,7 +32,7 @@ ssh -L [local_port]:[target_ip]:[target_port] -L [local_port]:[target_ip]:[targe
 
 ### Dynamic Port Forwarding
 
-Useful when we don't know what port we need to connect to. To be used with `proxychains` or a `socks4/5` connection in a web browser. Not `socks4` only supports `TCP` whereas `sock5` supports both `TCP` and `UDP`.
+Useful when we don't know what port we need to connect to. To be used with `proxychains` or a `socks4/5` connection in a web browser. `socks4` only supports `TCP` whereas `sock5` supports both `TCP` and `UDP`.
 
 ```bash
 sudo ssh {-N} -D 127.0.0.1:1080 [user]@[target]
@@ -47,7 +47,7 @@ socks5	127.0.0.1 1080
 Then use proxychains with `nmap` to scan a target:
 
 ```bash
-proxychains -d nmap -sT -Pn x.x.x.x
+proxychains -q nmap -sT -Pn x.x.x.x
 ```
 
 For web browsing, configure a suitable proxy:
@@ -57,10 +57,9 @@ For web browsing, configure a suitable proxy:
 Can also use other applications with proxychains:
 
 ```bash
-proxychains -d msfconsole -q
+proxychains -q msfconsole -q
 proxychains xfreerdp
 ```
-
 ### Remote Port Forwarding
 
 This setup allows the attacker's machine to receive connections on a specified port and forward traffic through an intermediary **pivot point** to reach a service running locally on the target machine. Since the target has no direct route to the attacker, a reverse shell or direct connection would fail. However, the pivot point, which has communication with both the attacker and the target, can act as a bridge.
