@@ -1,25 +1,6 @@
 This privilege grants a user the ability to take ownership of any "securable object," meaning Active Directory objects, NTFS files/folders, printers, registry keys, services, and processes.
 
 ```bash
-whoami /priv
-
-PRIVILEGES INFORMATION
-----------------------
-
-Privilege Name                Description                              State
-============================= ======================================== ========
-SeTakeOwnershipPrivilege      Take ownership of files or other objects Disabled
-SeChangeNotifyPrivilege       Bypass traverse checking                 Enabled
-SeIncreaseWorkingSetPrivilege Increase a process working set           Disabled
-```
-
-Currently set to disable. To enable, use this script:
-
-https://raw.githubusercontent.com/fashionproof/EnableAllTokenPrivs/master/EnableAllTokenPrivs.ps1
-
-```bash
-PS C:\Tools> Import-Module .\Enable-Privilege.ps1
-PS C:\Tools> .\EnableAllTokenPrivs.ps1
 PS C:\Tools> whoami /priv
 
 PRIVILEGES INFORMATION

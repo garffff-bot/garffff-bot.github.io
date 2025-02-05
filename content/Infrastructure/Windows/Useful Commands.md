@@ -79,3 +79,8 @@ tasklist /svc
 ```
 
 
+Find a File
+
+```bash
+where /r C:\ confidential.txt
+```

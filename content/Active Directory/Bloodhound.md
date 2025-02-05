@@ -69,4 +69,19 @@ I have an alias set up for this. On my system I have to use the `--disable-gpu-s
 alias bloodhound="~/Downloads/BloodHound-linux-x64/BloodHound-linux-x64/BloodHound --disable-gpu-sandbox"
 ```
 
+When starting neo4j, if this error happens:
+
+```bash
+WARNING! You are using an unsupported Java runtime.
+* Please use Oracle(R) Java(TM) 17, OpenJDK(TM) 17 to run Neo4j.
+* Please see https://neo4j.com/docs/ for Neo4j installation instructions
+```
+
+Select the correct java version:
+
+```bash
+sudo update-alternatives --config java
+```
+
+Select `/usr/lib/jvm/java-17-openjdk-amd64/bin/java`
 

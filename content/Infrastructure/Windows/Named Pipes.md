@@ -6,7 +6,6 @@ Pipes are used for communication between two applications or processes using sha
     
 - **Anonymous Pipes**  
     Used for communication between a **parent and child process** on the same machine. They are temporary and exist only while the processes are running.
-
 #### List Named Pipes
 
 CMD:

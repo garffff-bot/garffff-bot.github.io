@@ -1,4 +1,3 @@
-
 **Backup Operators** is a built-in group in Active Directory environments that grants members the ability to back up and restore files, regardless of file permissions. Members of this group can bypass NTFS permissions to perform backup and restore operations on the system.
 
 ### Create a location to save information
