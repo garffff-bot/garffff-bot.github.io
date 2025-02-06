@@ -31,6 +31,7 @@ Trusts can be set up in two directions: one-way or two-way (bidirectional).
 - `Bidirectional trust`: Users from both trusting domains can access resources in the other domain. 
 #### Enumeration
 
+This assumes that a `Child` domain has been compromised. Now we want to compromise the `Parent` domain.
 #### Get-ADTrust
 
 ```bash
@@ -107,7 +108,6 @@ TrustDirection  : Bidirectional
 WhenCreated     : 11/1/2021 8:07:09 PM
 WhenChanged     : 3/29/2022 4:48:04 PM
 ```
-
 #### Find Users in a Child Domain (Windows)
 
 ```bash
