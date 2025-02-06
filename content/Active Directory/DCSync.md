@@ -1,4 +1,4 @@
-In Active Directory, **DCsync** is a technique used by attackers to impersonate a domain controller and request password hashes from other domain controllers using the **DSGetNCChanges** function. It
+In Active Directory, **DCSync** is a technique used by attackers to impersonate a domain controller and request password hashes from other domain controllers using the **DSGetNCChanges** function. It
 
 Minikatz:
 
