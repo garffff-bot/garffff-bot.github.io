@@ -27,7 +27,7 @@ FPing:
 - -a: Shows targets that are alive
 - -s: Prints stats at the end
 - -g: Generate a target list from the CIDR network
-- -g: Not show per-target results
+- -q: Not show per-target results
 
 ```
 fping -asgq 172.16.5.0/23

@@ -40,7 +40,7 @@ sudo ssh {-N} -D 127.0.0.1:1080 [user]@[target]
 
 Proxychains Config:
 
-```
+```bash
 socks5	127.0.0.1 1080
 ```
 
