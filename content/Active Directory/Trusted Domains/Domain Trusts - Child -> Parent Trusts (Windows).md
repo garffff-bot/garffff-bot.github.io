@@ -61,7 +61,6 @@ UplevelOnly             : False
 UsesAESKeys             : False
 UsesRC4Encryption       : False
 ```
-
 #### Powerview
 
 ```bash
@@ -212,7 +211,6 @@ Cached Tickets: (1)
         Cache Flags: 0x1 -> PRIMARY
         Kdc Called:
 ```
-
 
 Now can access the DC of the parent domain:
 
