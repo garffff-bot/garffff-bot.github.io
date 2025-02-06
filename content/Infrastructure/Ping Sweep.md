@@ -22,3 +22,13 @@ Windows Powershell:
 1..254 | % {"172.16.5.$($_): $(Test-Connection -count 1 -comp 172.15.5.$($_) -quiet)"}
 ```
 
+FPing:
+
+- -a: Shows targets that are alive
+- -s: Prints stats at the end
+- -g: Generate a target list from the CIDR network
+- -g: Not show per-target results
+
+```
+fping -asgq 172.16.5.0/23
+```

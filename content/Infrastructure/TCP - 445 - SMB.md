@@ -21,14 +21,6 @@ enum4linux-ng.py <IP> -A -C
 smbclient //<ip>/<share_name> -U '<domain>\<username>%<password>'
 smbclient //<ip>/<share_name> -U '<domain>\<username>' --pw-nt-hash <NTLMv2_hash>
 ```
-### RPC
-
-Anonymous Login:
-
-```
-rpcclient -U'%' 10.10.110.17
-enumdomusers
-```
 ### Mount
 
 Linux:
