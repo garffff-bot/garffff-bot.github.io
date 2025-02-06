@@ -5,7 +5,7 @@ Minikatz:
 Run as user who has DCSync rights:
 
 ```bash
-runas /netonly /user:<domain>\<user< powershell
+runas /netonly /user:<domain>\<user> powershell
 ```
 
 Extract Administrators hash:
