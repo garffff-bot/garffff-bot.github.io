@@ -1,4 +1,3 @@
-Trusts between domains can be transitive or non-transitive
 #### Key terms
 
 - **Forest**: The highest-level container in Active Directory that groups multiple domains under a single security boundary. It enables trust relationships, shared policies, and authentication across all domains within it.
@@ -19,6 +18,8 @@ Since a child domain is part of the same **Active Directory forest**, the trust 
 
 However, **permissions still matter**! Just because trust exists doesn’t mean users automatically get access. You still need to assign proper **permissions** on resources.
 #### Trust establishment
+
+Trusts between domains can be transitive or non-transitive
 
 - A `transitive` trust means that trust is extended to objects that the child domain trusts. For example, let's say we have three domains. In a transitive relationship, if `Domain A` has a trust with `Domain B`, and `Domain B` has a `transitive` trust with `Domain C`, then `Domain A` will automatically trust `Domain C`.
 - In a `non-transitive trust`, the child domain itself is the only one trusted.
