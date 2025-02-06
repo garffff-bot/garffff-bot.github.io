@@ -29,6 +29,6 @@ FPing:
 - -g: Generate a target list from the CIDR network
 - -q: Not show per-target results
 
-```
+```bash
 fping -asgq 172.16.5.0/23
 ```
