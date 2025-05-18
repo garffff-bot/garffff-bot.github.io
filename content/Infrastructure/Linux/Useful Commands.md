@@ -28,13 +28,11 @@ cat /etc/fstab
 ```bash
 df -h
 ```
-
 #### Unmounted File Systems
 
 ```bash
 cat /etc/fstab | grep -v "#" | column -t
 ```
-
 #### All Hidden Files
 
 ```bash

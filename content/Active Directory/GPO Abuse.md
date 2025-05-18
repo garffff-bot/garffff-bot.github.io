@@ -3,8 +3,7 @@
 In BloodHound, if a user has the `WriteDacl` permission on  a GPO object, they can modify the access controls on that object:
 
 ![[Pasted image 20240815224341.png]]
-
-### Linux
+#### Linux
 
 ```bash
 git clone https://github.com/Hackndo/pyGPOAbuse.git

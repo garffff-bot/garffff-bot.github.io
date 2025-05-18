@@ -27,3 +27,7 @@ curl --head http://x.x.x.x/
 | `DELETE`  | Deletes the resource at the specified location                                                      |
 | `OPTIONS` | Shows different options accepted by a web server, like accepted HTTP verbs                          |
 | `PATCH`   | Apply partial modifications to the resource at the specified location                               |
+| `TRACK`   |                                                                                                     |
+Also try adding this to the header when using a verb bypass:
+
+`X-Custom-IP-Authorization: 127.0.0.1`

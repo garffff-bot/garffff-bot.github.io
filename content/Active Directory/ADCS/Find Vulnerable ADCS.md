@@ -2,7 +2,7 @@
 Find ADCS via the Domain Controller
 
 ```bash
-nxc ldap <dc_ip> -u user@domain.local -p password -M adcs
+nxc ldap <dc_ip> -u user -p password -M adcs
 ```
 
 Example:
@@ -47,11 +47,10 @@ Certipy v4.8.2 - by Oliver Lyak (ly4k)
 ```
 
 **It is important to note that the ADCS IP address may differ from the domain controller**
-### GOAD
+#### GOAD
 - DC: 192.168.56.12 (MEEREEN)
 - ADCS: 192.168.56.23 (BRAAVOS)
-
-### Users
+#### Users
 - khal.drogo@essos.local:horse
 - robb.stark@north.sevenkingdoms.local:sexywolfy
 - stannis.baratheon@sevenkingdoms.local:Drag0nst0ne 

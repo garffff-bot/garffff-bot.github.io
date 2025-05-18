@@ -1,5 +1,5 @@
 **LLMNR/NetBIOS lookups** are used by Windows when DNS fails to resolve a hostname. Because these requests are broadcast over the local network, a malicious host can intercept and respond to them. By running **Responder**, an attacker can capture Net-NTLMv2 password hashes through a Man-in-the-Middle (MitM) attack on the challenge/response messages that are part of the NTLM authentication protocol.
-### Linux
+#### Linux
 
 ```bash
 responder -I eth0
@@ -25,7 +25,7 @@ Common flags to use:
 - -f: Will attempt to fingerprint the remote host operating system and version.
 - -w: Utilises the built-in WPAD proxy server. This can be highly effective, especially in large organisations, because it will capture all HTTP requests by any users that launch Internet Explorer if the browser has `auto detect` enabled
 - -v: Increased verbosity
-### Windows
+#### Windows
 
 Powershell version is no longer updated
 

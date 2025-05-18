@@ -161,3 +161,45 @@ Retrieve Message 1:
 RETR 1
 ```
 
+### Secure Connection
+
+```bash
+openssl s_client -connect x.x.x.x:995
+```
+
+Or 
+
+```bash
+openssl s_client -starttls pop3 -connect x.x.x.x:110
+```
+
+Use the following python script to retreieve emails over a secure pop3 connection
+
+```python
+import poplib
+
+host = "x.x.x.x"
+user = "xxxxx@xxxxxx"
+password = "xxxxxxxx"
+
+# Connect securely over POP3 SSL
+mailbox = poplib.POP3_SSL(host)
+
+# Authenticate
+mailbox.user(user)
+mailbox.pass_(password)
+
+# Get message list
+num_messages = len(mailbox.list()[1])
+print(f"[+] {num_messages} message(s) in mailbox.\n")
+
+# Retrieve and print each message
+for i in range(num_messages):
+    print(f"--- Message {i+1} ---")
+    response, lines, octets = mailbox.retr(i+1)
+    message = "\n".join(line.decode("utf-8", errors="ignore") for line in lines)
+    print(message)
+    print("\n")
+
+mailbox.quit()
+```

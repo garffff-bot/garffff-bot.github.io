@@ -59,7 +59,7 @@ Verifying:
 
 ![[Pasted image 20241006155755.png]]
 
-### Summary
+#### Summary
 
 ```bash
 certipy template -u <user>@<domain> -p '<password>' -template <template> -save-old -dc-ip <dc_ip>

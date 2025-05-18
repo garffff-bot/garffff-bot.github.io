@@ -4,7 +4,7 @@ This bypasses the `StrongCertificateBindingEnforcement` registry key, even if it
 
 To mitigate this, organisations should audit certificate templates, enforce strong certificate mapping, and monitor for suspicious activities related to UPN changes and certificate requests.
 
-### Summary
+#### Summary
 
 ```bash
 certipy req -u <user>@<domain> -p '<password>' -ca <ca> -template <template> -upn <target_user> -dc-ip <adcs_ip>

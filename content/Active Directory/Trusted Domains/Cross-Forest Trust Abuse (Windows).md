@@ -25,7 +25,6 @@ TrustDirection  : Bidirectional
 WhenCreated     : 11/1/2021 8:07:09 PM
 WhenChanged     : 3/29/2022 4:48:04 PM
 ```
-
 #### Enumerating Accounts for Associated SPNs
 
 ```bash
@@ -37,7 +36,6 @@ krbtgt
 mssqlsvc
 sapsso
 ```
-
 #### Enumerating the mssqlsvc Account
 
 ```bash

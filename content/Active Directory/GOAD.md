@@ -1,10 +1,9 @@
-### Network Adaptors
+#### Network Adaptors
 
 Use these network adaptors:
 
 ![[Pasted image 20240815231053.png]]
-
-### Download & Install :
+#### Download & Install :
 
 ```bash
 git clone https://github.com/Orange-Cyberdefense/GOAD.git

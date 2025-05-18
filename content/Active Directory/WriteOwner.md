@@ -39,7 +39,6 @@ judith.mader# set_owner management judith.mader
  User has ownership over group:
 
 ![[Pasted image 20241105011745.png]]
-
 ### Summary
 #### owneredit.py
 

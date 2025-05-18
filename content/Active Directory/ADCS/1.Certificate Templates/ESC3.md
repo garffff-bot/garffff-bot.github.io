@@ -1,7 +1,7 @@
 The Certificate Request Agent EKU (Enrollment Agent) enables a principal to request a certificate on behalf of another user. The `enrollment agent` enrolls in this template and employs the resulting certificate to collaboratively sign a Certificate Signing Request (CSR) on behalf of another user. Subsequently, the enrollment agent forwards the co-signed CSR to the Certification Authority while enrolling in a template that authorises `enroll on behalf of`. In response, the CA issues a certificate belonging to the `other` user.
 
 Requires two templates matching the connections.
-### Condition 1  
+#### Condition 1  
 
 A template allows a low-privileged user to enrol in an enrolment agent certificate
 
@@ -13,7 +13,7 @@ A template allows a low-privileged user to enrol in an enrolment agent certifica
 
 ![[Pasted image 20241006151606.png]]
 
-### Condition 2
+#### Condition 2
 
 Another template permits a low privileged user to use the enrolment agent
 certificate to request a certificate on behalf of another user, and the template defines an EKU that allows for domain authentication.
@@ -74,8 +74,7 @@ Certipy v4.8.2 - by Oliver Lyak (ly4k)
 [*] Trying to retrieve NT hash for 'administrator'
 [*] Got hash for 'administrator@essos.local': aad3b435b51404eeaad3b435b51404ee:54296a48cd30259cc88095373cec24da
 ```
-
-### Summary
+#### Summary
 
 The `-on-behalf` need to be  the NetBIOS  of the domain and not the FQDN. E.g. `essos` and not `essos.local`
 

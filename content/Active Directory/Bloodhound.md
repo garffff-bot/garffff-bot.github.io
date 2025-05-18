@@ -1,4 +1,4 @@
-### Installation
+#### Installation
 
 Install the python collector
 
@@ -7,8 +7,6 @@ pip3 install bloodhound
 ```
 
 And install the GUI and Neo4j: https://github.com/BloodHoundAD/BloodHound
-### Usage
-
 #### Linux
 
 ```bash

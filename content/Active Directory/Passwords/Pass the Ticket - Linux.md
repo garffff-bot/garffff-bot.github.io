@@ -1,4 +1,3 @@
-
 Other file extensions maybe in use
 
 Locating `keytab` files

