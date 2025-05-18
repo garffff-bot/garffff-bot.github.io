@@ -2,7 +2,7 @@
 garffff@garffff:~$ whoami
 garffff
 garffff@garffff:~$ id
-4(Security+),24(PenTest+),27(OSCP),30(OSWP),33(OSEP),46(CREST CRT),115(CCNP Enterprise),136(CCNP Security)
+4(Security+),24(PenTest+),27(OSCP),30(OSWP),33(OSEP),46(CREST CRT),115(CCNP Enterprise),136(CCNP Security),143(CPTS)
 ```
 ### Hack The Box
 
