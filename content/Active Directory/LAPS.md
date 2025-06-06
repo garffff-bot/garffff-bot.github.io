@@ -19,12 +19,3 @@ DecryptionStatus    : Success
 AuthorizedDecryptor : TEA\Server Administration
 ```
 
-
-Enumeration - Use Powerview:
-
-
-
-
-```bash
-Get-ObjectAcl "OU=Servers,DC=tea,DC=vl" -ResolveGUIDs | Where-Object { $_.ActiveDirectoryRights -match "ExtendedRight" -and $_.ObjectType -eq "ms-Mcs-AdmPwd" }
-```
