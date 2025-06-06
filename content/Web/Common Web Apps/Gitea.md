@@ -17,13 +17,13 @@ jobs:
       - run: wget http://10.8.6.108
 ```
 
-And ensure if is in the location `.gitea/workflows/ci.yml`. 
+And ensure the file is in a location similar to this: `.gitea/workflows/ci.yml`. 
 
 File name can be anything:
 
 ![[Pasted image 20250605113243.png]]
 
-Within the settings of the repository, ensure this setting is enabled:
+Within the settings in the repository, ensure this setting is enabled:
 
 ![[Pasted image 20250605113342.png]]
 
