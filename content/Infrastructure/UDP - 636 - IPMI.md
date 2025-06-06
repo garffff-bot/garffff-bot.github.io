@@ -1,4 +1,3 @@
-
 ### Dump Hashes
 
 ```bash

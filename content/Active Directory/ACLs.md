@@ -19,13 +19,13 @@ $sid = Convert-NameToSid <username>
 Get-DomainObjectACL -Identity * | ? {$_.SecurityIdentifier -eq $sid}
 ```
 
-Look for `ObjectAceType` (GUID). This is just numbers, 
+Look for `ObjectAceType` (GUID). This is just numbers:
 
 ```bash
 Get-DomainObjectACL -Identity * | ? {$_.SecurityIdentifier -eq $sid}
 ```
 
-but we can convert to text
+but we can convert to text:
 
 ```bash
 Get-DomainObjectACL -ResolveGUIDs -Identity * | ? {$_.SecurityIdentifier -eq $sid}

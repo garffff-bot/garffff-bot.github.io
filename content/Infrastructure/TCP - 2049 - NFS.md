@@ -79,7 +79,7 @@ The following example defaults to `root_squash`:
 
 ### Escalate to none Root user:
 
-We may be able to escalate to a none root user if we have read/write access to the share, a shell is requited on the target system.
+We may be able to escalate to a none root user if we have read/write access to the share, a shell is required on the target system.
 
 Find the UID & GUID of the target user:
 

