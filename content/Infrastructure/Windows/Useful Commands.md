@@ -177,7 +177,7 @@ Get-MpComputerStatus
 | `net view /domain`                              | List of PCs of the domain                                                                                                    |
 - Use `net1` - can potential avoid defender looking/logging commands
 
-Search for domain contoller:
+Search for domain controller:
 
 ```bash
 dsquery * -filter "(userAccountControl:1.2.840.113556.1.4.803:=8192)" -limit 5 -attr sAMAccountName

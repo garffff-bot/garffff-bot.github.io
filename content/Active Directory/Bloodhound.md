@@ -19,6 +19,12 @@ If using proxychains add `--dns-tcp`
 proxychains -q bloodhound-python -u user -p password -d domain.local -ns x.x.x.x -c alll --dns-tcp
 ```
 
+Netexec appears to pull more data than Python:
+
+```bash
+nxc ldap x.x.x -u <user> -p <password> -d <domain> --dns-server x.x.x.x --bloodhound --collection All
+```
+
 Any weird timeout issues, use DNSChef and point it to the DC https://github.com/iphelix/dnschef:
 
 ```bash

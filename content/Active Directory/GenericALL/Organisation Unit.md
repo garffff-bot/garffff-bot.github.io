@@ -8,3 +8,10 @@ This is also known as full control. This privilege allows the trustee to manipul
 dacledit.py -action 'write' -rights 'FullControl' -inheritance -principal 'd.anderson' -target-dn 'OU=MARKETING DIGITAL,DC=INFILTRATOR,DC=HTB' infiltrator.htb/d.anderson -k -no-pass -dc-ip 10.129.205.0 
 ```
 
+
+
+```bash
+
+dacledit.py -action 'read' -principal 'naugustine' -target-dn 'CN=AD01-SRV1,OU=SERVERS,DC=corp,DC=com' 'corp.com'/'naugustine':'Password1'
+
+```

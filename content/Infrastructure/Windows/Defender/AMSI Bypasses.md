@@ -1,3 +1,10 @@
+
+Check if AMSI is in use:
+
+```
+'amsiutils'
+```
+
 ### AMSI payload 1:
 
 ```bash

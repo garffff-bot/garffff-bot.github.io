@@ -15,8 +15,8 @@ Quick and quiet:
 ```bash
 ldapnomnom -input users.txt -server x.x.x.x
 ```
-
 #### Netexec: 
+
 Find usernames with LDAP:
 
 ```bash
