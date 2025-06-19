@@ -22,7 +22,7 @@ proxychains -q bloodhound-python -u user -p password -d domain.local -ns x.x.x.x
 Netexec appears to pull more data than Python:
 
 ```bash
-nxc ldap x.x.x -u <user> -p <password> -d <domain> --dns-server x.x.x.x --bloodhound --collection All
+nxc ldap <ip> -u <user> -p <pass> -d <domain> --dns-server <dnsip> --bloodhound --collection All
 ```
 
 Any weird timeout issues, use DNSChef and point it to the DC https://github.com/iphelix/dnschef:

