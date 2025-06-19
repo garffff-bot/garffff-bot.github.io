@@ -1,5 +1,4 @@
 **DPAPI Attacks** are a method used in Windows environments where an attacker targets encrypted data. It works by exploiting the Data Protection API (DPAPI) to decrypt sensitive information, such as stored passwords or encryption keys, by obtaining the necessary credentials or keys to access the protected data.
-
 #### Netexec
 
 ```bash

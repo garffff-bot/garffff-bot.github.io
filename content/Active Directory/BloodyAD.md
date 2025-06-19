@@ -13,7 +13,7 @@ bloodyAD --host "dc01.vintage.htb" -d "vintage.htb" --kerberos --dc-ip 10.129.19
 ```bash
 bloodyAD -d domain.local --host x.x.x.x -u username -p username set password target_user new_password
 ```
-#### Add user to a group
+#### Add User to a group
 
 ```bash
 bloodyAD -d domain.local --host x.x.x.x -u username -p username add groupMember 'Remote Management Users' user_to_add

