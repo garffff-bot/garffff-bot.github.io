@@ -17,6 +17,7 @@ find / -uid 0 -perm -6000 -type f 2>/dev/null
 ```
 
 Or 
+
 ```bash
 find / -user root -perm -6000 -exec ls -ldb {} \; 2>/dev/null
 ```

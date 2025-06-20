@@ -1,12 +1,12 @@
 Find all txt files:
 
 ```bash
-find / -type f -name "*.txt" 2>/dev/null`
+find / -type f -name "*.txt" 2>/dev/null
 ```
 
 Find writable folders/files:
 
-```shell
+```bash
 find . -writeable
 ```
 
@@ -21,3 +21,4 @@ find / -path /proc -prune -o -type d -perm -o+w 2>/dev/null
 ```bash
 find / -path /proc -prune -o -type f -perm -o+w 2>/dev/null
 ```
+
