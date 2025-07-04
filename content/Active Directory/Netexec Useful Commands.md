@@ -20,5 +20,11 @@ Bloodhound:
 nxc ldap <ip> -u <user> -p <pass> -d <domain> --dns-server <dnsip> --bloodhound --collection All
 ```
 
+Change password:
+
+```bash
+nxc smb <ip> -u user -p pass -M change-password -o NEWPASS=NewPassword
+```
+
 
 
