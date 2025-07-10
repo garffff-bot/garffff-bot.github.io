@@ -36,6 +36,5 @@ Start-Process -FilePath $exePath -ArgumentList $args -Credential $cred
 Using PsExec.exe:
 
 ```bash
-.\PsExec64.exe -accepteula -u DOMAIN\USER -p Pa
-ssword123 "C:\windows\tasks\shell.exe"
+.\PsExec64.exe -accepteula -u DOMAIN\USER -p Password123 "C:\windows\tasks\shell.exe"
 ```

