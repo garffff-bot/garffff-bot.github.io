@@ -4,6 +4,11 @@ If a user has GenericAll/GenericWrite over a host, RBCD is possible.
 
 ![[Pasted image 20241109135409.png]]
 
+Can also use ldapsearch to verify :
+
+```bash
+ldapsearch -H ldap://10.10.85.36 -D 'delegate\n.thompson' -w 'KALEB_2341' -b "CN=DC1,OU=Domain Controllers,DC=delegate,DC=vl" msDS-AllowedToActOnBehalfOfOtherIdentity
+```
 #### User
 
 - stannis.baratheon@sevenkingdoms.local:Drag0nst0ne

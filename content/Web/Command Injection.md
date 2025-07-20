@@ -1,14 +1,14 @@
 
-| **Injection Operator** | **Injection Character** | **URL-Encoded Character**   | **Executed Command**                       |
-| ---------------------- | ----------------------- | --------------------------- | ------------------------------------------ |
-| Semicolon              | `;`                     | %3b                         | Both                                       |
-| New Line               | `\n`                    | ccccccccccccccccccccccccccc | Both                                       |
-| Background             | `&`                     | %26                         | Both (second output generally shown first) |
-| Pipe                   | \|                      | %7c                         | Both (only second output is shown)         |
-| AND                    | `&&`                    | %26%26                      | Both (only if first succeeds)              |
-| OR                     | \|\|                    | %7c%7c                      | Second (only if first fails)               |
-| Sub-Shell              | ` `` `                  | %60%60                      | Both (Linux-only)                          |
-| Sub-Shell              | `$()`                   | %24%28%29                   | Both (Linux-only)                          |
+| **Injection Operator** | **Injection Character** | **URL-Encoded Character** | **Executed Command**                       |
+| ---------------------- | ----------------------- | ------------------------- | ------------------------------------------ |
+| Semicolon              | `;`                     | %3b                       | Both                                       |
+| New Line               | `\n`                    | %0A                       | Both                                       |
+| Background             | `&`                     | %26                       | Both (second output generally shown first) |
+| Pipe                   | \|                      | %7c                       | Both (only second output is shown)         |
+| AND                    | `&&`                    | %26%26                    | Both (only if first succeeds)              |
+| OR                     | \|\|                    | %7c%7c                    | Second (only if first fails)               |
+| Sub-Shell              | ` `` `                  | %60%60                    | Both (Linux-only)                          |
+| Sub-Shell              | `$()`                   | %24%28%29                 | Both (Linux-only)                          |
 ### Blacklisted Characters
 
 Try each of the above to find out which character is allowed, without an additional command. For example, the following is allowed (\n) where as all the other characters are blacklisted:
