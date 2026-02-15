@@ -6,7 +6,6 @@ Slow and noisy:
 ```bash
 ./kerbrute_linux_amd64 userenum --dc x.x.x.x -d domain.local /opt/kerberos_enum_userlists/A-Z.Surnames.txt
 ```
-
 #### Ldapnomnom:
 https://github.com/lkarlslund/ldapnomnom
 

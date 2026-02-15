@@ -3,7 +3,7 @@ Using SOCKS5
 On the attacking machine run:
 
 ```bash
-sudo ./chisel server -p 8002 --reverse --socks5
+sudo ./chisel server -p 8002 --reverse
 ```
 
 On target run:
