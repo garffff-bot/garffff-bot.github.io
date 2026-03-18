@@ -89,3 +89,8 @@ sudo update-alternatives --config java
 
 Select `/usr/lib/jvm/java-17-openjdk-amd64/bin/java`
 
+SharpHound.ps1
+
+```
+
+```

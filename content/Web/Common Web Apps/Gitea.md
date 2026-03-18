@@ -14,7 +14,7 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: windows-latest
     steps:
-      - run: wget http://10.8.6.108
+      - run: powershell -c wget http://10.10.14.8/test
 ```
 
 And ensure the file is in a location similar to this: `.gitea/workflows/ci.yml`. 

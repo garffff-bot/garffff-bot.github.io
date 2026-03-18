@@ -37,3 +37,9 @@ Back in Ligolo-ng - make sure you are in the correct session
 ```bash
 start
 ```
+
+Alias Command:
+
+```bash
+alias ligolo="sudo ip tuntap add user $(whoami) mode tun ligolo ; sudo ip link set ligolo up ; sudo /opt/ligolo-ng/proxy/proxy -laddr 0.0.0.0:8081 -selfcert"
+```

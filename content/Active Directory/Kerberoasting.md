@@ -1,5 +1,7 @@
 **Kerberoasting** is an attack method used in Active Directory environments where an attacker targets service accounts. It works by requesting and then cracking the service account’s Kerberos ticket (TGS—Ticket Granting Service). E.g MySQL, HTTP, FTP.... etc
 
+Kerberoasting is possible when an Active Directory account has a Kerberos Service Principal Name (SPN) associated with it. In order to enable Kerberos authentication for an application, the associated service account needs a SPN. Kerberoasting takes advantage of the fact that one can request a service ticket using the SPN associated with a target service account and take that Kerberos service ticket offline to attempt to crack it.
+
 ![[Pasted image 20240726224839.png]]
 
 The attack:
@@ -17,7 +19,7 @@ GetUserSPNs.py domain.local/guest -usersfile users.txt -request -outputfile kerb
 Kerberoasting (from computer on the domain):
 
 ```powershell
-.\Rubeus.exe kerberoast /nowrap
+.\Rubeus.exe kerberoast /nowrap /outfile:hashes.txt
 ```
 
 One liner from a domain connected Windows machine:

