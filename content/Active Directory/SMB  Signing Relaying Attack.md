@@ -10,8 +10,6 @@ Search the network for hosts with SMB signing disabled:
 nxc smb 192.168.56.0/24
 ```
 
-![[Pasted image 20240816094216.png]]
-
 Create a list of host with SMB signing disabled:
 
 ```bash

