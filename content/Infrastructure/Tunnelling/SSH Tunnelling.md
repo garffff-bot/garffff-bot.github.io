@@ -109,3 +109,37 @@ SSH - From Attacker:
 ```bash
  ssh -R 172.16.8.120:443:0.0.0.0:445 root@10.129.161.232
 ```
+
+`0.0.0.0` can be replace with `127.0.0.1` (Attacter IP)
+
+Simple:
+##### Local Port Forwarding:
+
+```bash
+ssh -i id_rsa -L 127.0.0.1:3306:127.0.0.1:3306 root@10.10.110.100
+ssh -i id_rsa -L [LOCAL_IP]:[LOCAL_PORT]:[REMOTE_IP]:[REMOTE_PORT] root@<target>
+```
+#### Remote port forwarding
+
+Open port on pivot to be forwarded to attacker
+
+```bash
+ssh -N -R 127.0.0.1:9999:127.0.0.1:9999 root@<pivot_ip>
+ssh -N -R 9999:127.0.0.1:9999 root@<pivot_ip>
+```
+
+Left side = where pivot listens  
+Right side = where traffic is forwarded (attacker)
+
+##### Required settings for Remote port Forwarding (pivot `/etc/ssh/sshd_config`)
+
+```bash
+AllowTcpForwarding yes  
+GatewayPorts yes
+```
+
+Then restart
+
+```bash
+systemctl restart ssh
+```
