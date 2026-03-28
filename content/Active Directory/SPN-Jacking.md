@@ -17,7 +17,7 @@ DC01$        Computer     Unconstrained                       N/A               
 BloodyAD (same as the output from Bloodhound):
 
 ```bash
-gareth@gareth:~/htb/pirate$ bloodyAD --host 10.129.8.87 -d pirate.htb -u a.white_adm -p 'Password123' get writable
+garffff@garffff:~/htb/pirate$ bloodyAD --host 10.129.8.87 -d pirate.htb -u a.white_adm -p 'Password123' get writable
 
 distinguishedName: CN=S-1-5-11,CN=ForeignSecurityPrincipals,DC=pirate,DC=htb
 permission: WRITE
