@@ -30,3 +30,5 @@ mkdir /mnt/xvda1
 mount /dev/xvda1 /mnt/xvda1
 ls -lash ls /mnt/xvda1/root
 ```
+
+
