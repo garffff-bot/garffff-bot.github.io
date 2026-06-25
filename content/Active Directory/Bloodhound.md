@@ -16,7 +16,7 @@ bloodhound-python -u user -p password -d domain.local -ns x.x.x.x -c all
 If using proxychains add `--dns-tcp`
 
 ```bash
-proxychains -q bloodhound-python -u user -p password -d domain.local -ns x.x.x.x -c alll --dns-tcp
+proxychains -q bloodhound-python -u user -p password -d domain.local -ns x.x.x.x -c all --dns-tcp
 ```
 
 Netexec appears to pull more data than Python:
@@ -86,11 +86,8 @@ Select the correct java version:
 ```bash
 sudo update-alternatives --config java
 ```
+#### BloodyAD
 
-Select `/usr/lib/jvm/java-17-openjdk-amd64/bin/java`
-
-SharpHound.ps1
-
-```
-
+```bash
+bloodyAD --host dc01.checkpoint.htb -u alex.turner -p 'Checkpoint2024!' -d checkpoint.htb get bloodhound
 ```

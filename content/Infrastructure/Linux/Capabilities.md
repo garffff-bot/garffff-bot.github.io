@@ -20,7 +20,7 @@ cat /etc/passwd | head -n1
 root:x:0:0:root:/root:/bin/bash
 ```
 
-Remove the `x` from the `passed` file:
+Remove the `x` from the `passwd` file:
 
 ```bash
 /usr/bin/vim.basic /etc/passwd

