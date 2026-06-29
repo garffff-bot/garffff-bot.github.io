@@ -1,3 +1,4 @@
+An ARP request replay attack captures a legitimate ARP request and repeatedly retransmits it to generate large numbers of encrypted packets, providing enough traffic to recover a WEP key through statistical analysis.
 
 ```bash
 sudo airmon-ng start wlan0

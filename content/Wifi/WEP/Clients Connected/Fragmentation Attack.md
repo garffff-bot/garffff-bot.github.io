@@ -1,4 +1,6 @@
 
+A fragmentation attack exploits WEP by injecting specially crafted fragmented packets into the network to generate predictable encrypted traffic, making it easier to recover the WEP key.
+
 ```bash
 airmon-ng start wlan0
 airodump-ng wlan0mon

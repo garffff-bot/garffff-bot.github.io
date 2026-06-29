@@ -1,3 +1,4 @@
+The KoreK ChopChop attack decrypts a WEP-encrypted packet one byte at a time by modifying the ciphertext and using the access point's responses to determine whether each guess is correct, allowing new valid packets to be forged without knowing the WEP key.
 
 ```bash
 airmon-ng start wlan0
